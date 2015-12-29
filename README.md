@@ -21,7 +21,8 @@ let yellow = UIColor.hex("#ffff00")
 ```
 
 #### Alpha
-
+`.alpha` is a sugar for `colorWithAlphaComponent`, internally it does the exact same thing, think of it as a
+lipstick for your implementation.
 ```swift
 let colorWithAlpha = myColor.alpha(0.75)
 ```
