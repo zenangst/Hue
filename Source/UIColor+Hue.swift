@@ -49,12 +49,18 @@ public extension UIColor {
   }
 
   public static func hex(string: String) -> UIColor {
-    let hex = string.hasPrefix("#")
+    var hex = string.hasPrefix("#")
       ? String(string.characters.dropFirst())
       : string
 
     guard hex.characters.count == 3 || hex.characters.count == 6
       else { return UIColor.whiteColor().colorWithAlphaComponent(0.0) }
+
+    if hex.characters.count == 3 {
+      for (index, char) in hex.characters.enumerate() {
+        hex.insert(char, atIndex: hex.startIndex.advancedBy(index * 2))
+      }
+    }
 
     return UIColor(
       red:   CGFloat((Int(hex, radix: 16)! >> 16) & 0xFF) / 255.0,
