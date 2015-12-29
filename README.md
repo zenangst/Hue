@@ -27,10 +27,16 @@ let colorWithAlpha = myColor.alpha(0.75)
 ```
 
 #### Gradients
+You can easily create gradient layers using the `gradient()` method on arrays with `UIColor`.
+As an extra bonus, you can also add a transform closure if you want to modify the `CAGradientLayer`.
 
 ```swift
 let gradient = [UIColor.blackColor(), UIColor.orangeColor()].gradient()
-// returns CAGradientLayer
+
+let secondGradient = [UIColor.blackColor(), UIColor.orangeColor()].gradient { gradient in
+  gradient.locations = [0.25, 1.0]
+  return gradient
+}
 ```
 
 #### Image colors
