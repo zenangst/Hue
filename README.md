@@ -10,7 +10,7 @@ Hue is the all-in-one coloring utility that you'll ever need.
 ## Usage
 
 #### Hex
-<img src="https://raw.githubusercontent.com/hyperoslo/Hue/master/Images/icon.png" alt="Hue Icon" align="right" />You can easily use hex colors with the `.hex` method on `UIColor`. It supports the following hex formats `#ffffff`, `ffffff`, `#fff`, `fff`
+<img src="https://raw.githubusercontent.com/hyperoslo/Hue/master/Images/icon_v2.png" alt="Hue Icon" align="right" />You can easily use hex colors with the `.hex` method on `UIColor`. It supports the following hex formats `#ffffff`, `ffffff`, `#fff`, `fff`
 ```swift
 let white = UIColor.hex("#ffffff")
 let black = UIColor.hex("#000000")
