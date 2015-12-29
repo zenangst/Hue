@@ -5,9 +5,9 @@ class UIColorTests: XCTestCase {
 
   func testHex() {
     let white = UIColor.hex("#FFFFFF")
-    let black = UIColor.hex("#000000")
-    let red = UIColor.hex("#FF0000")
-    let blue = UIColor.hex("#0000FF")
+    let black = UIColor.hex("000000")
+    let red = UIColor.hex("F00")
+    let blue = UIColor.hex("#00F")
     let green = UIColor.hex("#00FF00")
     let yellow = UIColor.hex("#FFFF00")
 
