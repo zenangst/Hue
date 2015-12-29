@@ -54,7 +54,7 @@ Hyper Interaktiv AS, ios@hyper.no
 
 ## Credits
 
-Credit goes out to Panic Inc who created [ColorArt](https://github.com/panicinc/ColorArt) which deeply inspired the functionality behind image color analysis.
+Credit goes out to Panic Inc who created [ColorArt](https://github.com/panicinc/ColorArt) and [@jathu](https://github.com/jathu) for his work on [UIImageColors](https://github.com/jathu/UIImageColors) which deeply inspired the functionality behind the image color analysis.
 
 ## License
 
