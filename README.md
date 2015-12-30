@@ -58,7 +58,9 @@ let (background, primary, secondary, detail) = image.colors()
 ## Examples
 <img src="https://raw.githubusercontent.com/hyperoslo/Hue/master/Images/hex-screenshot.png" alt="Hex Example screenshot" align="right" />
 #### Hex
-This very simple example that displays a bunch of color schemes in a Carousel view. It uses hex to set the color for the schemes. It leverages from `.isDarkColor` to make the text color readable in all scenarios. 
+This super simple example that displays a bunch of color schemes in a Carousel view. 
+
+It uses hex to set the color for the schemes. It leverages from `.isDarkColor` to make the text color readable in all scenarios. 
 
 The demo also features [Spots](http://github.com/hyperoslo/Spots) for rendering the Carousel view.
 
