@@ -17,6 +17,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         left: 10,
         bottom: 10,
         right: 10)
+      tableView.separatorColor = Color.cellSeparator
     }
     ListSpot.defaultCell = GradientListCell.self
 
