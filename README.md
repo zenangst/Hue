@@ -55,6 +55,15 @@ let image = UIImage(named: "My Image")
 let (background, primary, secondary, detail) = image.colors()
 ```
 
+## Examples
+
+#### Hex
+
+This example shows how to use web based hex colors in your views.
+It leverages from `.isDarkColor` to make the text color readable in all scenarios.
+
+<img src="https://raw.githubusercontent.com/hyperoslo/Hue/master/Images/hex-screenshot.png" alt="Hex Example screenshot" align="right" />
+
 ## Installation
 
 **Hue** is available through [CocoaPods](http://cocoapods.org). To install
