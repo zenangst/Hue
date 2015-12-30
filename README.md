@@ -1,4 +1,4 @@
-# Hue
+![Hue](https://github.com/hyperoslo/Hue/blob/master/Images/cover.png)
 
 Hue is the all-in-one coloring utility that you'll ever need.
 
