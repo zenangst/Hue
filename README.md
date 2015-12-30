@@ -64,7 +64,7 @@ This very simple example that displays a bunch of color schemes in a Carousel vi
 <img src="https://raw.githubusercontent.com/hyperoslo/Hue/master/Images/gradients-screenshot.gif" alt="Gradients Example screenshot" align="right" />
 
 This examples shows how much fun you can have with combining `CAGradientLayer` with `CABasicAnimation`. It uses `.hex` for getting the colors and `.gradient()` for transforming
-a collection of `UIColor`'s into a `CAGradientLayer`.
+a collection of `UIColor`'s into a `CAGradientLayer`. The demo features [Spots](http://github.com/hyperoslo/Spots) for rendering the list view and [Fakery](https://github.com/vadymmarkov/Fakery) for generating random content strings.
 
 **Extract from the demo:**
 ```swift
