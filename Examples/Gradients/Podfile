@@ -1,0 +1,14 @@
+source 'https://github.com/CocoaPods/Specs.git'
+
+platform :ios, '8.0'
+
+use_frameworks!
+inhibit_all_warnings!
+
+pod 'Hue', path: '../../'
+pod 'Imaginary', git: 'https://github.com/hyperoslo/Imaginary'
+pod 'Cache', git: 'https://github.com/hyperoslo/Cache'
+pod 'Spots', git: 'https://github.com/hyperoslo/Spots'
+pod 'Sugar', git: 'https://github.com/hyperoslo/Sugar'
+pod 'Tailor', git: 'https://github.com/zenangst/Tailor'
+pod 'Fakery'
