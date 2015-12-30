@@ -95,9 +95,7 @@ class GradientsController: SpotsController {
   static func generateItems(from: Int, to: Int) -> [ListItem] {
     var items = [ListItem]()
     for i in from...from+to {
-      autoreleasepool({
-        items.append(generateItem(i))
-      })
+      autoreleasepool({ items.append(generateItem(i)) })
     }
     return items
   }
