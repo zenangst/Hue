@@ -20,6 +20,15 @@ let green = UIColor.hex("#00ff00")
 let yellow = UIColor.hex("#ffff00")
 ```
 
+#### Computed color properties
+```swift
+let white = UIColor.hex("#ffffff")
+let black = UIColor.hex("#000000")
+
+if white.isDarkColor {} // return false
+if white.isBlackOrWhite {} // return true
+```
+
 #### Alpha
 `.alpha` is a sugar for `colorWithAlphaComponent`, internally it does the exact same thing, think of it as a
 lipstick for your implementation.
@@ -45,6 +54,15 @@ let secondGradient = [UIColor.blackColor(), UIColor.orangeColor()].gradient { gr
 let image = UIImage(named: "My Image")
 let (background, primary, secondary, detail) = image.colors()
 ```
+
+## Examples
+
+#### Hex
+
+This example shows how to use web based hex colors in your views.
+It leverages from `.isDarkColor` to make the text color readable in all scenarios.
+
+<img src="https://raw.githubusercontent.com/hyperoslo/Hue/master/Images/hex-screenshot.png" alt="Hex Example screenshot" align="right" />
 
 ## Installation
 
