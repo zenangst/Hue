@@ -12,7 +12,6 @@ class GridHexCell: UICollectionViewCell, Itemble {
     label.font = UIFont.boldSystemFontOfSize(11)
     label.numberOfLines = 4
     label.textAlignment = .Center
-    label.textColor = UIColor.whiteColor()
 
     return label
     }()
@@ -27,8 +26,10 @@ class GridHexCell: UICollectionViewCell, Itemble {
   }
 
   func configure(inout item: ListItem) {
+    let color = UIColor.hex(item.title)
     backgroundColor = UIColor.hex(item.title)
 
+    label.textColor = color.isDarkColor ? UIColor.whiteColor() : UIColor.darkGrayColor()
     label.attributedText = NSAttributedString(string: item.title,
       attributes: nil)
     label.frame.size.height = 44
