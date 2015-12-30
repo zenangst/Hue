@@ -63,7 +63,7 @@ class GradientsController: SpotsController {
     updateGradient()
   }
 
-  func updateGradient() {
+  private func updateGradient() {
     let offset = spotsScrollView.contentOffset.y / spotsScrollView.contentSize.height
 
     if offset >= 0 && offset <= CGFloat(animation.duration) {
@@ -76,15 +76,15 @@ class GradientsController: SpotsController {
   }
 
   private func updateNavigationBarColor() {
-    if let navigationBar = navigationController?.navigationBar {
-      if let gradientLayer = gradient.presentationLayer() as? CALayer,
-        colors = gradientLayer.valueForKey("colors") as? [CGColorRef],
-        firstColor = colors.first {
-          navigationBar.barTintColor = UIColor(CGColor: firstColor)
-      } else if let color = gradient.colors as? [CGColor],
-        firstColor = color.first {
-          navigationBar.barTintColor = UIColor(CGColor: firstColor)
-      }
+    guard let navigationBar = navigationController?.navigationBar else { return }
+
+    if let gradientLayer = gradient.presentationLayer() as? CALayer,
+      colors = gradientLayer.valueForKey("colors") as? [CGColorRef],
+      firstColor = colors.first {
+        navigationBar.barTintColor = UIColor(CGColor: firstColor)
+    } else if let color = gradient.colors as? [CGColor],
+      firstColor = color.first {
+        navigationBar.barTintColor = UIColor(CGColor: firstColor)
     }
   }
 
