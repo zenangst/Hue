@@ -20,6 +20,15 @@ let green = UIColor.hex("#00ff00")
 let yellow = UIColor.hex("#ffff00")
 ```
 
+#### Computed color properties
+```swift
+let white = UIColor.hex("#ffffff")
+let black = UIColor.hex("#000000")
+
+if white.isDarkColor {} // return false
+if white.isBlackOrWhite {} // return true
+```
+
 #### Alpha
 `.alpha` is a sugar for `colorWithAlphaComponent`, internally it does the exact same thing, think of it as a
 lipstick for your implementation.
