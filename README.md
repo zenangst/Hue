@@ -58,7 +58,9 @@ let (background, primary, secondary, detail) = image.colors()
 ## Examples
 <img src="https://raw.githubusercontent.com/hyperoslo/Hue/master/Images/hex-screenshot.png" alt="Hex Example screenshot" align="right" />
 #### Hex
-This very simple example that displays a bunch of color schemes in a Carousel view. It uses hex to set the color for the schemes. It leverages from `.isDarkColor` to make the text color readable in all scenarios. The demo also features [Spots](http://github.com/hyperoslo/Spots) for rendering the Carousel view.
+This very simple example that displays a bunch of color schemes in a Carousel view. It uses hex to set the color for the schemes. It leverages from `.isDarkColor` to make the text color readable in all scenarios. 
+
+The demo also features [Spots](http://github.com/hyperoslo/Spots) for rendering the Carousel view.
 
 **Example code:**
 
@@ -72,7 +74,9 @@ label.textColor = color.isDarkColor ? UIColor.whiteColor() : UIColor.darkGrayCol
 <img src="https://raw.githubusercontent.com/hyperoslo/Hue/master/Images/gradients-screenshot.gif" alt="Gradients Example screenshot" align="right" />
 
 This examples shows how much fun you can have with combining `CAGradientLayer` with `CABasicAnimation`. It uses `.hex` for getting the colors and `.gradient()` for transforming
-a collection of `UIColor`'s into a `CAGradientLayer`. The demo features [Spots](http://github.com/hyperoslo/Spots) for rendering the list view and [Fakery](https://github.com/vadymmarkov/Fakery) for generating random content strings.
+a collection of `UIColor`'s into a `CAGradientLayer`. 
+
+The demo features [Spots](http://github.com/hyperoslo/Spots) for rendering the list view and [Fakery](https://github.com/vadymmarkov/Fakery) for generating random content strings.
 
 **Extract from the demo:**
 ```swift
