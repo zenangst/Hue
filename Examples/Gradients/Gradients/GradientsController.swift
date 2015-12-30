@@ -13,6 +13,7 @@ class GradientsController: SpotsController {
     ].gradient { gradient in
       gradient.speed = 0
       gradient.timeOffset = 0
+
       return gradient
   }
 
