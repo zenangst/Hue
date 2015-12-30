@@ -60,6 +60,14 @@ let (background, primary, secondary, detail) = image.colors()
 #### Hex
 This very simple example that displays a bunch of color schemes in a Carousel view. It uses hex to set the color for the schemes. It leverages from `.isDarkColor` to make the text color readable in all scenarios. The demo also features [Spots](http://github.com/hyperoslo/Spots) for rendering the Carousel view.
 
+**Example code:**
+
+```swift
+let color = UIColor.hex("#3b5998")
+backgroundColor = color
+label.textColor = color.isDarkColor ? UIColor.whiteColor() : UIColor.darkGrayColor()
+```
+
 #### Gradients
 <img src="https://raw.githubusercontent.com/hyperoslo/Hue/master/Images/gradients-screenshot.gif" alt="Gradients Example screenshot" align="right" />
 
