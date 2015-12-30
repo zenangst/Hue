@@ -7,6 +7,7 @@ class GradientListCell: ListSpotCell {
   lazy var selectedView: UIView = {
     let view = UIView()
     view.backgroundColor = Color.cellSelectedColor
+
     return view
   }()
 
