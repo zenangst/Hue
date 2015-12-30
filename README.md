@@ -74,6 +74,10 @@ pod 'Hue'
 
 [Hyper](http://hyper.no) made this with ❤️. If you’re using this library we probably want to [hire you](https://github.com/hyperoslo/iOS-playbook/blob/master/HYPER_RECIPES.md)! Send us an email at ios@hyper.no.
 
+## Contribute
+
+We would love you to contribute to **Hue**, check the [CONTRIBUTING](https://github.com/hyperoslo/Hue/blob/master/CONTRIBUTING.md) file for more info.
+
 ## Credits
 
 Credit goes out to Panic Inc who created [ColorArt](https://github.com/panicinc/ColorArt) and [@jathu](https://github.com/jathu) for his work on [UIImageColors](https://github.com/jathu/UIImageColors) which deeply inspired the functionality behind the image color analysis.
