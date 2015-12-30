@@ -21,6 +21,7 @@ class GradientsController: SpotsController {
     let animation = CABasicAnimation(keyPath: "colors")
     animation.duration = 1.0
     animation.removedOnCompletion = false
+
     return animation
     }()
 
