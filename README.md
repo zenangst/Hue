@@ -72,7 +72,7 @@ pod 'Hue'
 
 ## Author
 
-Hyper Interaktiv AS, ios@hyper.no
+[Hyper](http://hyper.no) made this with ❤️. If you’re using this library we probably want to [hire you](https://github.com/hyperoslo/iOS-playbook/blob/master/HYPER_RECIPES.md)! Send us an email at ios@hyper.no.
 
 ## Credits
 
