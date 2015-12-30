@@ -124,6 +124,7 @@ extension UIImage {
         color.isContrastingColor(imageBackgroundColor) {
           primaryColor = color
       } else if secondaryColor == nil &&
+        primaryColor != nil &&
         primaryColor!.isDistinct(color) &&
         color.isContrastingColor(imageBackgroundColor) {
           secondaryColor = color
