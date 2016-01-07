@@ -17,6 +17,7 @@ extension UIImage {
     drawInRect(CGRectMake(0, 0, newSize.width, newSize.height))
     let result = UIGraphicsGetImageFromCurrentImageContext()
     UIGraphicsEndImageContext()
+
     return result
   }
 
@@ -28,7 +29,7 @@ extension UIImage {
     } else {
       let ratio = size.width/size.height
       let r_width: CGFloat = 250
-      cgImage = resize(CGSize(width: r_width, height: r_width/ratio)).CGImage!
+      cgImage = resize(CGSize(width: r_width, height: r_width / ratio)).CGImage!
     }
 
     let width = CGImageGetWidth(cgImage)
@@ -36,7 +37,7 @@ extension UIImage {
     let bytesPerPixel = 4
     let bytesPerRow = width * bytesPerPixel
     let bitsPerComponent = 8
-    let randomColorsThreshold = Int(CGFloat(height)*0.01)
+    let randomColorsThreshold = Int(CGFloat(height) * 0.01)
     let blackColor = UIColor(red: 0, green: 0, blue: 0, alpha: 1)
     let whiteColor = UIColor(red: 1, green: 1, blue: 1, alpha: 1)
     let colorSpace = CGColorSpaceCreateDeviceRGB()
@@ -80,6 +81,7 @@ extension UIImage {
       guard let color = color as? UIColor else { continue }
 
       let colorCount = imageBackgroundColors.countForObject(color)
+
       if randomColorsThreshold <= colorCount  {
         sortedColors.append(CountedColor(color: color, count: colorCount))
       }
@@ -88,6 +90,7 @@ extension UIImage {
     sortedColors.sortInPlace(sortComparator)
 
     var proposedEdgeColor = CountedColor(color: blackColor, count: 1)
+
     if let first = sortedColors.first { proposedEdgeColor = first }
 
     if proposedEdgeColor.color.isBlackOrWhite && !sortedColors.isEmpty {
@@ -98,6 +101,7 @@ extension UIImage {
         }
       }
     }
+
     let imageBackgroundColor = proposedEdgeColor.color
     let isDarkBackgound = imageBackgroundColor.isDark
 
@@ -105,7 +109,9 @@ extension UIImage {
 
     for imageColor in imageColors {
       guard let imageColor = imageColor as? UIColor else { continue }
+
       let color = imageColor.colorWithMinimumSaturation(0.15)
+
       if color.isDark == !isDarkBackgound {
         let colorCount = imageColors.countForObject(color)
         sortedColors.append(CountedColor(color: color, count: colorCount))
