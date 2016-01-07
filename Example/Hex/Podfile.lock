@@ -1,6 +1,6 @@
 PODS:
   - Cache (1.0.0)
-  - Hue (0.1.0)
+  - Hue (1.0.0)
   - Imaginary (0.1.0):
     - Cache
   - Spots (0.1.0):
@@ -22,7 +22,7 @@ EXTERNAL SOURCES:
   Cache:
     :git: https://github.com/hyperoslo/Cache
   Hue:
-    :path: "../../"
+    :path: ../../
   Imaginary:
     :git: https://github.com/hyperoslo/Imaginary
   Spots:
@@ -46,7 +46,7 @@ CHECKOUT OPTIONS:
 
 SPEC CHECKSUMS:
   Cache: 78f58bc008313c7a1182967a2ebcb3de9fddecd4
-  Hue: 236ca79bd7426ab735bf0436589b8e505611a3fa
+  Hue: 44ae8b1091935fcc75055174095ab04653989235
   Imaginary: feaea646440c68a9b6ed66a46597d548b9a44207
   Spots: 9de65acd79cebc15b9f9756a86f7cab0104bc8fe
   Sugar: 7191a36d6b567d65ba4ac7c67b1684ca0554fec5

@@ -17,11 +17,11 @@ extension UIImage {
     drawInRect(CGRectMake(0, 0, newSize.width, newSize.height))
     let result = UIGraphicsGetImageFromCurrentImageContext()
     UIGraphicsEndImageContext()
+
     return result
   }
 
   public func colors(scaleDownSize: CGSize? = nil) -> (UIColor?, UIColor?, UIColor?, UIColor?) {
-
     let cgImage: CGImageRef
 
     if let scaleDownSize = scaleDownSize {
@@ -29,7 +29,7 @@ extension UIImage {
     } else {
       let ratio = size.width/size.height
       let r_width: CGFloat = 250
-      cgImage = resize(CGSize(width: r_width, height: r_width/ratio)).CGImage!
+      cgImage = resize(CGSize(width: r_width, height: r_width / ratio)).CGImage!
     }
 
     let width = CGImageGetWidth(cgImage)
@@ -37,7 +37,7 @@ extension UIImage {
     let bytesPerPixel = 4
     let bytesPerRow = width * bytesPerPixel
     let bitsPerComponent = 8
-    let randomColorsThreshold = Int(CGFloat(height)*0.01)
+    let randomColorsThreshold = Int(CGFloat(height) * 0.01)
     let blackColor = UIColor(red: 0, green: 0, blue: 0, alpha: 1)
     let whiteColor = UIColor(red: 1, green: 1, blue: 1, alpha: 1)
     let colorSpace = CGColorSpaceCreateDeviceRGB()
@@ -81,6 +81,7 @@ extension UIImage {
       guard let color = color as? UIColor else { continue }
 
       let colorCount = imageBackgroundColors.countForObject(color)
+
       if randomColorsThreshold <= colorCount  {
         sortedColors.append(CountedColor(color: color, count: colorCount))
       }
@@ -89,6 +90,7 @@ extension UIImage {
     sortedColors.sortInPlace(sortComparator)
 
     var proposedEdgeColor = CountedColor(color: blackColor, count: 1)
+
     if let first = sortedColors.first { proposedEdgeColor = first }
 
     if proposedEdgeColor.color.isBlackOrWhite && !sortedColors.isEmpty {
@@ -99,15 +101,18 @@ extension UIImage {
         }
       }
     }
+
     let imageBackgroundColor = proposedEdgeColor.color
-    let isDarkBackgound = imageBackgroundColor.isDarkColor
+    let isDarkBackgound = imageBackgroundColor.isDark
 
     sortedColors.removeAll()
 
     for imageColor in imageColors {
       guard let imageColor = imageColor as? UIColor else { continue }
+
       let color = imageColor.colorWithMinimumSaturation(0.15)
-      if color.isDarkColor == !isDarkBackgound {
+
+      if color.isDark == !isDarkBackgound {
         let colorCount = imageColors.countForObject(color)
         sortedColors.append(CountedColor(color: color, count: colorCount))
       }
@@ -121,17 +126,17 @@ extension UIImage {
       let color = countedColor.color
 
       if primaryColor == nil &&
-        color.isContrastingColor(imageBackgroundColor) {
+        color.isContrastingWith(imageBackgroundColor) {
           primaryColor = color
       } else if secondaryColor == nil &&
         primaryColor != nil &&
-        primaryColor!.isDistinct(color) &&
-        color.isContrastingColor(imageBackgroundColor) {
+        primaryColor!.isDistinctFrom(color) &&
+        color.isContrastingWith(imageBackgroundColor) {
           secondaryColor = color
       } else if secondaryColor != nil &&
-        (secondaryColor!.isDistinct(color) &&
-          primaryColor!.isDistinct(color) &&
-          color.isContrastingColor(imageBackgroundColor)) {
+        (secondaryColor!.isDistinctFrom(color) &&
+          primaryColor!.isDistinctFrom(color) &&
+          color.isContrastingWith(imageBackgroundColor)) {
             detailColor = color
             break
       }
