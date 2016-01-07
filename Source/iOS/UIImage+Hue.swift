@@ -21,7 +21,6 @@ extension UIImage {
   }
 
   public func colors(scaleDownSize: CGSize? = nil) -> (UIColor?, UIColor?, UIColor?, UIColor?) {
-
     let cgImage: CGImageRef
 
     if let scaleDownSize = scaleDownSize {
@@ -121,17 +120,17 @@ extension UIImage {
       let color = countedColor.color
 
       if primaryColor == nil &&
-        color.isContrastingColor(imageBackgroundColor) {
+        color.isContrastingWith(imageBackgroundColor) {
           primaryColor = color
       } else if secondaryColor == nil &&
         primaryColor != nil &&
-        primaryColor!.isDistinct(color) &&
-        color.isContrastingColor(imageBackgroundColor) {
+        primaryColor!.isDistinctFrom(color) &&
+        color.isContrastingWith(imageBackgroundColor) {
           secondaryColor = color
       } else if secondaryColor != nil &&
-        (secondaryColor!.isDistinct(color) &&
-          primaryColor!.isDistinct(color) &&
-          color.isContrastingColor(imageBackgroundColor)) {
+        (secondaryColor!.isDistinctFrom(color) &&
+          primaryColor!.isDistinctFrom(color) &&
+          color.isContrastingWith(imageBackgroundColor)) {
             detailColor = color
             break
       }

@@ -52,7 +52,7 @@ public extension UIColor {
     return (RGB[0] > 0.91 && RGB[1] > 0.91 && RGB[2] > 0.91) || (RGB[0] < 0.09 && RGB[1] < 0.09 && RGB[2] < 0.09)
   }
 
-  public func isDistinct(color: UIColor) -> Bool {
+  public func isDistinctFrom(color: UIColor) -> Bool {
     let bg = CGColorGetComponents(CGColor)
     let fg = CGColorGetComponents(color.CGColor)
     let threshold: CGFloat = 0.25
@@ -70,7 +70,7 @@ public extension UIColor {
     return result
   }
 
-  public func isContrastingColor(color: UIColor) -> Bool {
+  public func isContrastingWith(color: UIColor) -> Bool {
     let bg = CGColorGetComponents(CGColor)
     let fg = CGColorGetComponents(color.CGColor)
 
