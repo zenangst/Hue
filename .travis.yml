@@ -10,4 +10,4 @@ before_install:
 
 script:
 - xctool clean build -workspace Pod/Pod.xcworkspace -scheme Tests -sdk iphonesimulator
-- xctool test -workspace Pod/Pod.xcworkspace -scheme Tests -sdk iphonesimulator
+- xctool test -workspace Pod/Pod.xcworkspace -scheme Tests -sdk iphonesimulator -destination name="iPhone 6"
