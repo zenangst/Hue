@@ -16,16 +16,18 @@ public extension UIColor {
     let bg = CGColorGetComponents(CGColor)
     let fg = CGColorGetComponents(color.CGColor)
     let threshold: CGFloat = 0.25
+    var result = false
 
     if fabs(bg[0] - fg[0]) > threshold || fabs(bg[1] - fg[1]) > threshold || fabs(bg[2] - fg[2]) > threshold {
       if fabs(bg[0] - bg[1]) < 0.03 && fabs(bg[0] - bg[2]) < 0.03 {
         if fabs(fg[0] - fg[1]) < 0.03 && fabs(fg[0] - fg[2]) < 0.03 {
-          return false
+          result = false
         }
       }
-      return true
+      result = true
     }
-    return false
+
+    return result
   }
 
   public func colorWithMinimumSaturation(minSaturation: CGFloat) -> UIColor {
