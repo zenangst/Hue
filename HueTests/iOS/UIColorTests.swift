@@ -1,3 +1,4 @@
+@testable import Hue
 import UIKit
 import XCTest
 

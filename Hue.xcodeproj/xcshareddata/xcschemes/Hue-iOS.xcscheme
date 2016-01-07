@@ -9,15 +9,15 @@
          <BuildActionEntry
             buildForTesting = "YES"
             buildForRunning = "YES"
-            buildForProfiling = "NO"
-            buildForArchiving = "NO"
+            buildForProfiling = "YES"
+            buildForArchiving = "YES"
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "146D72AB1AB782920058798C"
-               BuildableName = "Tests.xctest"
-               BlueprintName = "Tests"
-               ReferencedContainer = "container:Pod.xcodeproj">
+               BlueprintIdentifier = "D52862111C3EAC1D00AD11AD"
+               BuildableName = "Hue.framework"
+               BlueprintName = "Hue-iOS"
+               ReferencedContainer = "container:Hue.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -32,20 +32,20 @@
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "146D72AB1AB782920058798C"
-               BuildableName = "Tests.xctest"
-               BlueprintName = "Tests"
-               ReferencedContainer = "container:Pod.xcodeproj">
+               BlueprintIdentifier = "D528621B1C3EAC1D00AD11AD"
+               BuildableName = "Hue-iOS-Tests.xctest"
+               BlueprintName = "Hue-iOS-Tests"
+               ReferencedContainer = "container:Hue.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "146D72AB1AB782920058798C"
-            BuildableName = "Tests.xctest"
-            BlueprintName = "Tests"
-            ReferencedContainer = "container:Pod.xcodeproj">
+            BlueprintIdentifier = "D52862111C3EAC1D00AD11AD"
+            BuildableName = "Hue.framework"
+            BlueprintName = "Hue-iOS"
+            ReferencedContainer = "container:Hue.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <AdditionalOptions>
@@ -64,10 +64,10 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "146D72AB1AB782920058798C"
-            BuildableName = "Tests.xctest"
-            BlueprintName = "Tests"
-            ReferencedContainer = "container:Pod.xcodeproj">
+            BlueprintIdentifier = "D52862111C3EAC1D00AD11AD"
+            BuildableName = "Hue.framework"
+            BlueprintName = "Hue-iOS"
+            ReferencedContainer = "container:Hue.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <AdditionalOptions>
@@ -82,10 +82,10 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "146D72AB1AB782920058798C"
-            BuildableName = "Tests.xctest"
-            BlueprintName = "Tests"
-            ReferencedContainer = "container:Pod.xcodeproj">
+            BlueprintIdentifier = "D52862111C3EAC1D00AD11AD"
+            BuildableName = "Hue.framework"
+            BlueprintName = "Hue-iOS"
+            ReferencedContainer = "container:Hue.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
    </ProfileAction>
