@@ -8,5 +8,5 @@ before_install:
 - gem install cocoapods
 
 script:
-- xctool clean build -project Hue.xcodeproj -scheme Hue -sdk iphonesimulator
-- xctool test -project Hue.xcodeproj -scheme Hue -sdk iphonesimulator -destination name="iPhone 6"
+- xctool clean build -project Hue.xcodeproj -scheme Hue-iOS -sdk iphonesimulator
+- xctool test -project Hue.xcodeproj -scheme Hue-iOS -sdk iphonesimulator -destination name="iPhone 6"
