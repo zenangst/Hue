@@ -1,7 +1,7 @@
 Pod::Spec.new do |s|
   s.name             = "Hue"
-  s.summary          = "A short description of Hue."
-  s.version          = "0.1.0"
+  s.summary          = "The all-in-one coloring utility that you'll ever need."
+  s.version          = "1.0.0"
   s.homepage         = "https://github.com/hyperoslo/Hue"
   s.license          = 'MIT'
   s.author           = { "Hyper Interaktiv AS" => "ios@hyper.no" }
@@ -10,6 +10,4 @@ Pod::Spec.new do |s|
   s.platform     = :ios, '8.0'
   s.requires_arc = true
   s.source_files = 'Source/**/*'
-# s.frameworks = 'UIKit', 'MapKit'
-# s.dependency 'AFNetworking', '~> 2.3'
 end
