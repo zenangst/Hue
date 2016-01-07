@@ -4,6 +4,7 @@ Hue is the all-in-one coloring utility that you'll ever need.
 
 [![CI Status](http://img.shields.io/travis/hyperoslo/Hue.svg?style=flat)](https://travis-ci.org/hyperoslo/Hue)
 [![Version](https://img.shields.io/cocoapods/v/Hue.svg?style=flat)](http://cocoadocs.org/docsets/Hue)
+[![Carthage Compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
 [![License](https://img.shields.io/cocoapods/l/Hue.svg?style=flat)](http://cocoadocs.org/docsets/Hue)
 [![Platform](https://img.shields.io/cocoapods/p/Hue.svg?style=flat)](http://cocoadocs.org/docsets/Hue)
 
@@ -58,9 +59,9 @@ let (background, primary, secondary, detail) = image.colors()
 ## Examples
 <img src="https://raw.githubusercontent.com/hyperoslo/Hue/master/Images/hex-screenshot.png" alt="Hex Example screenshot" align="right" />
 #### Hex
-This super simple example that displays a bunch of color schemes in a Carousel view. 
+This super simple example that displays a bunch of color schemes in a Carousel view.
 
-It uses hex to set the color for the schemes. It leverages from `.isDarkColor` to make the text color readable in all scenarios. 
+It uses hex to set the color for the schemes. It leverages from `.isDarkColor` to make the text color readable in all scenarios.
 
 The demo also features [Spots](http://github.com/hyperoslo/Spots) for rendering the Carousel view.
 
@@ -69,18 +70,18 @@ The demo also features [Spots](http://github.com/hyperoslo/Spots) for rendering 
 ```swift
 let color = UIColor.hex("#3b5998")
 backgroundColor = color
-label.textColor = color.isDarkColor 
-  ? UIColor.whiteColor() 
+label.textColor = color.isDarkColor
+  ? UIColor.whiteColor()
   : UIColor.darkGrayColor()
 ```
 
 #### Gradients
 <img src="https://raw.githubusercontent.com/hyperoslo/Hue/master/Images/gradients-screenshot.gif" alt="Gradients Example screenshot" align="right" />
 
-This examples shows how much fun you can have with combining `CAGradientLayer` with `CABasicAnimation`. 
+This examples shows how much fun you can have with combining `CAGradientLayer` with `CABasicAnimation`.
 
 It uses `.hex` for getting the colors and `.gradient()` for transforming
-a collection of `UIColor`'s into a `CAGradientLayer`. 
+a collection of `UIColor`'s into a `CAGradientLayer`.
 
 The demo features [Spots](http://github.com/hyperoslo/Spots) for rendering the list view and [Fakery](https://github.com/vadymmarkov/Fakery) for generating random content strings.
 
@@ -104,6 +105,13 @@ it, simply add the following line to your Podfile:
 
 ```ruby
 pod 'Hue'
+```
+
+**Hue** is also available through [Carthage](https://github.com/Carthage/Carthage).
+To install just write into your Cartfile:
+
+```ruby
+github "hyperoslo/Hue"
 ```
 
 ## Author
