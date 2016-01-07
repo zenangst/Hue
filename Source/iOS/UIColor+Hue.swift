@@ -1,5 +1,45 @@
 import UIKit
 
+// MARK: - Color Builders
+
+public extension UIColor {
+
+  public func colorWithMinimumSaturation(minSaturation: CGFloat) -> UIColor {
+    var (hue, saturation, brightness, alpha): (CGFloat, CGFloat, CGFloat, CGFloat) = (0.0, 0.0, 0.0, 0.0)
+    getHue(&hue, saturation: &saturation, brightness: &brightness, alpha: &alpha)
+
+    return saturation < minSaturation
+      ? UIColor(hue: hue, saturation: minSaturation, brightness: brightness, alpha: alpha)
+      : self
+  }
+
+  public static func hex(string: String) -> UIColor {
+    var hex = string.hasPrefix("#")
+      ? String(string.characters.dropFirst())
+      : string
+
+    guard hex.characters.count == 3 || hex.characters.count == 6
+      else { return UIColor.whiteColor().colorWithAlphaComponent(0.0) }
+
+    if hex.characters.count == 3 {
+      for (index, char) in hex.characters.enumerate() {
+        hex.insert(char, atIndex: hex.startIndex.advancedBy(index * 2))
+      }
+    }
+
+    return UIColor(
+      red:   CGFloat((Int(hex, radix: 16)! >> 16) & 0xFF) / 255.0,
+      green: CGFloat((Int(hex, radix: 16)! >> 8) & 0xFF) / 255.0,
+      blue:  CGFloat((Int(hex, radix: 16)!) & 0xFF) / 255.0, alpha: 1.0)
+  }
+
+  public func alpha(value: CGFloat) -> UIColor {
+    return colorWithAlphaComponent(value)
+  }
+}
+
+// MARK: - Helpers
+
 public extension UIColor {
 
   public var isDarkColor: Bool {
@@ -42,40 +82,9 @@ public extension UIColor {
 
     return 1.6 < contrast
   }
-
-  public func colorWithMinimumSaturation(minSaturation: CGFloat) -> UIColor {
-    var (hue, saturation, brightness, alpha): (CGFloat, CGFloat, CGFloat, CGFloat) = (0.0, 0.0, 0.0, 0.0)
-    getHue(&hue, saturation: &saturation, brightness: &brightness, alpha: &alpha)
-
-    return saturation < minSaturation
-      ? UIColor(hue: hue, saturation: minSaturation, brightness: brightness, alpha: alpha)
-      : self
-  }
-
-  public static func hex(string: String) -> UIColor {
-    var hex = string.hasPrefix("#")
-      ? String(string.characters.dropFirst())
-      : string
-
-    guard hex.characters.count == 3 || hex.characters.count == 6
-      else { return UIColor.whiteColor().colorWithAlphaComponent(0.0) }
-
-    if hex.characters.count == 3 {
-      for (index, char) in hex.characters.enumerate() {
-        hex.insert(char, atIndex: hex.startIndex.advancedBy(index * 2))
-      }
-    }
-
-    return UIColor(
-      red:   CGFloat((Int(hex, radix: 16)! >> 16) & 0xFF) / 255.0,
-      green: CGFloat((Int(hex, radix: 16)! >> 8) & 0xFF) / 255.0,
-      blue:  CGFloat((Int(hex, radix: 16)!) & 0xFF) / 255.0, alpha: 1.0)
-  }
-
-  public func alpha(value: CGFloat) -> UIColor {
-    return colorWithAlphaComponent(value)
-  }
 }
+
+// MARK: - Gradient
 
 public extension Array where Element : UIColor {
 
