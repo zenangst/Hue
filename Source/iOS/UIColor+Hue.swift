@@ -4,15 +4,6 @@ import UIKit
 
 public extension UIColor {
 
-  public func colorWithMinimumSaturation(minSaturation: CGFloat) -> UIColor {
-    var (hue, saturation, brightness, alpha): (CGFloat, CGFloat, CGFloat, CGFloat) = (0.0, 0.0, 0.0, 0.0)
-    getHue(&hue, saturation: &saturation, brightness: &brightness, alpha: &alpha)
-
-    return saturation < minSaturation
-      ? UIColor(hue: hue, saturation: minSaturation, brightness: brightness, alpha: alpha)
-      : self
-  }
-
   public static func hex(string: String) -> UIColor {
     var hex = string.hasPrefix("#")
       ? String(string.characters.dropFirst())
@@ -31,6 +22,24 @@ public extension UIColor {
       red:   CGFloat((Int(hex, radix: 16)! >> 16) & 0xFF) / 255.0,
       green: CGFloat((Int(hex, radix: 16)! >> 8) & 0xFF) / 255.0,
       blue:  CGFloat((Int(hex, radix: 16)!) & 0xFF) / 255.0, alpha: 1.0)
+  }
+
+  public func hex(withPrefix withPrefix: Bool = true) -> String {
+    var (r, g, b, a): (CGFloat, CGFloat, CGFloat, CGFloat) = (0.0, 0.0, 0.0, 0.0)
+    getRed(&r, green: &g, blue: &b, alpha: &a)
+
+    let prefix = withPrefix ? "#" : ""
+
+    return String(format: "\(prefix)%02X%02X%02X", Int(r * 255), Int(g * 255), Int(b * 255))
+  }
+
+  public func colorWithMinimumSaturation(minSaturation: CGFloat) -> UIColor {
+    var (hue, saturation, brightness, alpha): (CGFloat, CGFloat, CGFloat, CGFloat) = (0.0, 0.0, 0.0, 0.0)
+    getHue(&hue, saturation: &saturation, brightness: &brightness, alpha: &alpha)
+
+    return saturation < minSaturation
+      ? UIColor(hue: hue, saturation: minSaturation, brightness: brightness, alpha: alpha)
+      : self
   }
 
   public func alpha(value: CGFloat) -> UIColor {
