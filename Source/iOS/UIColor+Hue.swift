@@ -24,15 +24,6 @@ public extension UIColor {
       blue:  CGFloat((Int(hex, radix: 16)!) & 0xFF) / 255.0, alpha: 1.0)
   }
 
-  public func hex(withPrefix withPrefix: Bool = true) -> String {
-    var (r, g, b, a): (CGFloat, CGFloat, CGFloat, CGFloat) = (0.0, 0.0, 0.0, 0.0)
-    getRed(&r, green: &g, blue: &b, alpha: &a)
-
-    let prefix = withPrefix ? "#" : ""
-
-    return String(format: "\(prefix)%02X%02X%02X", Int(r * 255), Int(g * 255), Int(b * 255))
-  }
-
   public func colorWithMinimumSaturation(minSaturation: CGFloat) -> UIColor {
     var (hue, saturation, brightness, alpha): (CGFloat, CGFloat, CGFloat, CGFloat) = (0.0, 0.0, 0.0, 0.0)
     getHue(&hue, saturation: &saturation, brightness: &brightness, alpha: &alpha)
@@ -50,6 +41,15 @@ public extension UIColor {
 // MARK: - Helpers
 
 public extension UIColor {
+
+  public func hex(withPrefix withPrefix: Bool = true) -> String {
+    var (r, g, b, a): (CGFloat, CGFloat, CGFloat, CGFloat) = (0.0, 0.0, 0.0, 0.0)
+    getRed(&r, green: &g, blue: &b, alpha: &a)
+
+    let prefix = withPrefix ? "#" : ""
+
+    return String(format: "\(prefix)%02X%02X%02X", Int(r * 255), Int(g * 255), Int(b * 255))
+  }
 
   public var isDark: Bool {
     let RGB = CGColorGetComponents(CGColor)
