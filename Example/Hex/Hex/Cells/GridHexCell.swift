@@ -29,7 +29,7 @@ class GridHexCell: UICollectionViewCell, Itemble {
     let color = UIColor.hex(item.title)
     backgroundColor = UIColor.hex(item.title)
 
-    label.textColor = color.isDarkColor ? UIColor.whiteColor() : UIColor.darkGrayColor()
+    label.textColor = color.isDark ? UIColor.whiteColor() : UIColor.darkGrayColor()
     label.attributedText = NSAttributedString(string: item.title,
       attributes: nil)
     label.frame.size.height = 44
