@@ -20,6 +20,38 @@ class UIColorTests: XCTestCase {
     XCTAssertEqual(yellow, UIColor(red: 255, green: 255, blue: 0, alpha: 1.0))
   }
 
+  func testToHexWithPrefix() {
+    let white = UIColor.whiteColor()
+    let black = UIColor.blackColor()
+    let red = UIColor.redColor()
+    let blue = UIColor.blueColor()
+    let green = UIColor.greenColor()
+    let yellow = UIColor.yellowColor()
+
+    XCTAssertEqual(white.hex(), "#FFFFFF")
+    XCTAssertEqual(black.hex(), "#000000")
+    XCTAssertEqual(red.hex(), "#FF0000")
+    XCTAssertEqual(blue.hex(), "#0000FF")
+    XCTAssertEqual(green.hex(), "#00FF00")
+    XCTAssertEqual(yellow.hex(), "#FFFF00")
+  }
+
+  func testToHexWithoutPrefix() {
+    let white = UIColor.whiteColor()
+    let black = UIColor.blackColor()
+    let red = UIColor.redColor()
+    let blue = UIColor.blueColor()
+    let green = UIColor.greenColor()
+    let yellow = UIColor.yellowColor()
+
+    XCTAssertEqual(white.hex(withPrefix: false), "FFFFFF")
+    XCTAssertEqual(black.hex(withPrefix: false), "000000")
+    XCTAssertEqual(red.hex(withPrefix: false), "FF0000")
+    XCTAssertEqual(blue.hex(withPrefix: false), "0000FF")
+    XCTAssertEqual(green.hex(withPrefix: false), "00FF00")
+    XCTAssertEqual(yellow.hex(withPrefix: false), "FFFF00")
+  }
+
   func testAlpha() {
     let yellowWithAlpha = UIColor.hex("#FFFF00").alpha(0.5)
 
