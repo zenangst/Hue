@@ -42,7 +42,7 @@ public extension UIColor {
 
 public extension UIColor {
 
-  public var isDarkColor: Bool {
+  public var isDark: Bool {
     let RGB = CGColorGetComponents(CGColor)
     return (0.2126 * RGB[0] + 0.7152 * RGB[1] + 0.0722 * RGB[2]) < 0.5
   }

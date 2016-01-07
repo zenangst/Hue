@@ -100,14 +100,14 @@ extension UIImage {
       }
     }
     let imageBackgroundColor = proposedEdgeColor.color
-    let isDarkBackgound = imageBackgroundColor.isDarkColor
+    let isDarkBackgound = imageBackgroundColor.isDark
 
     sortedColors.removeAll()
 
     for imageColor in imageColors {
       guard let imageColor = imageColor as? UIColor else { continue }
       let color = imageColor.colorWithMinimumSaturation(0.15)
-      if color.isDarkColor == !isDarkBackgound {
+      if color.isDark == !isDarkBackgound {
         let colorCount = imageColors.countForObject(color)
         sortedColors.append(CountedColor(color: color, count: colorCount))
       }
