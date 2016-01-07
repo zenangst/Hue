@@ -8,6 +8,11 @@
 
 /* Begin PBXBuildFile section */
 		D528621D1C3EAC1D00AD11AD /* Hue.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D52862121C3EAC1D00AD11AD /* Hue.framework */; };
+		D5EEA21F1C3EAE01000F8F1B /* UIColor+Hue.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5EEA2181C3EAE01000F8F1B /* UIColor+Hue.swift */; };
+		D5EEA2201C3EAE01000F8F1B /* UIImage+Hue.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5EEA2191C3EAE01000F8F1B /* UIImage+Hue.swift */; };
+		D5EEA2211C3EAE0A000F8F1B /* Random Access Memories.png in Resources */ = {isa = PBXBuildFile; fileRef = D5EEA20F1C3EAE01000F8F1B /* Random Access Memories.png */; };
+		D5EEA2221C3EAE25000F8F1B /* UIColorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5EEA2151C3EAE01000F8F1B /* UIColorTests.swift */; };
+		D5EEA2231C3EAE29000F8F1B /* UIImageTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5EEA2161C3EAE01000F8F1B /* UIImageTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -23,6 +28,13 @@
 /* Begin PBXFileReference section */
 		D52862121C3EAC1D00AD11AD /* Hue.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Hue.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D528621C1C3EAC1D00AD11AD /* Hue-iOS-Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Hue-iOS-Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		D5EEA20F1C3EAE01000F8F1B /* Random Access Memories.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Random Access Memories.png"; sourceTree = "<group>"; };
+		D5EEA2111C3EAE01000F8F1B /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D5EEA2141C3EAE01000F8F1B /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D5EEA2151C3EAE01000F8F1B /* UIColorTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIColorTests.swift; sourceTree = "<group>"; };
+		D5EEA2161C3EAE01000F8F1B /* UIImageTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIImageTests.swift; sourceTree = "<group>"; };
+		D5EEA2181C3EAE01000F8F1B /* UIColor+Hue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+Hue.swift"; sourceTree = "<group>"; };
+		D5EEA2191C3EAE01000F8F1B /* UIImage+Hue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+Hue.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -47,6 +59,9 @@
 		D52862081C3EAC1D00AD11AD = {
 			isa = PBXGroup;
 			children = (
+				D5EEA20D1C3EAE01000F8F1B /* Hue */,
+				D5EEA2121C3EAE01000F8F1B /* HueTests */,
+				D5EEA2171C3EAE01000F8F1B /* Source */,
 				D52862131C3EAC1D00AD11AD /* Products */,
 			);
 			sourceTree = "<group>";
@@ -58,6 +73,58 @@
 				D528621C1C3EAC1D00AD11AD /* Hue-iOS-Tests.xctest */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		D5EEA20D1C3EAE01000F8F1B /* Hue */ = {
+			isa = PBXGroup;
+			children = (
+				D5EEA20E1C3EAE01000F8F1B /* Assets */,
+				D5EEA2101C3EAE01000F8F1B /* iOS */,
+			);
+			path = Hue;
+			sourceTree = "<group>";
+		};
+		D5EEA20E1C3EAE01000F8F1B /* Assets */ = {
+			isa = PBXGroup;
+			children = (
+				D5EEA20F1C3EAE01000F8F1B /* Random Access Memories.png */,
+			);
+			path = Assets;
+			sourceTree = "<group>";
+		};
+		D5EEA2101C3EAE01000F8F1B /* iOS */ = {
+			isa = PBXGroup;
+			children = (
+				D5EEA2111C3EAE01000F8F1B /* Info.plist */,
+			);
+			path = iOS;
+			sourceTree = "<group>";
+		};
+		D5EEA2121C3EAE01000F8F1B /* HueTests */ = {
+			isa = PBXGroup;
+			children = (
+				D5EEA2131C3EAE01000F8F1B /* iOS */,
+			);
+			path = HueTests;
+			sourceTree = "<group>";
+		};
+		D5EEA2131C3EAE01000F8F1B /* iOS */ = {
+			isa = PBXGroup;
+			children = (
+				D5EEA2141C3EAE01000F8F1B /* Info.plist */,
+				D5EEA2151C3EAE01000F8F1B /* UIColorTests.swift */,
+				D5EEA2161C3EAE01000F8F1B /* UIImageTests.swift */,
+			);
+			path = iOS;
+			sourceTree = "<group>";
+		};
+		D5EEA2171C3EAE01000F8F1B /* Source */ = {
+			isa = PBXGroup;
+			children = (
+				D5EEA2181C3EAE01000F8F1B /* UIColor+Hue.swift */,
+				D5EEA2191C3EAE01000F8F1B /* UIImage+Hue.swift */,
+			);
+			path = Source;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -157,6 +224,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D5EEA2211C3EAE0A000F8F1B /* Random Access Memories.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -167,6 +235,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D5EEA21F1C3EAE01000F8F1B /* UIColor+Hue.swift in Sources */,
+				D5EEA2201C3EAE01000F8F1B /* UIImage+Hue.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -174,6 +244,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D5EEA2221C3EAE25000F8F1B /* UIColorTests.swift in Sources */,
+				D5EEA2231C3EAE29000F8F1B /* UIImageTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
