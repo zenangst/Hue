@@ -30,6 +30,19 @@ public extension UIColor {
     return result
   }
 
+  public func isContrastingColor(color: UIColor) -> Bool {
+    let bg = CGColorGetComponents(CGColor)
+    let fg = CGColorGetComponents(color.CGColor)
+
+    let bgLum = 0.2126 * bg[0] + 0.7152 * bg[1] + 0.0722 * bg[2]
+    let fgLum = 0.2126 * fg[0] + 0.7152 * fg[1] + 0.0722 * fg[2]
+    let contrast = bgLum > fgLum
+      ? (bgLum + 0.05) / (fgLum + 0.05)
+      : (fgLum + 0.05) / (bgLum + 0.05)
+
+    return 1.6 < contrast
+  }
+
   public func colorWithMinimumSaturation(minSaturation: CGFloat) -> UIColor {
     var (hue, saturation, brightness, alpha): (CGFloat, CGFloat, CGFloat, CGFloat) = (0.0, 0.0, 0.0, 0.0)
     getHue(&hue, saturation: &saturation, brightness: &brightness, alpha: &alpha)
@@ -37,17 +50,6 @@ public extension UIColor {
     return saturation < minSaturation
       ? UIColor(hue: hue, saturation: minSaturation, brightness: brightness, alpha: alpha)
       : self
-  }
-
-  public func isContrastingColor(color: UIColor) -> Bool {
-    let bg = CGColorGetComponents(CGColor)
-    let fg = CGColorGetComponents(color.CGColor)
-
-    let bgLum = 0.2126 * bg[0] + 0.7152 * bg[1] + 0.0722 * bg[2]
-    let fgLum = 0.2126 * fg[0] + 0.7152 * fg[1] + 0.0722 * fg[2]
-    let contrast = (bgLum > fgLum) ? (bgLum + 0.05)/(fgLum + 0.05):(fgLum + 0.05)/(bgLum + 0.05)
-
-    return 1.6 < contrast
   }
 
   public static func hex(string: String) -> UIColor {
