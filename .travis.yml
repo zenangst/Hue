@@ -6,8 +6,7 @@ before_install:
 - brew update
 - if brew outdated | grep -qx xctool; then brew upgrade xctool; fi
 - gem install cocoapods
-- pod install --project-directory=Pod
 
 script:
-- xctool clean build -workspace Pod/Pod.xcworkspace -scheme Tests -sdk iphonesimulator
-- xctool test -workspace Pod/Pod.xcworkspace -scheme Tests -sdk iphonesimulator -destination name="iPhone 6"
+- xctool clean build -project Hue.xcodeproj -scheme Hue -sdk iphonesimulator
+- xctool test -project Hue.xcodeproj -scheme Hue -sdk iphonesimulator -destination name="iPhone 6"
