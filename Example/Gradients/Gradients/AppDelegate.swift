@@ -19,7 +19,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         right: 10)
       tableView.separatorColor = Color.cellSeparator
     }
-    ListSpot.defaultCell = GradientListCell.self
+    ListSpot.defaultView = GradientListCell.self
 
     let controller = GradientsController(title: "Gradients")
     let navigationController = UINavigationController(rootViewController: controller)

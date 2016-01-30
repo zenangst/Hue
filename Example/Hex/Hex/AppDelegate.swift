@@ -13,47 +13,47 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     ListSpot.configure = { tableView in tableView.tableFooterView = UIView(frame: CGRect.zero) }
 
-    CarouselSpot.defaultCell = GridHexCell.self
+    CarouselSpot.defaultView = GridHexCell.self
 
     let controller = SpotsController(spots: [
       ListSpot(title: "CMYK"),
       CarouselSpot(Component(title: "CMYK", span: 3, items:
         [
-          ListItem(title: "#00FFFF"),
-          ListItem(title: "#FF00FF"),
-          ListItem(title: "#FFFF00"),
-          ListItem(title: "#000000")
+          ViewModel(title: "#00FFFF"),
+          ViewModel(title: "#FF00FF"),
+          ViewModel(title: "#FFFF00"),
+          ViewModel(title: "#000000")
         ]
         ), top: 5, left: 15, bottom: 5, right: 15, itemSpacing: 15),
       ListSpot(title: "Facebook"),
       CarouselSpot(Component(title: "Facebook", span: 3, items:
         [
-          ListItem(title: "#3b5998"),
-          ListItem(title: "#8b9dc3"),
-          ListItem(title: "#dfe3ee"),
-          ListItem(title: "#f7f7f7"),
-          ListItem(title: "#ffffff")
+          ViewModel(title: "#3b5998"),
+          ViewModel(title: "#8b9dc3"),
+          ViewModel(title: "#dfe3ee"),
+          ViewModel(title: "#f7f7f7"),
+          ViewModel(title: "#ffffff")
         ]
         ), top: 5, left: 15, bottom: 5, right: 15, itemSpacing: 15),
       ListSpot(title: "Rainbow Dash"),
       CarouselSpot(Component(title: "Rainbow Dash", span: 3, items:
         [
-          ListItem(title: "#ee4035"),
-          ListItem(title: "#f37736"),
-          ListItem(title: "#fdf498"),
-          ListItem(title: "#7bc043"),
-          ListItem(title: "#0392cf")
+          ViewModel(title: "#ee4035"),
+          ViewModel(title: "#f37736"),
+          ViewModel(title: "#fdf498"),
+          ViewModel(title: "#7bc043"),
+          ViewModel(title: "#0392cf")
         ]
         ), top: 5, left: 15, bottom: 5, right: 15, itemSpacing: 15),
 
       ListSpot(title: "Beach"),
       CarouselSpot(Component(title: "Beach", span: 3, items:
         [
-          ListItem(title: "#96ceb4"),
-          ListItem(title: "#ffeead"),
-          ListItem(title: "#ff6f69"),
-          ListItem(title: "#ffcc5c"),
-          ListItem(title: "#88d8b0")
+          ViewModel(title: "#96ceb4"),
+          ViewModel(title: "#ffeead"),
+          ViewModel(title: "#ff6f69"),
+          ViewModel(title: "#ffcc5c"),
+          ViewModel(title: "#88d8b0")
         ]
         ), top: 5, left: 15, bottom: 5, right: 15, itemSpacing: 15),
       ]

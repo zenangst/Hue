@@ -3,7 +3,7 @@ import Sugar
 import Spots
 import Hue
 
-class GridHexCell: UICollectionViewCell, Itemble {
+class GridHexCell: UICollectionViewCell, ViewConfigurable {
 
   var size = CGSize(width: 125, height: 160)
 
@@ -25,7 +25,7 @@ class GridHexCell: UICollectionViewCell, Itemble {
     fatalError("init(coder:) has not been implemented")
   }
 
-  func configure(inout item: ListItem) {
+  func configure(inout item: ViewModel) {
     let color = UIColor.hex(item.title)
     backgroundColor = UIColor.hex(item.title)
 

@@ -29,9 +29,6 @@ class GradientsController: SpotsController {
     self.init(spot: ListSpot())
     self.title = title
 
-    spotsScrollView.backgroundColor = UIColor.clearColor()
-    spotsScrollView.contentInset.bottom = 64
-
     animation.fromValue = gradient.colors
     animation.toValue = [
       UIColor.hex("#8D24FF").CGColor,
@@ -41,6 +38,9 @@ class GradientsController: SpotsController {
 
   override func viewDidLoad() {
     super.viewDidLoad()
+
+    spotsScrollView.backgroundColor = UIColor.clearColor()
+    spotsScrollView.contentInset.bottom = 64
 
     dispatch(queue: .Interactive) { [weak self] in
       self?.update { $0.component.items = GradientsController.generateItems(0, to: 50) }
@@ -88,12 +88,12 @@ class GradientsController: SpotsController {
     }
   }
 
-  static func generateItem(index: Int) -> ListItem {
-    return ListItem(title: faker.lorem.sentence())
+  static func generateItem(index: Int) -> ViewModel {
+    return ViewModel(title: faker.lorem.sentence())
   }
 
-  static func generateItems(from: Int, to: Int) -> [ListItem] {
-    var items = [ListItem]()
+  static func generateItems(from: Int, to: Int) -> [ViewModel] {
+    var items = [ViewModel]()
     for i in from...from+to {
       autoreleasepool({ items.append(generateItem(i)) })
     }
