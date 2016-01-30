@@ -27,7 +27,7 @@ extension UIImage {
     if let scaleDownSize = scaleDownSize {
       cgImage = resize(scaleDownSize).CGImage!
     } else {
-      let ratio = size.width/size.height
+      let ratio = size.width / size.height
       let r_width: CGFloat = 250
       cgImage = resize(CGSize(width: r_width, height: r_width / ratio)).CGImage!
     }
@@ -50,20 +50,16 @@ extension UIImage {
     let imageColors = NSCountedSet(capacity: width * height)
 
     let sortComparator: (CountedColor, CountedColor) -> Bool = { (a, b) -> Bool in
-      if a.count <= b.count {
-        return true
-      } else {
-        return false
-      }
+      return a.count <= b.count
     }
 
     for x in 0..<width {
       for y in 0..<height {
         let pixel = ((width * y) + x) * bytesPerPixel
         let color = UIColor(
-          red:   CGFloat(data[pixel+1])/255,
-          green: CGFloat(data[pixel+2])/255,
-          blue:  CGFloat(data[pixel+3])/255,
+          red:   CGFloat(data[pixel+1]) / 255,
+          green: CGFloat(data[pixel+2]) / 255,
+          blue:  CGFloat(data[pixel+3]) / 255,
           alpha: 1
         )
 
@@ -94,7 +90,7 @@ extension UIImage {
     if let first = sortedColors.first { proposedEdgeColor = first }
 
     if proposedEdgeColor.color.isBlackOrWhite && !sortedColors.isEmpty {
-      for countedColor in sortedColors where CGFloat(countedColor.count/proposedEdgeColor.count) > 0.3 {
+      for countedColor in sortedColors where CGFloat(countedColor.count / proposedEdgeColor.count) > 0.3 {
         if !countedColor.color.isBlackOrWhite {
           proposedEdgeColor = countedColor
           break
