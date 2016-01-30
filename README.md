@@ -70,7 +70,7 @@ The demo also features [Spots](http://github.com/hyperoslo/Spots) for rendering 
 ```swift
 let color = UIColor.hex("#3b5998")
 backgroundColor = color
-label.textColor = color.isDarkColor
+label.textColor = color.isDark
   ? UIColor.whiteColor()
   : UIColor.darkGrayColor()
 ```
