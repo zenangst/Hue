@@ -76,7 +76,7 @@ label.textColor = color.isDark
 ```
 
 #### Gradients
-<img src="https://raw.githubusercontent.com/hyperoslo/Hue/master/Images/gradients-screenshot.gif" alt="Gradients Example screenshot" align="right" />
+<img src="https://raw.githubusercontent.com/hyperoslo/Hue/master/Images/gradients-screenshot.gif" alt="Gradients Example screenshot" align="right" width="236" />
 
 This examples shows how much fun you can have with combining `CAGradientLayer` with `CABasicAnimation`.
 
