@@ -21,7 +21,7 @@ extension UIImage {
     return result
   }
 
-  public func colors(scaleDownSize: CGSize? = nil) -> (UIColor?, UIColor?, UIColor?, UIColor?) {
+  public func colors(scaleDownSize: CGSize? = nil) -> (background: UIColor, primary: UIColor, secondary: UIColor, detail: UIColor) {
     let cgImage: CGImageRef
 
     if let scaleDownSize = scaleDownSize {

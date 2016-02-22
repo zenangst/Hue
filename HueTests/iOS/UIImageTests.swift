@@ -12,28 +12,29 @@ class UIImageTests: XCTestCase {
 
     XCTAssertNotNil(image)
 
+    let colors = image.colors()
+    
     var (red, green, blue): (CGFloat, CGFloat, CGFloat) = (0,0,0)
-    let (background, primary, secondary, detail) = image.colors()
-
-    background?.getRed(&red, green: &green, blue: &blue, alpha: nil)
+    
+    colors.background.getRed(&red, green: &green, blue: &blue, alpha: nil)
 
     XCTAssertEqualWithAccuracy(red, 0.035, accuracy: accuracy)
     XCTAssertEqualWithAccuracy(green, 0.05, accuracy: accuracy)
     XCTAssertEqualWithAccuracy(blue, 0.054, accuracy: accuracy)
 
-    primary?.getRed(&red, green: &green, blue: &blue, alpha: nil)
+    colors.primary.getRed(&red, green: &green, blue: &blue, alpha: nil)
 
     XCTAssertEqualWithAccuracy(red, 0.563, accuracy: accuracy)
     XCTAssertEqualWithAccuracy(green, 0.572, accuracy: accuracy)
     XCTAssertEqualWithAccuracy(blue, 0.662, accuracy: accuracy)
 
-    secondary?.getRed(&red, green: &green, blue: &blue, alpha: nil)
+    colors.secondary.getRed(&red, green: &green, blue: &blue, alpha: nil)
 
     XCTAssertEqualWithAccuracy(red, 0.746, accuracy: accuracy)
     XCTAssertEqualWithAccuracy(green, 0.831, accuracy: accuracy)
     XCTAssertEqualWithAccuracy(blue, 0.878, accuracy: accuracy)
 
-    detail?.getRed(&red, green: &green, blue: &blue, alpha: nil)
+    colors.detail.getRed(&red, green: &green, blue: &blue, alpha: nil)
 
     XCTAssertEqualWithAccuracy(red, 1.000, accuracy: accuracy)
     XCTAssertEqualWithAccuracy(green, 1.000, accuracy: accuracy)
