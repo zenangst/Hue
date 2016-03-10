@@ -14,4 +14,8 @@ Pod::Spec.new do |s|
   s.ios.source_files = 'Source/iOS/**/*'
 
   s.ios.frameworks = 'UIKit'
+
+  s.osx.deployment_target = '10.10'
+  s.osx.source_files = 'Source/Mac/**/*'
+  s.osx.frameworks = 'AppKit'
 end
