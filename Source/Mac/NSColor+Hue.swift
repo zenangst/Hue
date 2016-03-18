@@ -60,6 +60,16 @@ public extension NSColor {
     let RGB = CGColorGetComponents(CGColor)
     return (RGB[0] > 0.91 && RGB[1] > 0.91 && RGB[2] > 0.91) || (RGB[0] < 0.09 && RGB[1] < 0.09 && RGB[2] < 0.09)
   }
+    
+  public var isBlack: Bool {
+    let RGB = CGColorGetComponents(CGColor)
+    return (RGB[0] < 0.09 && RGB[1] < 0.09 && RGB[2] < 0.09)
+  }
+    
+  public var isWhite: Bool {
+    let RGB = CGColorGetComponents(CGColor)
+    return (RGB[0] > 0.91 && RGB[1] > 0.91 && RGB[2] > 0.91)
+  }
 
   public func isDistinctFrom(color: NSColor) -> Bool {
     let bg = CGColorGetComponents(CGColor)
