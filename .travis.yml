@@ -6,7 +6,9 @@ before_install:
 - brew update
 - if brew outdated | grep -qx xctool; then brew upgrade xctool; fi
 - gem install cocoapods
+- gem install xcpretty
 
 script:
 - xctool clean build -project Hue.xcodeproj -scheme Hue-iOS -sdk iphonesimulator
 - xctool test -project Hue.xcodeproj -scheme Hue-iOS -sdk iphonesimulator -destination name="iPhone 6"
+- xcodebuild clean build test -project Hue.xcodeproj -scheme Hue-tvOS -sdk appletvsimulator -destination "name=Apple TV 1080p" | xcpretty - c && exit ${PIPESTATUS[0]}
