@@ -85,4 +85,65 @@ class UIColorTests: XCTestCase {
       CGColorSpaceGetModel(CGColorGetColorSpace(UIColor.yellowColor().CGColor)))
     XCTAssertEqual(testGradientWithLocation.locations!, [0.25,1.0])
   }
+  
+  func testComponents() {
+    let blue = UIColor.blueColor()
+    let green = UIColor.greenColor()
+    let red = UIColor.redColor()
+    let black = UIColor.blackColor()
+    let white = UIColor.whiteColor()
+    
+    XCTAssertEqual(blue.red, 0.0)
+    XCTAssertEqual(blue.green, 0.0)
+    XCTAssertEqual(blue.blue, 1.0)
+    XCTAssertEqual(blue.alpha, 1.0)
+    
+    XCTAssertEqual(red.red, 1.0)
+    XCTAssertEqual(red.green, 0.0)
+    XCTAssertEqual(red.blue, 0.0)
+    XCTAssertEqual(red.alpha, 1.0)
+    
+    XCTAssertEqual(green.red, 0.0)
+    XCTAssertEqual(green.green, 1.0)
+    XCTAssertEqual(green.blue, 0.0)
+    XCTAssertEqual(green.alpha, 1.0)
+    
+    XCTAssertEqual(black.red, 0.0)
+    XCTAssertEqual(black.green, 0.0)
+    XCTAssertEqual(black.blue, 0.0)
+    XCTAssertEqual(black.alpha, 1.0)
+    
+    XCTAssertEqual(white.red, 1.0)
+    XCTAssertEqual(white.green, 1.0)
+    XCTAssertEqual(white.blue, 1.0)
+    XCTAssertEqual(white.alpha, 1.0)
+  }
+  
+  func testBlending() {
+    let black = UIColor.blackColor()
+    let white = UIColor.whiteColor()
+    let yellow = UIColor.yellowColor()
+    let green = UIColor.greenColor()
+    let red = UIColor.redColor()
+    let blue = UIColor.blueColor()
+    let deSaturatedBlue = UIColor(hue: 240.0/360.0,
+                                  saturation: 0.1,
+                                  brightness: 1.0,
+                                  alpha: 1.0)
+    
+    let testWhite = black.addRGB(white)
+    XCTAssertEqual(testWhite.red, white.red)
+    XCTAssertEqual(testWhite.green, white.green)
+    XCTAssertEqual(testWhite.blue, white.blue)
+    
+    let testYellow = green.addRGB(red)
+    XCTAssertEqual(testYellow.red, yellow.red)
+    XCTAssertEqual(testYellow.green, yellow.green)
+    XCTAssertEqual(testYellow.blue, yellow.blue)
+    
+    let testBlue = deSaturatedBlue.addHue(0.0, saturation: 1.0, brightness: 0.0, alpha: 0.0);
+    XCTAssertEqual(testBlue.red, blue.red)
+    XCTAssertEqual(testBlue.green, blue.green)
+    XCTAssertEqual(testBlue.blue, blue.blue)
+  }
 }
