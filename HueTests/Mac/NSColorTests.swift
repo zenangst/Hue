@@ -93,30 +93,30 @@ class NSColorTests: XCTestCase {
     let black = NSColor.blackColor()
     let white = NSColor.whiteColor()
     
-    XCTAssertEqual(blue.red, 0.0)
-    XCTAssertEqual(blue.green, 0.0)
-    XCTAssertEqual(blue.blue, 1.0)
-    XCTAssertEqual(blue.alpha, 1.0)
+    XCTAssertEqual(blue.getRed(), 0.0)
+    XCTAssertEqual(blue.getGreen(), 0.0)
+    XCTAssertEqual(blue.getBlue(), 1.0)
+    XCTAssertEqual(blue.getAlpha(), 1.0)
     
-    XCTAssertEqual(red.red, 1.0)
-    XCTAssertEqual(red.green, 0.0)
-    XCTAssertEqual(red.blue, 0.0)
-    XCTAssertEqual(red.alpha, 1.0)
+    XCTAssertEqual(red.getRed(), 1.0)
+    XCTAssertEqual(red.getGreen(), 0.0)
+    XCTAssertEqual(red.getBlue(), 0.0)
+    XCTAssertEqual(red.getAlpha(), 1.0)
     
-    XCTAssertEqual(green.red, 0.0)
-    XCTAssertEqual(green.green, 1.0)
-    XCTAssertEqual(green.blue, 0.0)
-    XCTAssertEqual(green.alpha, 1.0)
+    XCTAssertEqual(green.getRed(), 0.0)
+    XCTAssertEqual(green.getGreen(), 1.0)
+    XCTAssertEqual(green.getBlue(), 0.0)
+    XCTAssertEqual(green.getAlpha(), 1.0)
     
-    XCTAssertEqual(black.red, 0.0)
-    XCTAssertEqual(black.green, 0.0)
-    XCTAssertEqual(black.blue, 0.0)
-    XCTAssertEqual(black.alpha, 1.0)
+    XCTAssertEqual(black.getRed(), 0.0)
+    XCTAssertEqual(black.getGreen(), 0.0)
+    XCTAssertEqual(black.getBlue(), 0.0)
+    XCTAssertEqual(black.getAlpha(), 1.0)
     
-    XCTAssertEqual(white.red, 1.0)
-    XCTAssertEqual(white.green, 1.0)
-    XCTAssertEqual(white.blue, 1.0)
-    XCTAssertEqual(white.alpha, 1.0)
+    XCTAssertEqual(white.getRed(), 1.0)
+    XCTAssertEqual(white.getGreen(), 1.0)
+    XCTAssertEqual(white.getBlue(), 1.0)
+    XCTAssertEqual(white.getAlpha(), 1.0)
   }
   
   func testBlending() {
@@ -132,18 +132,18 @@ class NSColorTests: XCTestCase {
                                   alpha: 1.0)
     
     let testWhite = black.addRGB(white)
-    XCTAssertEqual(testWhite.red, white.red)
-    XCTAssertEqual(testWhite.green, white.green)
-    XCTAssertEqual(testWhite.blue, white.blue)
+    XCTAssertEqual(testWhite.getRed(), white.getRed())
+    XCTAssertEqual(testWhite.getGreen(), white.getGreen())
+    XCTAssertEqual(testWhite.getBlue(), white.getBlue())
     
     let testYellow = green.addRGB(red)
-    XCTAssertEqual(testYellow.red, yellow.red)
-    XCTAssertEqual(testYellow.green, yellow.green)
-    XCTAssertEqual(testYellow.blue, yellow.blue)
+    XCTAssertEqual(testYellow.getRed(), yellow.getRed())
+    XCTAssertEqual(testYellow.getGreen(), yellow.getGreen())
+    XCTAssertEqual(testYellow.getBlue(), yellow.getBlue())
     
     let testBlue = deSaturatedBlue.addHue(0.0, saturation: 1.0, brightness: 0.0, alpha: 0.0);
-    XCTAssertEqual(testBlue.red, blue.red)
-    XCTAssertEqual(testBlue.green, blue.green)
-    XCTAssertEqual(testBlue.blue, blue.blue)
+    XCTAssertEqual(testBlue.getRed(), blue.getRed())
+    XCTAssertEqual(testBlue.getGreen(), blue.getGreen())
+    XCTAssertEqual(testBlue.getBlue(), blue.getBlue())
   }
 }

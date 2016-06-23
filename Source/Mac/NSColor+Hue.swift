@@ -123,56 +123,48 @@ public extension Array where Element : NSColor {
 
 public extension NSColor {
     
-    var red : CGFloat {
-        get {
-            if (self.colorSpace == NSColorSpace.genericGrayColorSpace() ||
-                self.colorSpace == NSColorSpace.deviceGrayColorSpace()) {
-                return self.whiteComponent
-            }
-            
-            var r : CGFloat = 0
-            self.getRed(&r, green: nil , blue: nil, alpha: nil)
-            return r
+    func getRed() -> CGFloat {
+        if (self.colorSpace == NSColorSpace.genericGrayColorSpace() ||
+            self.colorSpace == NSColorSpace.deviceGrayColorSpace()) {
+            return self.whiteComponent
         }
+        
+        var r : CGFloat = 0
+        self.getRed(&r, green: nil , blue: nil, alpha: nil)
+        return r
     }
     
-    var green : CGFloat {
-        get {
-            if (self.colorSpace == NSColorSpace.genericGrayColorSpace() ||
-                self.colorSpace == NSColorSpace.deviceGrayColorSpace()) {
-                return self.whiteComponent
-            }
-            
-            var g : CGFloat = 0
-            self.getRed(nil, green: &g , blue: nil, alpha: nil)
-            return g
+    func getGreen() -> CGFloat {
+        if (self.colorSpace == NSColorSpace.genericGrayColorSpace() ||
+              self.colorSpace == NSColorSpace.deviceGrayColorSpace()) {
+            return self.whiteComponent
         }
+        
+        var g : CGFloat = 0
+        self.getRed(nil, green: &g , blue: nil, alpha: nil)
+        return g
     }
     
-    var blue : CGFloat {
-        get {
-            if (self.colorSpace == NSColorSpace.genericGrayColorSpace() ||
-                self.colorSpace == NSColorSpace.deviceGrayColorSpace()) {
-                return self.whiteComponent
-            }
-            
-            var b : CGFloat = 0
-            self.getRed(nil, green: nil , blue: &b, alpha: nil)
-            return b
+    func getBlue() -> CGFloat {
+        if (self.colorSpace == NSColorSpace.genericGrayColorSpace() ||
+              self.colorSpace == NSColorSpace.deviceGrayColorSpace()) {
+            return self.whiteComponent
         }
+        
+        var b : CGFloat = 0
+        self.getRed(nil, green: nil , blue: &b, alpha: nil)
+        return b
     }
     
-    var alpha : CGFloat {
-        get {
-            if (self.colorSpace == NSColorSpace.genericGrayColorSpace() ||
-                self.colorSpace == NSColorSpace.deviceGrayColorSpace()) {
-                return self.alphaComponent
-            }
-            
-            var a : CGFloat = 0
-            self.getRed(nil, green: nil , blue: nil, alpha: &a)
-            return a
+    func getAlpha() -> CGFloat {
+        if (self.colorSpace == NSColorSpace.genericGrayColorSpace() ||
+              self.colorSpace == NSColorSpace.deviceGrayColorSpace()) {
+            return self.alphaComponent
         }
+        
+        var a : CGFloat = 0
+        self.getRed(nil, green: nil , blue: nil, alpha: &a)
+        return a
     }
 }
 
@@ -189,7 +181,7 @@ public extension NSColor {
     
     /**adds red, green, and blue to the RGB components of this color (self)*/
     public func addRed(red: CGFloat, green: CGFloat, blue: CGFloat, alpha: CGFloat) -> NSColor {
-        return NSColor(red: self.red + red, green: self.green + green, blue: self.blue + blue, alpha: self.alpha + alpha)
+        return NSColor(red: self.getRed() + red, green: self.getGreen() + green, blue: self.getBlue() + blue, alpha: self.getAlpha() + alpha)
     }
     
     public func addHSB(color: NSColor) -> NSColor {
@@ -199,7 +191,7 @@ public extension NSColor {
     }
     
     public func addRGB(color: NSColor) -> NSColor {
-        return self.addRed(color.red, green: color.green, blue: color.blue, alpha: 0)
+        return self.addRed(color.getRed(), green: color.getGreen(), blue: color.getBlue(), alpha: 0)
     }
     
     public func addHSBA(color: NSColor) -> NSColor {
@@ -210,6 +202,6 @@ public extension NSColor {
     
     /**adds the rgb components of two colors*/
     public func addRGBA(color: NSColor) -> NSColor {
-        return self.addRed(color.red, green: color.green, blue: color.blue, alpha: color.alpha)
+        return self.addRed(color.getRed(), green: color.getGreen(), blue: color.getBlue(), alpha: color.getAlpha())
     }
 }
