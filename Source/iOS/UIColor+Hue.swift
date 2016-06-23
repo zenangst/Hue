@@ -124,7 +124,7 @@ public extension Array where Element : UIColor {
 
 public extension UIColor {
     
-  var red : CGFloat {
+  var redComponent : CGFloat {
     get {
       var r : CGFloat = 0
       self.getRed(&r, green: nil , blue: nil, alpha: nil)
@@ -132,7 +132,7 @@ public extension UIColor {
     }
   }
   
-  var green : CGFloat {
+  var greenComponent : CGFloat {
     get {
       var g : CGFloat = 0
       self.getRed(nil, green: &g , blue: nil, alpha: nil)
@@ -140,7 +140,7 @@ public extension UIColor {
     }
   }
   
-  var blue : CGFloat {
+  var blueComponent : CGFloat {
     get {
       var b : CGFloat = 0
       self.getRed(nil, green: nil , blue: &b, alpha: nil)
@@ -148,7 +148,7 @@ public extension UIColor {
     }
   }
   
-  var alpha : CGFloat {
+  var alphaComponent : CGFloat {
     get {
       var a : CGFloat = 0
       self.getRed(nil, green: nil , blue: nil, alpha: &a)
@@ -183,7 +183,7 @@ public extension UIColor {
   }
   
   public func addRGB(color: UIColor) -> UIColor {
-    return self.addRed(color.red, green: color.green, blue: color.blue, alpha: 0)
+    return self.addRed(color.redComponent, green: color.greenComponent, blue: color.blueComponent, alpha: 0)
   }
     
   public func addHSBA(color: UIColor) -> UIColor {
@@ -194,6 +194,6 @@ public extension UIColor {
   
   /**adds the rgb components of two colors*/
   public func addRGBA(color: UIColor) -> UIColor {
-    return self.addRed(color.red, green: color.green, blue: color.blue, alpha: color.alpha)
+    return self.addRed(color.redComponent, green: color.greenComponent, blue: color.blueComponent, alpha: color.alphaComponent)
   }
 }
