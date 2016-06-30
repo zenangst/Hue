@@ -101,6 +101,7 @@ public extension UIColor {
 
     return 1.6 < contrast
   }
+    
 }
 
 // MARK: - Gradient
@@ -116,5 +117,83 @@ public extension Array where Element : UIColor {
     }
 
     return gradient
+  }
+}
+
+// MARK: - Components
+
+public extension UIColor {
+    
+  var redComponent : CGFloat {
+    get {
+      var r : CGFloat = 0
+      self.getRed(&r, green: nil , blue: nil, alpha: nil)
+      return r
+    }
+  }
+  
+  var greenComponent : CGFloat {
+    get {
+      var g : CGFloat = 0
+      self.getRed(nil, green: &g , blue: nil, alpha: nil)
+      return g
+    }
+  }
+  
+  var blueComponent : CGFloat {
+    get {
+      var b : CGFloat = 0
+      self.getRed(nil, green: nil , blue: &b, alpha: nil)
+      return b
+    }
+  }
+  
+  var alphaComponent : CGFloat {
+    get {
+      var a : CGFloat = 0
+      self.getRed(nil, green: nil , blue: nil, alpha: &a)
+      return a
+    }
+  }
+}
+
+
+// MARK: - Blending
+
+public extension UIColor {
+  
+  /**adds hue, saturation, and brightness to the HSB components of this color (self)*/
+  public func addHue(hue: CGFloat, saturation: CGFloat, brightness: CGFloat, alpha: CGFloat) -> UIColor {
+    var (oldHue, oldSat, oldBright, oldAlpha) : (CGFloat, CGFloat, CGFloat, CGFloat) = (0,0,0,0)
+    self.getHue(&oldHue, saturation: &oldSat, brightness: &oldBright, alpha: &oldAlpha)
+    return UIColor(hue: oldHue + hue, saturation: oldSat + saturation, brightness: oldBright + brightness, alpha: oldAlpha + alpha)
+  }
+  
+  /**adds red, green, and blue to the RGB components of this color (self)*/
+  public func addRed(red: CGFloat, green: CGFloat, blue: CGFloat, alpha: CGFloat) -> UIColor {
+    var (oldRed, oldGreen, oldBlue, oldAlpha) : (CGFloat, CGFloat, CGFloat, CGFloat) = (0,0,0,0)
+    self.getRed(&oldRed, green: &oldGreen, blue: &oldBlue, alpha: &oldAlpha)
+    return UIColor(red: oldRed + red, green: oldGreen + green, blue: oldBlue + blue, alpha: oldAlpha + alpha)
+  }
+  
+  public func addHSB(color: UIColor) -> UIColor {
+    var (h,s,b,a) : (CGFloat, CGFloat, CGFloat, CGFloat) = (0,0,0,0)
+    color.getHue(&h, saturation: &s, brightness: &b, alpha: &a)
+    return self.addHue(h, saturation: s, brightness: b, alpha: 0)
+  }
+  
+  public func addRGB(color: UIColor) -> UIColor {
+    return self.addRed(color.redComponent, green: color.greenComponent, blue: color.blueComponent, alpha: 0)
+  }
+    
+  public func addHSBA(color: UIColor) -> UIColor {
+    var (h,s,b,a) : (CGFloat, CGFloat, CGFloat, CGFloat) = (0,0,0,0)
+    color.getHue(&h, saturation: &s, brightness: &b, alpha: &a)
+    return self.addHue(h, saturation: s, brightness: b, alpha: a)
+  }
+  
+  /**adds the rgb components of two colors*/
+  public func addRGBA(color: UIColor) -> UIColor {
+    return self.addRed(color.redComponent, green: color.greenComponent, blue: color.blueComponent, alpha: color.alphaComponent)
   }
 }

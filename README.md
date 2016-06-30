@@ -56,6 +56,27 @@ let image = UIImage(named: "My Image")
 let (background, primary, secondary, detail) = image.colors()
 ```
 
+#### Components
+You can get red, green, blue, and alpha components from any UIColor by using the (red|green|blue|alpha)Component property.
+
+```swift
+let myColor = UIColor.hex("#ffafc2")
+let myColorBlueComponent = myColor.blueComponent
+let myColorGreenComponent = myColor.greenComponent
+let myColorRedComponent = myColor.redComponent
+let myColorAlphaComponent = myColor.alphaComponent
+```
+
+#### Blending
+```swift
+let red = UIColor.redColor()
+let green = UIColor.greenColor()
+let yellow = red.addRGB(green)
+
+let desaturatedBlue = UIColor.hex("#aaaacc")
+let saturatedBlue = UIColor.addHue(0.0, saturation:1.0, brightness:0.0, alpha:0.0)
+```
+
 ## Examples
 <img src="https://raw.githubusercontent.com/hyperoslo/Hue/master/Images/hex-screenshot.png" alt="Hex Example screenshot" align="right" />
 #### Hex

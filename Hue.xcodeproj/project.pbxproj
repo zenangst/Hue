@@ -57,7 +57,7 @@
 		386887AA1C83442A005A8868 /* NSColor+Hue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSColor+Hue.swift"; sourceTree = "<group>"; };
 		386887AB1C83442A005A8868 /* NSImage+Hue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSImage+Hue.swift"; sourceTree = "<group>"; };
 		386887B21C834567005A8868 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		386887B71C834591005A8868 /* NSColorTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSColorTests.swift; sourceTree = "<group>"; };
+		386887B71C834591005A8868 /* NSColorTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; indentWidth = 2; lastKnownFileType = sourcecode.swift; path = NSColorTests.swift; sourceTree = "<group>"; tabWidth = 2; };
 		386887B81C834591005A8868 /* NSImageTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSImageTests.swift; sourceTree = "<group>"; };
 		386887BD1C8345C4005A8868 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B53E399E1CA177C900EB1EEE /* Hue.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Hue.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -69,9 +69,9 @@
 		D5EEA20F1C3EAE01000F8F1B /* Random Access Memories.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Random Access Memories.png"; sourceTree = "<group>"; };
 		D5EEA2111C3EAE01000F8F1B /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D5EEA2141C3EAE01000F8F1B /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		D5EEA2151C3EAE01000F8F1B /* UIColorTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIColorTests.swift; sourceTree = "<group>"; };
+		D5EEA2151C3EAE01000F8F1B /* UIColorTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; indentWidth = 2; lastKnownFileType = sourcecode.swift; path = UIColorTests.swift; sourceTree = "<group>"; tabWidth = 2; };
 		D5EEA2161C3EAE01000F8F1B /* UIImageTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIImageTests.swift; sourceTree = "<group>"; };
-		D5EEA2261C3EB008000F8F1B /* UIColor+Hue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+Hue.swift"; sourceTree = "<group>"; };
+		D5EEA2261C3EB008000F8F1B /* UIColor+Hue.swift */ = {isa = PBXFileReference; fileEncoding = 4; indentWidth = 2; lastKnownFileType = sourcecode.swift; path = "UIColor+Hue.swift"; sourceTree = "<group>"; tabWidth = 2; };
 		D5EEA2271C3EB008000F8F1B /* UIImage+Hue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+Hue.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
