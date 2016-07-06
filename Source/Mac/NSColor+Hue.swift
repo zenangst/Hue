@@ -19,9 +19,9 @@ public extension NSColor {
     }
 
     return NSColor(
-      red:   CGFloat((Int(hex, radix: 16)! >> 16) & 0xFF),
-      green: CGFloat((Int(hex, radix: 16)! >> 8) & 0xFF),
-      blue:  CGFloat((Int(hex, radix: 16)!) & 0xFF), alpha: 1.0)
+      red:   CGFloat((Int(hex, radix: 16)! >> 16) & 0xFF) / 255.0,
+      green: CGFloat((Int(hex, radix: 16)! >> 8) & 0xFF) / 255.0,
+      blue:  CGFloat((Int(hex, radix: 16)!) & 0xFF) / 255.0, alpha: 1.0)
   }
 
   public func colorWithMinimumSaturation(minSaturation: CGFloat) -> NSColor {
