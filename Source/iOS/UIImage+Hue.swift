@@ -18,7 +18,7 @@ extension UIImage {
     let result = UIGraphicsGetImageFromCurrentImageContext()
     UIGraphicsEndImageContext()
 
-    return result
+    return result!
   }
 
   public func colors(scaleDownSize: CGSize? = nil) -> (background: UIColor, primary: UIColor, secondary: UIColor, detail: UIColor) {
@@ -44,8 +44,8 @@ extension UIImage {
     let raw = malloc(bytesPerRow * height)
     let bitmapInfo = CGImageAlphaInfo.PremultipliedFirst.rawValue
     let context = CGBitmapContextCreate(raw, width, height, bitsPerComponent, bytesPerRow, colorSpace, bitmapInfo)
-    CGContextDrawImage(context, CGRectMake(0, 0, CGFloat(width), CGFloat(height)), cgImage)
-    let data = UnsafePointer<UInt8>(CGBitmapContextGetData(context))
+    CGContextDrawImage(context!, CGRectMake(0, 0, CGFloat(width), CGFloat(height)), cgImage)
+    let data = UnsafePointer<UInt8>(CGBitmapContextGetData(context!))
     let imageBackgroundColors = NSCountedSet(capacity: height)
     let imageColors = NSCountedSet(capacity: width * height)
 
