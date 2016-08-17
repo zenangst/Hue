@@ -12,12 +12,13 @@ class UIColorTests: XCTestCase {
     let green = UIColor.hex("#00FF00")
     let yellow = UIColor.hex("#FFFF00")
 
-    XCTAssertEqual(white, UIColor(red: 255, green: 255, blue: 255, alpha: 1.0))
+
+    XCTAssertEqual(white, UIColor(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0))
     XCTAssertEqual(black, UIColor(red: 0, green: 0, blue: 0, alpha: 1.0))
-    XCTAssertEqual(red, UIColor(red: 255, green: 0, blue: 0, alpha: 1.0))
-    XCTAssertEqual(blue, UIColor(red: 0, green: 0, blue: 255, alpha: 1.0))
-    XCTAssertEqual(green, UIColor(red: 0, green: 255, blue: 0, alpha: 1.0))
-    XCTAssertEqual(yellow, UIColor(red: 255, green: 255, blue: 0, alpha: 1.0))
+    XCTAssertEqual(red, UIColor(red: 1.0, green: 0, blue: 0, alpha: 1.0))
+    XCTAssertEqual(blue, UIColor(red: 0, green: 0, blue: 1.0, alpha: 1.0))
+    XCTAssertEqual(green, UIColor(red: 0, green: 1.0, blue: 0, alpha: 1.0))
+    XCTAssertEqual(yellow, UIColor(red: 1.0, green: 1.0, blue: 0, alpha: 1.0))
   }
 
   func testToHexWithPrefix() {
@@ -55,7 +56,7 @@ class UIColorTests: XCTestCase {
   func testAlpha() {
     let yellowWithAlpha = UIColor.hex("#FFFF00").alpha(0.5)
 
-    XCTAssertEqual(yellowWithAlpha, UIColor(red: 255, green: 255, blue: 0, alpha: 1.0).colorWithAlphaComponent(0.5))
+    XCTAssertEqual(yellowWithAlpha, UIColor(red: 1.0, green: 1.0, blue: 0, alpha: 1.0).colorWithAlphaComponent(0.5))
   }
 
   func testGradient() {
