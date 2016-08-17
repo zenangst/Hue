@@ -17,7 +17,7 @@ extension NSImage {
     scaledImage.lockFocus()
     let ctx = NSGraphicsContext.currentContext()
     ctx?.imageInterpolation = .High
-    drawInRect(NSMakeRect(0, 0, newSize.width, newSize.height), fromRect: NSRect.zero, operation: .CompositeCopy, fraction: 1)
+    drawInRect(NSMakeRect(0, 0, newSize.width, newSize.height), fromRect: NSRect.zero, operation: .Copy, fraction: 1)
     scaledImage.unlockFocus()
     
     return scaledImage
@@ -48,8 +48,8 @@ extension NSImage {
     let raw = malloc(bytesPerRow * height)
     let bitmapInfo = CGImageAlphaInfo.PremultipliedFirst.rawValue
     let context = CGBitmapContextCreate(raw, width, height, bitsPerComponent, bytesPerRow, colorSpace, bitmapInfo)
-    CGContextDrawImage(context, CGRectMake(0, 0, CGFloat(width), CGFloat(height)), cgImage)
-    let data = UnsafePointer<UInt8>(CGBitmapContextGetData(context))
+    CGContextDrawImage(context!, CGRectMake(0, 0, CGFloat(width), CGFloat(height)), cgImage)
+    let data = UnsafePointer<UInt8>(CGBitmapContextGetData(context!))
     let imageBackgroundColors = NSCountedSet(capacity: height)
     let imageColors = NSCountedSet(capacity: width * height)
 
