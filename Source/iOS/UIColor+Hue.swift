@@ -8,16 +8,14 @@ public extension UIColor {
     var hex = string.hasPrefix("#")
       ? String(string.characters.dropFirst())
       : string
-
     guard hex.characters.count == 3 || hex.characters.count == 6
       else {
         self.init(white: 1.0, alpha: 0.0)
         return
     }
-
     if hex.characters.count == 3 {
-      for (index, char) in hex.characters.enumerate() {
-        hex.insert(char, atIndex: hex.startIndex.advancedBy(index * 2))
+      for (index, char) in hex.characters.enumerated() {
+        hex.insert(char, at: hex.index(hex.startIndex, offsetBy: index * 2))
       }
     }
 
@@ -27,7 +25,7 @@ public extension UIColor {
       blue:  CGFloat((Int(hex, radix: 16)!) & 0xFF) / 255.0, alpha: 1.0)
   }
 
-  @available(*, deprecated=1.1.2)
+  @available(*, deprecated: 1.1.2)
   public static func hex(string: String) -> UIColor {
     return UIColor(hex: string)
   }
@@ -41,8 +39,8 @@ public extension UIColor {
       : self
   }
 
-  public func alpha(value: CGFloat) -> UIColor {
-    return colorWithAlphaComponent(value)
+  public func alpha(_ value: CGFloat) -> UIColor {
+    return withAlphaComponent(value)
   }
 }
 
@@ -50,7 +48,7 @@ public extension UIColor {
 
 public extension UIColor {
 
-  public func hex(withPrefix withPrefix: Bool = true) -> String {
+  public func hex(_ withPrefix: Bool = true) -> String {
     var (r, g, b, a): (CGFloat, CGFloat, CGFloat, CGFloat) = (0.0, 0.0, 0.0, 0.0)
     getRed(&r, green: &g, blue: &b, alpha: &a)
 
@@ -59,29 +57,36 @@ public extension UIColor {
     return String(format: "\(prefix)%02X%02X%02X", Int(r * 255), Int(g * 255), Int(b * 255))
   }
 
+  internal func rgbComponents() -> [CGFloat] {
+    guard let RGB = cgColor.components else {
+      return [0,0,0]
+    }
+    return RGB
+  }
+  
   public var isDark: Bool {
-    let RGB = CGColorGetComponents(CGColor)
+    let RGB = rgbComponents()
     return (0.2126 * RGB[0] + 0.7152 * RGB[1] + 0.0722 * RGB[2]) < 0.5
   }
 
   public var isBlackOrWhite: Bool {
-    let RGB = CGColorGetComponents(CGColor)
+    let RGB = rgbComponents()
     return (RGB[0] > 0.91 && RGB[1] > 0.91 && RGB[2] > 0.91) || (RGB[0] < 0.09 && RGB[1] < 0.09 && RGB[2] < 0.09)
   }
 
   public var isBlack: Bool {
-    let RGB = CGColorGetComponents(CGColor)
+    let RGB = rgbComponents()
     return (RGB[0] < 0.09 && RGB[1] < 0.09 && RGB[2] < 0.09)
   }
 
   public var isWhite: Bool {
-    let RGB = CGColorGetComponents(CGColor)
+    let RGB = rgbComponents()
     return (RGB[0] > 0.91 && RGB[1] > 0.91 && RGB[2] > 0.91)
   }
 
-  public func isDistinctFrom(color: UIColor) -> Bool {
-    let bg = CGColorGetComponents(CGColor)
-    let fg = CGColorGetComponents(color.CGColor)
+  public func isDistinctFrom(_ color: UIColor) -> Bool {
+    let bg = rgbComponents()
+    let fg = color.rgbComponents()
     let threshold: CGFloat = 0.25
     var result = false
 
@@ -97,9 +102,9 @@ public extension UIColor {
     return result
   }
 
-  public func isContrastingWith(color: UIColor) -> Bool {
-    let bg = CGColorGetComponents(CGColor)
-    let fg = CGColorGetComponents(color.CGColor)
+  public func isContrastingWith(_ color: UIColor) -> Bool {
+    let bg = rgbComponents()
+    let fg = color.rgbComponents()
 
     let bgLum = 0.2126 * bg[0] + 0.7152 * bg[1] + 0.0722 * bg[2]
     let fgLum = 0.2126 * fg[0] + 0.7152 * fg[1] + 0.0722 * fg[2]
@@ -116,12 +121,12 @@ public extension UIColor {
 
 public extension Array where Element : UIColor {
 
-  public func gradient(transform: ((inout gradient: CAGradientLayer) -> CAGradientLayer)? = nil) -> CAGradientLayer {
+  public func gradient(_ transform: ((_ gradient: inout CAGradientLayer) -> CAGradientLayer)? = nil) -> CAGradientLayer {
     var gradient = CAGradientLayer()
-    gradient.colors = self.map { $0.CGColor }
+    gradient.colors = self.map { $0.cgColor }
 
     if let transform = transform {
-      transform(gradient: &gradient)
+     gradient = transform(&gradient)
     }
 
     return gradient
@@ -171,25 +176,25 @@ public extension UIColor {
 public extension UIColor {
 
   /**adds hue, saturation, and brightness to the HSB components of this color (self)*/
-  public func addHue(hue: CGFloat, saturation: CGFloat, brightness: CGFloat, alpha: CGFloat) -> UIColor {
+  public func addHue(_ hue: CGFloat, saturation: CGFloat, brightness: CGFloat, alpha: CGFloat) -> UIColor {
     var (oldHue, oldSat, oldBright, oldAlpha) : (CGFloat, CGFloat, CGFloat, CGFloat) = (0,0,0,0)
     self.getHue(&oldHue, saturation: &oldSat, brightness: &oldBright, alpha: &oldAlpha)
     return UIColor(hue: oldHue + hue, saturation: oldSat + saturation, brightness: oldBright + brightness, alpha: oldAlpha + alpha)
   }
 
   /**adds red, green, and blue to the RGB components of this color (self)*/
-  public func addRed(red: CGFloat, green: CGFloat, blue: CGFloat, alpha: CGFloat) -> UIColor {
+  public func addRed(_ red: CGFloat, green: CGFloat, blue: CGFloat, alpha: CGFloat) -> UIColor {
     var (oldRed, oldGreen, oldBlue, oldAlpha) : (CGFloat, CGFloat, CGFloat, CGFloat) = (0,0,0,0)
     self.getRed(&oldRed, green: &oldGreen, blue: &oldBlue, alpha: &oldAlpha)
     return UIColor(red: oldRed + red, green: oldGreen + green, blue: oldBlue + blue, alpha: oldAlpha + alpha)
   }
+
 
   public func addHSB(color: UIColor) -> UIColor {
     var (h,s,b,a) : (CGFloat, CGFloat, CGFloat, CGFloat) = (0,0,0,0)
     color.getHue(&h, saturation: &s, brightness: &b, alpha: &a)
     return self.addHue(h, saturation: s, brightness: b, alpha: 0)
   }
-
   public func addRGB(color: UIColor) -> UIColor {
     return self.addRed(color.redComponent, green: color.greenComponent, blue: color.blueComponent, alpha: 0)
   }
@@ -201,7 +206,7 @@ public extension UIColor {
   }
 
   /**adds the rgb components of two colors*/
-  public func addRGBA(color: UIColor) -> UIColor {
+  public func addRGBA(_ color: UIColor) -> UIColor {
     return self.addRed(color.redComponent, green: color.greenComponent, blue: color.blueComponent, alpha: color.alphaComponent)
   }
 }
