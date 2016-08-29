@@ -5,6 +5,8 @@ platform :ios, '8.0'
 use_frameworks!
 inhibit_all_warnings!
 
+target 'Gradients'
+
 pod 'Hue', path: '../../'
 pod 'Imaginary', git: 'https://github.com/hyperoslo/Imaginary'
 pod 'Cache', git: 'https://github.com/hyperoslo/Cache'

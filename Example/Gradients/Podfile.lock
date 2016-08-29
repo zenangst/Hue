@@ -2,7 +2,7 @@ PODS:
   - Cache (1.0.0)
   - Fakery (1.1.1):
     - SwiftyJSON
-  - Hue (1.0.0)
+  - Hue (1.1.1)
   - Imaginary (0.1.0):
     - Cache
   - Spots (1.0.0):
@@ -51,11 +51,13 @@ CHECKOUT OPTIONS:
 SPEC CHECKSUMS:
   Cache: 78f58bc008313c7a1182967a2ebcb3de9fddecd4
   Fakery: a159ad2f48e01c5ae7059c201700b38fa0484707
-  Hue: 44ae8b1091935fcc75055174095ab04653989235
+  Hue: 931aeeadcb29ce5de5b97589aa936be4638a1501
   Imaginary: feaea646440c68a9b6ed66a46597d548b9a44207
   Spots: 0e2a783d37cf05ce0752e2ae4cd709de0112cb04
   Sugar: 0dec8fa53840c88c01579e61bcff8edbe468cb41
   SwiftyJSON: 04ccea08915aa0109039157c7974cf0298da292a
   Tailor: 3ec670165a4a0b728c187313e85b433af457152c
 
-COCOAPODS: 0.39.0
+PODFILE CHECKSUM: bb3722b747ee2ca0f533f2edc06801a2315a6c96
+
+COCOAPODS: 1.0.1
