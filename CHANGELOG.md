@@ -1,5 +1,13 @@
 # Change Log
 
+## [Unreleased](https://github.com/hyperoslo/Hue/tree/HEAD)
+
+[Full Changelog](https://github.com/hyperoslo/Hue/compare/1.1.1...HEAD)
+
+**Merged pull requests:**
+
+- Fix/hex init [\#26](https://github.com/hyperoslo/Hue/pull/26) ([zenangst](https://github.com/zenangst))
+
 ## [1.1.1](https://github.com/hyperoslo/Hue/tree/1.1.1) (2016-07-07)
 [Full Changelog](https://github.com/hyperoslo/Hue/compare/1.1...1.1.1)
 
