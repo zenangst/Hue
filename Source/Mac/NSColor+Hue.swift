@@ -4,13 +4,16 @@ import AppKit
 
 public extension NSColor {
 
-  public static func hex(string: String) -> NSColor {
-    var hex = string.hasPrefix("#")
-      ? String(string.characters.dropFirst())
-      : string
+  convenience init(hex: String) {
+    var hex = hex.hasPrefix("#")
+      ? String(hex.characters.dropFirst())
+      : hex
 
     guard hex.characters.count == 3 || hex.characters.count == 6
-      else { return NSColor.whiteColor().colorWithAlphaComponent(0.0) }
+      else {
+        self.init(white: 1.0, alpha: 0.0)
+        return
+    }
 
     if hex.characters.count == 3 {
       for (index, char) in hex.characters.enumerate() {
@@ -18,10 +21,15 @@ public extension NSColor {
       }
     }
 
-    return NSColor(
+    self.init(
       red:   CGFloat((Int(hex, radix: 16)! >> 16) & 0xFF) / 255.0,
       green: CGFloat((Int(hex, radix: 16)! >> 8) & 0xFF) / 255.0,
       blue:  CGFloat((Int(hex, radix: 16)!) & 0xFF) / 255.0, alpha: 1.0)
+  }
+
+  @available(*, deprecated=1.1.2)
+  public static func hex(string: String) -> NSColor {
+    return NSColor(hex: string)
   }
 
   public func colorWithMinimumSaturation(minSaturation: CGFloat) -> NSColor {
