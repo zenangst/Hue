@@ -26,7 +26,7 @@ class GridHexCell: UICollectionViewCell, ViewConfigurable {
   }
 
   func configure(inout item: ViewModel) {
-    let color = UIColor.hex(item.title)
+    let color = UIColor(hex:item.title)
     backgroundColor = color
 
     label.textColor = color.isDark ? UIColor.whiteColor() : UIColor.darkGrayColor()

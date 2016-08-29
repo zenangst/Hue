@@ -8,8 +8,8 @@ class GradientsController: SpotsController {
   static let faker = Faker()
 
   lazy var gradient: CAGradientLayer = [
-    UIColor.hex("#FD4340"),
-    UIColor.hex("#CE2BAE")
+    UIColor(hex:"#FD4340"),
+    UIColor(hex:"#CE2BAE")
     ].gradient { gradient in
       gradient.speed = 0
       gradient.timeOffset = 0
@@ -31,8 +31,8 @@ class GradientsController: SpotsController {
 
     animation.fromValue = gradient.colors
     animation.toValue = [
-      UIColor.hex("#8D24FF").CGColor,
-      UIColor.hex("#23A8F9").CGColor
+      UIColor(hex:"#8D24FF").CGColor,
+      UIColor(hex:"#23A8F9").CGColor
     ]
   }
 

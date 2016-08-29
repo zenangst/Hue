@@ -12,7 +12,7 @@ class GradientListCell: ListSpotCell {
   }()
 
   override func configure(inout item: ViewModel) {
-    textLabel?.textColor = UIColor.hex("#fff").alpha(0.8)
+    textLabel?.textColor = UIColor(hex:"#fff").alpha(0.8)
     textLabel?.text = item.title
     textLabel?.font = Font.cell
     selectedBackgroundView = selectedView
