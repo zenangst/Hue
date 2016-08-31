@@ -148,9 +148,10 @@ extension UIImage {
   }
 
   public func color(at point: CGPoint) -> UIColor? {
-    guard point.x >= 0 && point.x <= size.width
-      && point.y >= 0 && point.y <= size.height
-      else { return nil }
+    let rect = CGRect(x: 0, y: 0, width: size.width, height: size.height)
+    guard rect.contains(point) else {
+      return nil
+    }
 
     let dataProvider = CGImageGetDataProvider(CGImage)
     let dataCopy = CGDataProviderCopyData(dataProvider)

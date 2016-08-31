@@ -48,6 +48,7 @@ class UIImageTests: XCTestCase {
 
   func testPixelColorSubscript() {
     XCTAssertNotNil(image)
+    XCTAssertNil(image.color(at: CGPoint(x: 1300, y: -1)))
     XCTAssertEqual(image.color(at: CGPoint(x: 0, y: 0))?.hex(), "#090D0E")
     XCTAssertEqual(image.color(at: CGPoint(x: 535, y: 513))?.hex(), "#C8DDF0")
   }
