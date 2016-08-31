@@ -146,4 +146,22 @@ extension UIImage {
       secondaryColor ?? (isDarkBackgound ? whiteColor : blackColor),
       detailColor    ?? (isDarkBackgound ? whiteColor : blackColor))
   }
+
+  public subscript (x: Int, y: Int) -> UIColor? {
+    guard x >= 0 && x <= Int(size.width) && y >= 0 && y <= Int(size.height) else {
+      return nil
+    }
+
+    let dataProvider = CGImageGetDataProvider(CGImage)
+    let dataCopy = CGDataProviderCopyData(dataProvider)
+    let data = CFDataGetBytePtr(dataCopy)
+    let pixelInfo = ((Int(size.width) * y) + x) * 4
+
+    let red = CGFloat(data[pixelInfo]) / 255.0
+    let green = CGFloat(data[pixelInfo + 1]) / 255.0
+    let blue = CGFloat(data[pixelInfo + 2]) / 255.0
+    let alpha = CGFloat(data[pixelInfo + 3]) / 255.0
+
+    return UIColor(red: red, green: green, blue: blue, alpha: alpha)
+  }
 }
