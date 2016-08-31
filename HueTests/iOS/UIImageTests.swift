@@ -4,18 +4,23 @@ import XCTest
 
 class UIImageTests: XCTestCase {
 
-  func testImageColors() {
-    let accuracy: CGFloat = 0.001
+  var image: UIImage!
+
+  override func setUp() {
+    super.setUp()
     let bundle = NSBundle(forClass: self.classForCoder)
     let path = bundle.pathForResource("Random Access Memories", ofType: "png")!
-    let image = UIImage(contentsOfFile: path)!
 
+    image = UIImage(contentsOfFile: path)!
+  }
+
+  func testImageColors() {
     XCTAssertNotNil(image)
 
+    let accuracy: CGFloat = 0.001
     let colors = image.colors()
-    
     var (red, green, blue): (CGFloat, CGFloat, CGFloat) = (0,0,0)
-    
+
     colors.background.getRed(&red, green: &green, blue: &blue, alpha: nil)
 
     XCTAssertEqualWithAccuracy(red, 0.035, accuracy: accuracy)
@@ -41,4 +46,10 @@ class UIImageTests: XCTestCase {
     XCTAssertEqualWithAccuracy(blue, 0.85, accuracy: accuracy)
   }
 
+  func testPixelColorSubscript() {
+    XCTAssertNotNil(image)
+    XCTAssertNil(image.color(at: CGPoint(x: 1300, y: -1)))
+    XCTAssertEqual(image.color(at: CGPoint(x: 0, y: 0))?.hex(), "#090D0E")
+    XCTAssertEqual(image.color(at: CGPoint(x: 535, y: 513))?.hex(), "#C8DDF0")
+  }
 }
