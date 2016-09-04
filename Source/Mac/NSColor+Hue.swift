@@ -27,7 +27,7 @@ public extension NSColor {
       blue:  CGFloat((Int(hex, radix: 16)!) & 0xFF) / 255.0, alpha: 1.0)
   }
 
-  @available(*, deprecated=1.1.2)
+  @available(*, deprecated=1.1.2, message="Use init(hex:) instead.")
   public static func hex(string: String) -> NSColor {
     return NSColor(hex: string)
   }
