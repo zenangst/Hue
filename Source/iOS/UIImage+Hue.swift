@@ -12,28 +12,28 @@ class CountedColor {
 
 extension UIImage {
 
-  private func resize(newSize: CGSize) -> UIImage {
+  fileprivate func resize(_ newSize: CGSize) -> UIImage {
     UIGraphicsBeginImageContextWithOptions(newSize, false, 2)
-    drawInRect(CGRectMake(0, 0, newSize.width, newSize.height))
+    draw(in: CGRect(x: 0, y: 0, width: newSize.width, height: newSize.height))
     let result = UIGraphicsGetImageFromCurrentImageContext()
     UIGraphicsEndImageContext()
 
-    return result
+    return result!
   }
 
-  public func colors(scaleDownSize: CGSize? = nil) -> (background: UIColor, primary: UIColor, secondary: UIColor, detail: UIColor) {
-    let cgImage: CGImageRef
+  public func colors(_ scaleDownSize: CGSize? = nil) -> (background: UIColor, primary: UIColor, secondary: UIColor, detail: UIColor) {
+    let cgImage: CGImage
 
     if let scaleDownSize = scaleDownSize {
-      cgImage = resize(scaleDownSize).CGImage!
+      cgImage = resize(scaleDownSize).cgImage!
     } else {
       let ratio = size.width / size.height
       let r_width: CGFloat = 250
-      cgImage = resize(CGSize(width: r_width, height: r_width / ratio)).CGImage!
+      cgImage = resize(CGSize(width: r_width, height: r_width / ratio)).cgImage!
     }
 
-    let width = CGImageGetWidth(cgImage)
-    let height = CGImageGetHeight(cgImage)
+    let width = cgImage.width
+    let height = cgImage.height
     let bytesPerPixel = 4
     let bytesPerRow = width * bytesPerPixel
     let bitsPerComponent = 8
@@ -42,10 +42,10 @@ extension UIImage {
     let whiteColor = UIColor(red: 1, green: 1, blue: 1, alpha: 1)
     let colorSpace = CGColorSpaceCreateDeviceRGB()
     let raw = malloc(bytesPerRow * height)
-    let bitmapInfo = CGImageAlphaInfo.PremultipliedFirst.rawValue
-    let context = CGBitmapContextCreate(raw, width, height, bitsPerComponent, bytesPerRow, colorSpace, bitmapInfo)
-    CGContextDrawImage(context, CGRectMake(0, 0, CGFloat(width), CGFloat(height)), cgImage)
-    let data = UnsafePointer<UInt8>(CGBitmapContextGetData(context))
+    let bitmapInfo = CGImageAlphaInfo.premultipliedFirst.rawValue
+    let context = CGContext(data: raw, width: width, height: height, bitsPerComponent: bitsPerComponent, bytesPerRow: bytesPerRow, space: colorSpace, bitmapInfo: bitmapInfo)
+    context?.draw(cgImage, in: CGRect(x: 0, y: 0, width: CGFloat(width), height: CGFloat(height)))
+    let data = UnsafePointer<UInt8>(context?.data?.assumingMemoryBound(to: UInt8.self))
     let imageBackgroundColors = NSCountedSet(capacity: height)
     let imageColors = NSCountedSet(capacity: width * height)
 
@@ -57,17 +57,17 @@ extension UIImage {
       for y in 0..<height {
         let pixel = ((width * y) + x) * bytesPerPixel
         let color = UIColor(
-          red:   CGFloat(data[pixel+1]) / 255,
-          green: CGFloat(data[pixel+2]) / 255,
-          blue:  CGFloat(data[pixel+3]) / 255,
+          red:   CGFloat((data?[pixel+1])!) / 255,
+          green: CGFloat((data?[pixel+2])!) / 255,
+          blue:  CGFloat((data?[pixel+3])!) / 255,
           alpha: 1
         )
 
         if x >= 5 && x <= 10 {
-          imageBackgroundColors.addObject(color)
+          imageBackgroundColors.add(color)
         }
 
-        imageColors.addObject(color)
+        imageColors.add(color)
       }
     }
 
@@ -76,14 +76,14 @@ extension UIImage {
     for color in imageBackgroundColors {
       guard let color = color as? UIColor else { continue }
 
-      let colorCount = imageBackgroundColors.countForObject(color)
+      let colorCount = imageBackgroundColors.count(for: color)
 
       if randomColorsThreshold <= colorCount  {
         sortedColors.append(CountedColor(color: color, count: colorCount))
       }
     }
 
-    sortedColors.sortInPlace(sortComparator)
+    sortedColors.sort(by: sortComparator)
 
     var proposedEdgeColor = CountedColor(color: blackColor, count: 1)
 
@@ -106,15 +106,15 @@ extension UIImage {
     for imageColor in imageColors {
       guard let imageColor = imageColor as? UIColor else { continue }
 
-      let color = imageColor.colorWithMinimumSaturation(0.15)
+      let color = imageColor.colorWithMinimumSaturation(minSaturation: 0.15)
 
       if color.isDark == !isDarkBackgound {
-        let colorCount = imageColors.countForObject(color)
+        let colorCount = imageColors.count(for: color)
         sortedColors.append(CountedColor(color: color, count: colorCount))
       }
     }
 
-    sortedColors.sortInPlace(sortComparator)
+    sortedColors.sort(by: sortComparator)
 
     var primaryColor, secondaryColor, detailColor: UIColor?
 
