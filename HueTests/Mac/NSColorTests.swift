@@ -5,12 +5,12 @@ import XCTest
 class NSColorTests: XCTestCase {
 
   func testHex() {
-    let white = NSColor.hex("#FFFFFF")
-    let black = NSColor.hex("000000")
-    let red = NSColor.hex("F00")
-    let blue = NSColor.hex("#00F")
-    let green = NSColor.hex("#00FF00")
-    let yellow = NSColor.hex("#FFFF00")
+    let white = NSColor(hex: "#FFFFFF")
+    let black = NSColor(hex: "000000")
+    let red = NSColor(hex: "F00")
+    let blue = NSColor(hex: "#00F")
+    let green = NSColor(hex: "#00FF00")
+    let yellow = NSColor(hex: "#FFFF00")
 
     XCTAssertEqual(white, NSColor(red: 255, green: 255, blue: 255, alpha: 1.0))
     XCTAssertEqual(black, NSColor(red: 0, green: 0, blue: 0, alpha: 1.0))
@@ -21,12 +21,12 @@ class NSColorTests: XCTestCase {
   }
 
   func testToHexWithPrefix() {
-    let white = NSColor.whiteColor()
-    let black = NSColor.blackColor()
-    let red = NSColor.redColor()
-    let blue = NSColor.blueColor()
-    let green = NSColor.greenColor()
-    let yellow = NSColor.yellowColor()
+    let white = NSColor.white
+    let black = NSColor.black
+    let red = NSColor.red
+    let blue = NSColor.blue
+    let green = NSColor.green
+    let yellow = NSColor.yellow
 
     XCTAssertEqual(white.hex(), "#FFFFFF")
     XCTAssertEqual(black.hex(), "#000000")
@@ -37,12 +37,12 @@ class NSColorTests: XCTestCase {
   }
 
   func testToHexWithoutPrefix() {
-    let white = NSColor.whiteColor()
-    let black = NSColor.blackColor()
-    let red = NSColor.redColor()
-    let blue = NSColor.blueColor()
-    let green = NSColor.greenColor()
-    let yellow = NSColor.yellowColor()
+    let white = NSColor.white
+    let black = NSColor.black
+    let red = NSColor.red
+    let blue = NSColor.blue
+    let green = NSColor.green
+    let yellow = NSColor.yellow
 
     XCTAssertEqual(white.hex(withPrefix: false), "FFFFFF")
     XCTAssertEqual(black.hex(withPrefix: false), "000000")
@@ -53,45 +53,45 @@ class NSColorTests: XCTestCase {
   }
 
   func testAlpha() {
-    let yellowWithAlpha = NSColor.hex("#FFFF00").alpha(0.5)
+    let yellowWithAlpha = NSColor(hex: "#FFFF00").alpha(0.5)
 
-    XCTAssertEqual(yellowWithAlpha, NSColor(red: 255, green: 255, blue: 0, alpha: 1.0).colorWithAlphaComponent(0.5))
+    XCTAssertEqual(yellowWithAlpha, NSColor(red: 255, green: 255, blue: 0, alpha: 1.0).withAlphaComponent(0.5))
   }
 
   func testGradient() {
-    let testGradient = [NSColor.blackColor(), NSColor.orangeColor()].gradient()
+    let testGradient = [NSColor.black, NSColor.orange].gradient()
 
-    XCTAssertTrue(testGradient.isKindOfClass(CAGradientLayer))
+    XCTAssertTrue(testGradient.isKind(of: CAGradientLayer.self))
     XCTAssertEqual(testGradient.colors?.count, 2)
     XCTAssertEqual(
-      CGColorSpaceGetModel(CGColorGetColorSpace((testGradient.colors as! [CGColor])[0])),
-      CGColorSpaceGetModel(CGColorGetColorSpace(NSColor.blackColor().CGColor)))
+      (testGradient.colors as! [CGColor])[0].colorSpace?.model,
+      (NSColor.black.cgColor).colorSpace?.model)
     XCTAssertEqual(
-      CGColorSpaceGetModel(CGColorGetColorSpace((testGradient.colors as! [CGColor])[1])),
-      CGColorSpaceGetModel(CGColorGetColorSpace(NSColor.orangeColor().CGColor)))
+      (testGradient.colors as! [CGColor])[1].colorSpace?.model,
+      (NSColor.orange.cgColor).colorSpace?.model)
 
-    let testGradientWithLocation = [NSColor.blueColor(), NSColor.yellowColor()].gradient { gradient in
+    let testGradientWithLocation = [NSColor.blue, NSColor.yellow].gradient { gradient in
       gradient.locations = [0.25, 1.0]
       return gradient
     }
 
-    XCTAssertTrue(testGradient.isKindOfClass(CAGradientLayer))
+    XCTAssertTrue(testGradient.isKind(of: CAGradientLayer.self))
     XCTAssertEqual(testGradient.colors?.count, 2)
     XCTAssertEqual(
-      CGColorSpaceGetModel(CGColorGetColorSpace((testGradientWithLocation.colors as! [CGColor])[0])),
-      CGColorSpaceGetModel(CGColorGetColorSpace(NSColor.blueColor().CGColor)))
+      (testGradientWithLocation.colors as! [CGColor])[0].colorSpace?.model,
+      (NSColor.blue.cgColor).colorSpace?.model)
     XCTAssertEqual(
-      CGColorSpaceGetModel(CGColorGetColorSpace((testGradientWithLocation.colors as! [CGColor])[1])),
-      CGColorSpaceGetModel(CGColorGetColorSpace(NSColor.yellowColor().CGColor)))
+      (testGradientWithLocation.colors as! [CGColor])[1].colorSpace?.model,
+      (NSColor.yellow.cgColor).colorSpace?.model)
     XCTAssertEqual(testGradientWithLocation.locations!, [0.25,1.0])
   }
   
   func testComponents() {
-    let blue = NSColor.blueColor()
-    let green = NSColor.greenColor()
-    let red = NSColor.redColor()
-    let black = NSColor.blackColor()
-    let white = NSColor.whiteColor()
+    let blue = NSColor.blue
+    let green = NSColor.green
+    let red = NSColor.red
+    let black = NSColor.black
+    let white = NSColor.white
     
     XCTAssertEqual(blue.getRed(), 0.0)
     XCTAssertEqual(blue.getGreen(), 0.0)
@@ -120,12 +120,12 @@ class NSColorTests: XCTestCase {
   }
   
   func testBlending() {
-    let black = NSColor.blackColor()
-    let white = NSColor.whiteColor()
-    let yellow = NSColor.yellowColor()
-    let green = NSColor.greenColor()
-    let red = NSColor.redColor()
-    let blue = NSColor.blueColor()
+    let black = NSColor.black
+    let white = NSColor.white
+    let yellow = NSColor.yellow
+    let green = NSColor.green
+    let red = NSColor.red
+    let blue = NSColor.blue
     let deSaturatedBlue = NSColor(hue: 240.0/360.0,
                                   saturation: 0.1,
                                   brightness: 1.0,
