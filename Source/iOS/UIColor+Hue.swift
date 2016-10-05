@@ -58,12 +58,12 @@ public extension UIColor {
   }
 
   internal func rgbComponents() -> [CGFloat] {
-    guard let RGB = cgColor.components else {
+    guard let RGB = cgColor.components, RGB.count == 3 else {
       return [0,0,0]
     }
     return RGB
   }
-  
+
   public var isDark: Bool {
     let RGB = rgbComponents()
     return (0.2126 * RGB[0] + 0.7152 * RGB[1] + 0.0722 * RGB[2]) < 0.5
@@ -126,7 +126,7 @@ public extension Array where Element : UIColor {
     gradient.colors = self.map { $0.cgColor }
 
     if let transform = transform {
-     gradient = transform(&gradient)
+      gradient = transform(&gradient)
     }
 
     return gradient
