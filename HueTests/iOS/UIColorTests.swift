@@ -85,40 +85,40 @@ class UIColorTests: XCTestCase {
       UIColor.yellow.cgColor.colorSpace!.model)
     XCTAssertEqual(testGradientWithLocation.locations!, [0.25,1.0])
   }
-  
+
   func testComponents() {
     let blue = UIColor.blue
     let green = UIColor.green
     let red = UIColor.red
     let black = UIColor.black
     let white = UIColor.white
-    
+
     XCTAssertEqual(blue.redComponent, 0.0)
     XCTAssertEqual(blue.greenComponent, 0.0)
     XCTAssertEqual(blue.blueComponent, 1.0)
     XCTAssertEqual(blue.alphaComponent, 1.0)
-    
+
     XCTAssertEqual(red.redComponent, 1.0)
     XCTAssertEqual(red.greenComponent, 0.0)
     XCTAssertEqual(red.blueComponent, 0.0)
     XCTAssertEqual(red.alphaComponent, 1.0)
-    
+
     XCTAssertEqual(green.redComponent, 0.0)
     XCTAssertEqual(green.greenComponent, 1.0)
     XCTAssertEqual(green.blueComponent, 0.0)
     XCTAssertEqual(green.alphaComponent, 1.0)
-    
+
     XCTAssertEqual(black.redComponent, 0.0)
     XCTAssertEqual(black.greenComponent, 0.0)
     XCTAssertEqual(black.blueComponent, 0.0)
     XCTAssertEqual(black.alphaComponent, 1.0)
-    
+
     XCTAssertEqual(white.redComponent, 1.0)
     XCTAssertEqual(white.greenComponent, 1.0)
     XCTAssertEqual(white.blueComponent, 1.0)
     XCTAssertEqual(white.alphaComponent, 1.0)
   }
-  
+
   func testBlending() {
     let black = UIColor.black
     let white = UIColor.white
@@ -130,18 +130,18 @@ class UIColorTests: XCTestCase {
                                   saturation: 0.1,
                                   brightness: 1.0,
                                   alpha: 1.0)
-    
+
     let testWhite = black.addRGB(color: white)
     XCTAssertEqual(testWhite.redComponent, white.redComponent)
     XCTAssertEqual(testWhite.greenComponent, white.greenComponent)
     XCTAssertEqual(testWhite.blueComponent, white.blueComponent)
-    
+
     let testYellow = green.addRGB(color: red)
     XCTAssertEqual(testYellow.redComponent, yellow.redComponent)
     XCTAssertEqual(testYellow.greenComponent, yellow.greenComponent)
     XCTAssertEqual(testYellow.blueComponent, yellow.blueComponent)
-    
-    let testBlue = deSaturatedBlue.addHue(0.0, saturation: 0.9, brightness: 0.0, alpha: 0.0);
+
+    let testBlue = deSaturatedBlue.addHue(0.0, saturation: 1.0, brightness: 0.0, alpha: 0.0);
     XCTAssertEqual(testBlue.redComponent, blue.redComponent)
     XCTAssertEqual(testBlue.greenComponent, blue.greenComponent)
     XCTAssertEqual(testBlue.blueComponent, blue.blueComponent)

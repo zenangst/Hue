@@ -11,20 +11,20 @@ Hue is the all-in-one coloring utility that you'll ever need.
 ## Usage
 
 #### Hex
-<img src="https://raw.githubusercontent.com/hyperoslo/Hue/master/Images/icon_v3.png" alt="Hue Icon" align="right" />You can easily use hex colors with the `.hex` method on `UIColor`. It supports the following hex formats `#ffffff`, `ffffff`, `#fff`, `fff`
+<img src="https://raw.githubusercontent.com/hyperoslo/Hue/master/Images/icon_v3.png" alt="Hue Icon" align="right" />You can easily use hex colors with the `init(hex:)` convenience initializer on `UIColor`. It supports the following hex formats `#ffffff`, `ffffff`, `#fff`, `fff`
 ```swift
-let white = UIColor.hex("#ffffff")
-let black = UIColor.hex("#000000")
-let red = UIColor.hex("#ff0000")
-let blue = UIColor.hex("#0000ff")
-let green = UIColor.hex("#00ff00")
-let yellow = UIColor.hex("#ffff00")
+let white = UIColor(hex: "#ffffff")
+let black = UIColor(hex: "#000000")
+let red = UIColor(hex: "#ff0000")
+let blue = UIColor(hex: "#0000ff")
+let green = UIColor(hex: "#00ff00")
+let yellow = UIColor(hex: "#ffff00")
 ```
 
 #### Computed color properties
 ```swift
-let white = UIColor.hex("#ffffff")
-let black = UIColor.hex("#000000")
+let white = UIColor(hex: "#ffffff")
+let black = UIColor(hex: "#000000")
 
 if white.isDarkColor {} // return false
 if white.isBlackOrWhite {} // return true
@@ -60,7 +60,7 @@ let (background, primary, secondary, detail) = image.colors()
 You can get red, green, blue, and alpha components from any UIColor by using the (red|green|blue|alpha)Component property.
 
 ```swift
-let myColor = UIColor.hex("#ffafc2")
+let myColor = UIColor(hex: "#ffafc2")
 let myColorBlueComponent = myColor.blueComponent
 let myColorGreenComponent = myColor.greenComponent
 let myColorRedComponent = myColor.redComponent
@@ -73,8 +73,8 @@ let red = UIColor.redColor()
 let green = UIColor.greenColor()
 let yellow = red.addRGB(green)
 
-let desaturatedBlue = UIColor.hex("#aaaacc")
-let saturatedBlue = UIColor.addHue(0.0, saturation:1.0, brightness:0.0, alpha:0.0)
+let desaturatedBlue = UIColor(hex: "#aaaacc")
+let saturatedBlue = desaturatedBlue.addHue(0.0, saturation: 1.0, brightness: 0.0, alpha: 0.0)
 ```
 
 ## Examples
@@ -89,7 +89,7 @@ The demo also features [Spots](http://github.com/hyperoslo/Spots) for rendering 
 **Example code:**
 
 ```swift
-let color = UIColor.hex("#3b5998")
+let color = UIColor(hex: "#3b5998")
 backgroundColor = color
 label.textColor = color.isDark
   ? UIColor.whiteColor()
@@ -109,8 +109,8 @@ The demo features [Spots](http://github.com/hyperoslo/Spots) for rendering the l
 **Extract from the demo:**
 ```swift
 lazy var gradient: CAGradientLayer = [
-  UIColor.hex("#FD4340"),
-  UIColor.hex("#CE2BAE")
+  UIColor(hex: "#FD4340"),
+  UIColor(hex: "#CE2BAE")
   ].gradient { gradient in
     gradient.speed = 0
     gradient.timeOffset = 0

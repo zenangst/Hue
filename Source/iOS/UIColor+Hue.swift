@@ -178,14 +178,14 @@ public extension UIColor {
   /**adds hue, saturation, and brightness to the HSB components of this color (self)*/
   public func addHue(_ hue: CGFloat, saturation: CGFloat, brightness: CGFloat, alpha: CGFloat) -> UIColor {
     var (oldHue, oldSat, oldBright, oldAlpha) : (CGFloat, CGFloat, CGFloat, CGFloat) = (0,0,0,0)
-    self.getHue(&oldHue, saturation: &oldSat, brightness: &oldBright, alpha: &oldAlpha)
+    getHue(&oldHue, saturation: &oldSat, brightness: &oldBright, alpha: &oldAlpha)
     return UIColor(hue: oldHue + hue, saturation: oldSat + saturation, brightness: oldBright + brightness, alpha: oldAlpha + alpha)
   }
 
   /**adds red, green, and blue to the RGB components of this color (self)*/
   public func addRed(_ red: CGFloat, green: CGFloat, blue: CGFloat, alpha: CGFloat) -> UIColor {
     var (oldRed, oldGreen, oldBlue, oldAlpha) : (CGFloat, CGFloat, CGFloat, CGFloat) = (0,0,0,0)
-    self.getRed(&oldRed, green: &oldGreen, blue: &oldBlue, alpha: &oldAlpha)
+    getRed(&oldRed, green: &oldGreen, blue: &oldBlue, alpha: &oldAlpha)
     return UIColor(red: oldRed + red, green: oldGreen + green, blue: oldBlue + blue, alpha: oldAlpha + alpha)
   }
 
