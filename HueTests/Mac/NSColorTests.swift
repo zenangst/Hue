@@ -12,12 +12,12 @@ class NSColorTests: XCTestCase {
     let green = NSColor(hex: "#00FF00")
     let yellow = NSColor(hex: "#FFFF00")
 
-    XCTAssertEqual(white, NSColor(red: 255, green: 255, blue: 255, alpha: 1.0))
+    XCTAssertEqual(white, NSColor(red: 1, green: 1, blue: 1, alpha: 1.0))
     XCTAssertEqual(black, NSColor(red: 0, green: 0, blue: 0, alpha: 1.0))
-    XCTAssertEqual(red, NSColor(red: 255, green: 0, blue: 0, alpha: 1.0))
-    XCTAssertEqual(blue, NSColor(red: 0, green: 0, blue: 255, alpha: 1.0))
-    XCTAssertEqual(green, NSColor(red: 0, green: 255, blue: 0, alpha: 1.0))
-    XCTAssertEqual(yellow, NSColor(red: 255, green: 255, blue: 0, alpha: 1.0))
+    XCTAssertEqual(red, NSColor(red: 1, green: 0, blue: 0, alpha: 1.0))
+    XCTAssertEqual(blue, NSColor(red: 0, green: 0, blue: 1, alpha: 1.0))
+    XCTAssertEqual(green, NSColor(red: 0, green: 1, blue: 0, alpha: 1.0))
+    XCTAssertEqual(yellow, NSColor(red: 1, green: 1, blue: 0, alpha: 1.0))
   }
 
   func testToHexWithPrefix() {

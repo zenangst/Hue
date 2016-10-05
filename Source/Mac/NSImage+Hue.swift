@@ -67,9 +67,9 @@ extension NSImage {
       for y in 0..<height {
         let pixel = ((width * y) + x) * bytesPerPixel
         let color = NSColor(
-          red:   CGFloat(data[pixel+1]) / 255,
-          green: CGFloat(data[pixel+2]) / 255,
-          blue:  CGFloat(data[pixel+3]) / 255,
+          red:   CGFloat((data?[pixel+1])!) / 255,
+          green: CGFloat((data?[pixel+2])!) / 255,
+          blue:  CGFloat((data?[pixel+3])!) / 255,
           alpha: 1
         )
 
@@ -116,7 +116,7 @@ extension NSImage {
     for imageColor in imageColors {
       guard let imageColor = imageColor as? NSColor else { continue }
 
-      let color = imageColor.colorWithMinimumSaturation(0.15)
+      let color = imageColor.colorWithMinimumSaturation(minSaturation: 0.15)
 
       if color.isDark == !isDarkBackgound {
         let colorCount = imageColors.count(for: color)

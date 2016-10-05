@@ -4,6 +4,7 @@ import AppKit
 
 public extension NSColor {
 
+
   convenience init(hex: String) {
     var hex = hex.hasPrefix("#")
       ? String(hex.characters.dropFirst())
@@ -14,7 +15,6 @@ public extension NSColor {
         self.init(white: 1.0, alpha: 0.0)
         return
     }
-
     if hex.characters.count == 3 {
       for (index, char) in hex.characters.enumerated() {
         hex.insert(char, at: hex.characters.index(hex.startIndex, offsetBy: index * 2))
@@ -58,7 +58,7 @@ public extension NSColor {
 
     return String(format: "\(prefix)%02X%02X%02X", Int(r * 255), Int(g * 255), Int(b * 255))
   }
-
+  
   public var isDark: Bool {
     guard let RGB = cgColor.components else { return false }
     let r = RGB[0]
@@ -100,7 +100,17 @@ public extension NSColor {
     return result
   }
 
+  
+  
   public func isContrastingWith(_ color: NSColor) -> Bool {
+    
+    func colorLum(rgb: [CGFloat]) -> CGFloat {
+      let r = 0.2126 * rgb[0]
+      let g = 0.7152 * rgb[1]
+      let b = 0.0722 * rgb[2]
+      return r + g + b
+    }
+    
     let bgComponents = cgColor.components!
     let fgComponents = color.cgColor.components!
 
@@ -130,7 +140,7 @@ public extension Array where Element : NSColor {
     gradient.colors = self.map { $0.cgColor }
 
     if let transform = transform {
-      transform(&gradient)
+      gradient = transform(&gradient)
     }
 
     return gradient
