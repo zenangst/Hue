@@ -7,11 +7,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
   var window: UIWindow?
   var navigationController: UINavigationController?
 
-  func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-    window = UIWindow(frame: UIScreen.mainScreen().bounds)
+  func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+    window = UIWindow(frame: UIScreen.main.bounds)
 
     ListSpot.configure = { tableView in
-      tableView.backgroundColor = UIColor.clearColor()
+      tableView.backgroundColor = UIColor.clear
       tableView.tableFooterView = UIView(frame: CGRect.zero)
       tableView.separatorInset = UIEdgeInsets(top: 10,
         left: 10,
@@ -19,7 +19,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         right: 10)
       tableView.separatorColor = Color.cellSeparator
     }
-    ListSpot.defaultView = GradientListCell.self
+    ListSpot.register(defaultView: GradientListCell.self)
 
     let controller = GradientsController(title: "Gradients")
     let navigationController = UINavigationController(rootViewController: controller)
@@ -32,10 +32,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     return true
   }
 
-  private func applyStyles() {
+  fileprivate func applyStyles() {
     let navigationBar = UINavigationBar.appearance()
-    navigationBar.barStyle = .Black
-    navigationBar.translucent = false
+    navigationBar.barStyle = .black
+    navigationBar.isTranslucent = false
     navigationBar.titleTextAttributes = [
       NSForegroundColorAttributeName: Color.navigationBarForeground,
       NSFontAttributeName: Font.navigationBar

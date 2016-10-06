@@ -1,5 +1,6 @@
 import UIKit
 import Spots
+import Brick
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -7,57 +8,55 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
   var window: UIWindow?
   var navigationController: UINavigationController?
 
-  func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
+  func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
 
-    window = UIWindow(frame: UIScreen.mainScreen().bounds)
+    window = UIWindow(frame: UIScreen.main.bounds)
 
-    ListSpot.configure = { tableView in tableView.tableFooterView = UIView(frame: CGRect.zero) }
-
-    CarouselSpot.defaultView = GridHexCell.self
+    CarouselSpot.register(defaultView: GridHexCell.self)
+    CarouselSpot.configure = { collectionView, _ in
+      collectionView.backgroundColor = UIColor.black
+    }
 
     let controller = SpotsController(spots: [
-      ListSpot(title: "CMYK"),
       CarouselSpot(Component(title: "CMYK", span: 3, items:
         [
-          ViewModel(title: "#00FFFF"),
-          ViewModel(title: "#FF00FF"),
-          ViewModel(title: "#FFFF00"),
-          ViewModel(title: "#000000")
+          Item(title: "#00FFFF"),
+          Item(title: "#FF00FF"),
+          Item(title: "#FFFF00"),
+          Item(title: "#000000")
         ]
         ), top: 5, left: 15, bottom: 5, right: 15, itemSpacing: 15),
-      ListSpot(title: "Facebook"),
       CarouselSpot(Component(title: "Facebook", span: 3, items:
         [
-          ViewModel(title: "#3b5998"),
-          ViewModel(title: "#8b9dc3"),
-          ViewModel(title: "#dfe3ee"),
-          ViewModel(title: "#f7f7f7"),
-          ViewModel(title: "#ffffff")
+          Item(title: "#3b5998"),
+          Item(title: "#8b9dc3"),
+          Item(title: "#dfe3ee"),
+          Item(title: "#f7f7f7"),
+          Item(title: "#ffffff")
         ]
         ), top: 5, left: 15, bottom: 5, right: 15, itemSpacing: 15),
-      ListSpot(title: "Rainbow Dash"),
       CarouselSpot(Component(title: "Rainbow Dash", span: 3, items:
         [
-          ViewModel(title: "#ee4035"),
-          ViewModel(title: "#f37736"),
-          ViewModel(title: "#fdf498"),
-          ViewModel(title: "#7bc043"),
-          ViewModel(title: "#0392cf")
+          Item(title: "#ee4035"),
+          Item(title: "#f37736"),
+          Item(title: "#fdf498"),
+          Item(title: "#7bc043"),
+          Item(title: "#0392cf")
         ]
         ), top: 5, left: 15, bottom: 5, right: 15, itemSpacing: 15),
-
-      ListSpot(title: "Beach"),
       CarouselSpot(Component(title: "Beach", span: 3, items:
         [
-          ViewModel(title: "#96ceb4"),
-          ViewModel(title: "#ffeead"),
-          ViewModel(title: "#ff6f69"),
-          ViewModel(title: "#ffcc5c"),
-          ViewModel(title: "#88d8b0")
+          Item(title: "#96ceb4"),
+          Item(title: "#ffeead"),
+          Item(title: "#ff6f69"),
+          Item(title: "#ffcc5c"),
+          Item(title: "#88d8b0")
         ]
         ), top: 5, left: 15, bottom: 5, right: 15, itemSpacing: 15),
       ]
     )
+
+    controller.spotsScrollView.contentInset.top = 15
 
     window?.rootViewController = controller
     window?.makeKeyAndVisible()

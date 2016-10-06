@@ -1,17 +1,18 @@
 import UIKit
 import Sugar
 import Spots
+import Brick
 import Hue
 
-class GridHexCell: UICollectionViewCell, ViewConfigurable {
+class GridHexCell: UICollectionViewCell, SpotConfigurable {
 
-  var size = CGSize(width: 125, height: 160)
+  var preferredViewSize: CGSize = CGSize(width: 125, height: 160)
 
   lazy var label: UILabel = { [unowned self] in
-    let label = UILabel(frame: CGRectZero)
-    label.font = UIFont.boldSystemFontOfSize(11)
+    let label = UILabel(frame: CGRect.zero)
+    label.font = UIFont.boldSystemFont(ofSize: 11)
     label.numberOfLines = 4
-    label.textAlignment = .Center
+    label.textAlignment = .center
 
     return label
     }()
@@ -25,11 +26,11 @@ class GridHexCell: UICollectionViewCell, ViewConfigurable {
     fatalError("init(coder:) has not been implemented")
   }
 
-  func configure(inout item: ViewModel) {
+  func configure(_ item: inout Item) {
     let color = UIColor(hex:item.title)
     backgroundColor = color
 
-    label.textColor = color.isDark ? UIColor.whiteColor() : UIColor.darkGrayColor()
+    label.textColor = color.isDark ? UIColor.white : UIColor.darkGray
     label.attributedText = NSAttributedString(string: item.title,
       attributes: nil)
     label.frame.size.height = 44
