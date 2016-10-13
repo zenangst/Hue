@@ -8,13 +8,17 @@ class UIImageTests: XCTestCase {
 
   override func setUp() {
     super.setUp()
-    let bundle = NSBundle(forClass: self.classForCoder)
-    let path = bundle.pathForResource("Random Access Memories", ofType: "png")!
+    let bundle = Bundle(for: self.classForCoder)
+    let path = bundle.path(forResource: "Random Access Memories", ofType: "png")!
 
     image = UIImage(contentsOfFile: path)!
   }
 
   func testImageColors() {
+    let bundle = Bundle(for: self.classForCoder)
+    let path = bundle.path(forResource: "Random Access Memories", ofType: "png")!
+    let image = UIImage(contentsOfFile: path)!
+
     XCTAssertNotNil(image)
 
     let accuracy: CGFloat = 0.001
