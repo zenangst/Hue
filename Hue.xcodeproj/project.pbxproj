@@ -19,6 +19,9 @@
 		B53E39B71CA179A300EB1EEE /* UIColorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5EEA2151C3EAE01000F8F1B /* UIColorTests.swift */; };
 		B53E39B81CA179A700EB1EEE /* UIImageTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5EEA2161C3EAE01000F8F1B /* UIImageTests.swift */; };
 		B53E39B91CA179F400EB1EEE /* Random Access Memories.png in Resources */ = {isa = PBXBuildFile; fileRef = D5EEA20F1C3EAE01000F8F1B /* Random Access Memories.png */; };
+		BD6F86A31DB7F0A900222E22 /* Hue.h in Headers */ = {isa = PBXBuildFile; fileRef = BD6F86A21DB7F0A900222E22 /* Hue.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		BD6F86A41DB7F0A900222E22 /* Hue.h in Headers */ = {isa = PBXBuildFile; fileRef = BD6F86A21DB7F0A900222E22 /* Hue.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		BD6F86A51DB7F0A900222E22 /* Hue.h in Headers */ = {isa = PBXBuildFile; fileRef = BD6F86A21DB7F0A900222E22 /* Hue.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D528621D1C3EAC1D00AD11AD /* Hue.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D52862121C3EAC1D00AD11AD /* Hue.framework */; };
 		D5EEA2211C3EAE0A000F8F1B /* Random Access Memories.png in Resources */ = {isa = PBXBuildFile; fileRef = D5EEA20F1C3EAE01000F8F1B /* Random Access Memories.png */; };
 		D5EEA2221C3EAE25000F8F1B /* UIColorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5EEA2151C3EAE01000F8F1B /* UIColorTests.swift */; };
@@ -64,6 +67,7 @@
 		B53E39A21CA177C900EB1EEE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Info.plist; path = Hue/tvOS/Info.plist; sourceTree = SOURCE_ROOT; };
 		B53E39A71CA177C900EB1EEE /* Hue-tvOS-Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Hue-tvOS-Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B53E39AE1CA177C900EB1EEE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Info.plist; path = HueTests/tvOS/Info.plist; sourceTree = SOURCE_ROOT; };
+		BD6F86A21DB7F0A900222E22 /* Hue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Hue.h; path = Source/Shared/Hue.h; sourceTree = "<group>"; };
 		D52862121C3EAC1D00AD11AD /* Hue.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Hue.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D528621C1C3EAC1D00AD11AD /* Hue-iOS-Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Hue-iOS-Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D5EEA20F1C3EAE01000F8F1B /* Random Access Memories.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Random Access Memories.png"; sourceTree = "<group>"; };
@@ -172,6 +176,7 @@
 		D52862081C3EAC1D00AD11AD = {
 			isa = PBXGroup;
 			children = (
+				BD6F86A21DB7F0A900222E22 /* Hue.h */,
 				D5EEA20D1C3EAE01000F8F1B /* Hue */,
 				D5EEA2121C3EAE01000F8F1B /* HueTests */,
 				D5EEA2241C3EB008000F8F1B /* Source */,
@@ -265,6 +270,7 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BD6F86A41DB7F0A900222E22 /* Hue.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -272,6 +278,7 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BD6F86A51DB7F0A900222E22 /* Hue.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -279,6 +286,7 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BD6F86A31DB7F0A900222E22 /* Hue.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
