@@ -11,3 +11,6 @@ script:
 - xcodebuild clean build -project Hue.xcodeproj -scheme Hue-iOS -sdk iphonesimulator | xcpretty - c && exit ${PIPESTATUS[0]}
 - xcodebuild test -project Hue.xcodeproj -scheme Hue-iOS -sdk iphonesimulator -destination name="iPhone 6" | xcpretty - c && exit ${PIPESTATUS[0]}
 - xcodebuild clean build test -project Hue.xcodeproj -scheme Hue-tvOS -sdk appletvsimulator -destination "name=Apple TV 1080p" | xcpretty - c && exit ${PIPESTATUS[0]}
+
+notifications:
+  email: false
