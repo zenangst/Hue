@@ -13,6 +13,8 @@ class CountedColor {
 extension NSImage {
 
   fileprivate func resize(_ newSize: CGSize) -> NSImage {
+    guard newSize.width > 0.0 && newSize.height > 0.0 else { return NSImage() }
+
     let scaledImage = NSImage(size: newSize)
     scaledImage.lockFocus()
     let ctx = NSGraphicsContext.current()
