@@ -21,7 +21,7 @@ extension NSImage {
     ctx?.imageInterpolation = .high
     draw(in: NSMakeRect(0, 0, newSize.width, newSize.height), from: NSRect.zero, operation: .copy, fraction: 1)
     scaledImage.unlockFocus()
-    
+
     return scaledImage
   }
 
@@ -87,7 +87,7 @@ extension NSImage {
         imageColors.add(color)
       }
     }
-    
+
     var sortedColors = [CountedColor]()
 
     for color in imageBackgroundColors {
@@ -140,18 +140,18 @@ extension NSImage {
 
       if primaryColor == nil &&
         color.isContrastingWith(imageBackgroundColor) {
-          primaryColor = color
+        primaryColor = color
       } else if secondaryColor == nil &&
         primaryColor != nil &&
         primaryColor!.isDistinctFrom(color) &&
         color.isContrastingWith(imageBackgroundColor) {
-          secondaryColor = color
+        secondaryColor = color
       } else if secondaryColor != nil &&
         (secondaryColor!.isDistinctFrom(color) &&
           primaryColor!.isDistinctFrom(color) &&
           color.isContrastingWith(imageBackgroundColor)) {
-            detailColor = color
-            break
+        detailColor = color
+        break
       }
     }
 
