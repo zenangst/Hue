@@ -24,20 +24,25 @@ extension NSImage {
   }
 
   public func colors(_ scaleDownSize: CGSize? = nil) -> (background: NSColor, primary: NSColor, secondary: NSColor, detail: NSColor) {
-    let cgImage: CGImage
+    let cgImage: CGImage?
 
     if let scaleDownSize = scaleDownSize {
       let context = NSGraphicsContext.current()
-      cgImage = resize(scaleDownSize).cgImage(forProposedRect: nil, context: context, hints: nil)!
+      cgImage = resize(scaleDownSize).cgImage(forProposedRect: nil, context: context, hints: nil)
     } else {
       let context = NSGraphicsContext.current()
       let ratio = size.width / size.height
       let r_width: CGFloat = 250
-      cgImage = resize(CGSize(width: r_width, height: r_width / ratio)).cgImage(forProposedRect: nil, context: context, hints: nil)!
+      cgImage = resize(CGSize(width: r_width, height: r_width / ratio)).cgImage(forProposedRect: nil, context: context, hints: nil)
     }
 
-    let width = cgImage.width
-    let height = cgImage.height
+    guard let resolvedImage = cgImage else { return (background: NSColor.clear,
+                                                     primary: NSColor.clear,
+                                                     secondary: NSColor.clear,
+                                                     detail: NSColor.clear) }
+
+    let width = resolvedImage.width
+    let height = resolvedImage.height
     let bytesPerPixel = 4
     let bytesPerRow = width * bytesPerPixel
     let bitsPerComponent = 8
@@ -48,7 +53,7 @@ extension NSImage {
     let raw = malloc(bytesPerRow * height)
     let bitmapInfo = CGImageAlphaInfo.premultipliedFirst.rawValue
     let context = CGContext(data: raw, width: width, height: height, bitsPerComponent: bitsPerComponent, bytesPerRow: bytesPerRow, space: colorSpace, bitmapInfo: bitmapInfo)
-    context?.draw(cgImage, in: CGRect(x: 0, y: 0, width: CGFloat(width), height: CGFloat(height)))
+    context?.draw(resolvedImage, in: CGRect(x: 0, y: 0, width: CGFloat(width), height: CGFloat(height)))
     let rawData = context?.data?.assumingMemoryBound(to: UInt8.self)
     let imageBackgroundColors = NSCountedSet(capacity: height)
     let imageColors = NSCountedSet(capacity: width * height)
