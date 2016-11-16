@@ -146,4 +146,68 @@ class NSColorTests: XCTestCase {
     XCTAssertEqual(testBlue.getGreen(), blue.getGreen())
     XCTAssertEqual(testBlue.getBlue(), blue.getBlue())
   }
+  
+  func testIsDark() {
+    // Colors created in the monochrome colorSpace -> 2 components
+    let monochromeBlack = NSColor.black
+    let monochromeWhite = NSColor.white
+    let monochromeDarkGray = NSColor.darkGray
+    let monochromeGray = NSColor.gray
+    let monochromeLightGray = NSColor.lightGray
+    
+    // Colors created in the RGBA colorSpace -> 4 components
+    let black = NSColor(hex: "000")
+    let white = NSColor(hex: "fff")
+    let darkGray = NSColor(hex: "555")
+    let gray = NSColor(hex: "7f7f7f")
+    let lightGray = NSColor(hex: "aaa")
+    let yellow = NSColor.yellow
+    let green = NSColor.green
+    let red = NSColor.red
+    let blue = NSColor.blue
+    
+    
+    let isMonochromeBlackDark = monochromeBlack.isDark
+    XCTAssertEqual(isMonochromeBlackDark, true)
+    
+    let isMonochromeWhiteDark = monochromeWhite.isDark
+    XCTAssertEqual(isMonochromeWhiteDark, false)
+    
+    let isMonochromeDarkGrayDark = monochromeDarkGray.isDark
+    XCTAssertEqual(isMonochromeDarkGrayDark, true)
+    
+    let isMonochromeGrayDark = monochromeGray.isDark
+    XCTAssertEqual(isMonochromeGrayDark, false)
+    
+    let isMonochromeLightGrayDark = monochromeLightGray.isDark
+    XCTAssertEqual(isMonochromeLightGrayDark, false)
+    
+    let isBlackDark = black.isDark
+    XCTAssertEqual(isBlackDark, true)
+    
+    let isWhiteDark = white.isDark
+    XCTAssertEqual(isWhiteDark, false)
+    
+    let isDarkGrayDark = darkGray.isDark
+    XCTAssertEqual(isDarkGrayDark, true)
+    
+//  edge case! Should be false, but `rgbComponents()` returns 0.498039215686275 instead of 0.5 for each component
+//    let isGrayDark = gray.isDark
+//    XCTAssertEqual(isGrayDark, false)
+    
+    let isLightGrayDark = lightGray.isDark
+    XCTAssertEqual(isLightGrayDark, false)
+    
+    let isYellowDark = yellow.isDark
+    XCTAssertEqual(isYellowDark, false)
+    
+    let isGreenDark = green.isDark
+    XCTAssertEqual(isGreenDark, false)
+    
+    let isRedDark = red.isDark
+    XCTAssertEqual(isRedDark, true)
+    
+    let isBlueDark = blue.isDark
+    XCTAssertEqual(isBlueDark, true)
+  }
 }

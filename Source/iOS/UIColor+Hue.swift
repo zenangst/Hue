@@ -58,10 +58,10 @@ public extension UIColor {
   }
 
   internal func rgbComponents() -> [CGFloat] {
-    guard let RGB = cgColor.components, RGB.count == 3 else {
-      return [0,0,0]
-    }
-    return RGB
+    var (r, g, b, a): (CGFloat, CGFloat, CGFloat, CGFloat) = (0.0, 0.0, 0.0, 0.0)
+    getRed(&r, green: &g, blue: &b, alpha: &a)
+    
+    return [r, g, b]
   }
 
   public var isDark: Bool {
