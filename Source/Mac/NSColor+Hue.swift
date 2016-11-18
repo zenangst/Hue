@@ -58,39 +58,43 @@ public extension NSColor {
 
     return String(format: "\(prefix)%02X%02X%02X", Int(r * 255), Int(g * 255), Int(b * 255))
   }
+    
+  internal func rgbComponents() -> [CGFloat] {
+    var (r, g, b, a): (CGFloat, CGFloat, CGFloat, CGFloat) = (0.0, 0.0, 0.0, 0.0)
+    usingColorSpace(NSColorSpace.genericRGB)!.getRed(&r, green: &g, blue: &b, alpha: &a)
+    
+    return [r, g, b]
+  }
   
   public var isDark: Bool {
-    guard let RGB = cgColor.components else { return false }
-    let r = RGB[0]
-    let g = RGB[1]
-    let b = RGB[2]
-    return (0.2126 * r + 0.7152 * g + 0.0722 * b) < 0.5
+    let RGB = rgbComponents()
+    return (0.2126 * RGB[0] + 0.7152 * RGB[1] + 0.0722 * RGB[2]) < 0.5
   }
 
   public var isBlackOrWhite: Bool {
-    let RGB = cgColor.components
-    return (RGB![0] > 0.91 && RGB![1] > 0.91 && RGB![2] > 0.91) || (RGB![0] < 0.09 && RGB![1] < 0.09 && RGB![2] < 0.09)
+    let RGB = rgbComponents()
+    return (RGB[0] > 0.91 && RGB[1] > 0.91 && RGB[2] > 0.91) || (RGB[0] < 0.09 && RGB[1] < 0.09 && RGB[2] < 0.09)
   }
 
   public var isBlack: Bool {
-    let RGB = cgColor.components
-    return (RGB![0] < 0.09 && RGB![1] < 0.09 && RGB![2] < 0.09)
+    let RGB = rgbComponents()
+    return (RGB[0] < 0.09 && RGB[1] < 0.09 && RGB[2] < 0.09)
   }
 
   public var isWhite: Bool {
-    let RGB = cgColor.components
-    return (RGB![0] > 0.91 && RGB![1] > 0.91 && RGB![2] > 0.91)
+    let RGB = rgbComponents()
+    return (RGB[0] > 0.91 && RGB[1] > 0.91 && RGB[2] > 0.91)
   }
 
   public func isDistinctFrom(_ color: NSColor) -> Bool {
-    let bg = cgColor.components
-    let fg = color.cgColor.components
+    let bg = rgbComponents()
+    let fg = color.rgbComponents()
     let threshold: CGFloat = 0.25
     var result = false
 
-    if fabs((bg?[0])! - (fg?[0])!) > threshold || fabs((bg?[1])! - (fg?[1])!) > threshold || fabs((bg?[2])! - (fg?[2])!) > threshold {
-      if fabs((bg?[0])! - (bg?[1])!) < 0.03 && fabs((bg?[0])! - (bg?[2])!) < 0.03 {
-        if fabs((fg?[0])! - (fg?[1])!) < 0.03 && fabs((fg?[0])! - (fg?[2])!) < 0.03 {
+    if fabs(bg[0] - fg[0]) > threshold || fabs(bg[1] - fg[1]) > threshold || fabs(bg[2] - fg[2]) > threshold {
+      if fabs(bg[0] - bg[1]) < 0.03 && fabs(bg[0] - bg[2]) < 0.03 {
+        if fabs(fg[0] - fg[1]) < 0.03 && fabs(fg[0] - fg[2]) < 0.03 {
           result = false
         }
       }
@@ -111,8 +115,8 @@ public extension NSColor {
       return r + g + b
     }
     
-    let bgComponents = cgColor.components!
-    let fgComponents = color.cgColor.components!
+    let bgComponents = rgbComponents()
+    let fgComponents = color.rgbComponents()
 
     let br = bgComponents[0]
     let bg = bgComponents[1]
