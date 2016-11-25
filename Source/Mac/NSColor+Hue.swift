@@ -208,12 +208,22 @@ public extension NSColor {
   public func add(hue: CGFloat, saturation: CGFloat, brightness: CGFloat, alpha: CGFloat) -> NSColor {
     var (oldHue, oldSat, oldBright, oldAlpha) : (CGFloat, CGFloat, CGFloat, CGFloat) = (0,0,0,0)
     self.getHue(&oldHue, saturation: &oldSat, brightness: &oldBright, alpha: &oldAlpha)
-    return NSColor(hue: oldHue + hue, saturation: oldSat + saturation, brightness: oldBright + brightness, alpha: oldAlpha + alpha)
+    // make sure new values doesn't overflow
+    let newHue: CGFloat = max(min(oldHue + hue, 1.0), 0)
+    let newBright: CGFloat = max(min(oldBright + brightness, 1.0), 0)
+    let newSat: CGFloat = max(min(oldSat + saturation, 1.0), 0)
+    let newAlpha: CGFloat = max(min(oldAlpha + alpha, 1.0), 0)
+    return NSColor(hue: newHue, saturation: newBright, brightness: newSat, alpha: newAlpha)
   }
 
   /**adds red, green, and blue to the RGB components of this color (self)*/
   public func add(red: CGFloat, green: CGFloat, blue: CGFloat, alpha: CGFloat) -> NSColor {
-    return NSColor(red: self.getRed() + red, green: self.getGreen() + green, blue: self.getBlue() + blue, alpha: self.getAlpha() + alpha)
+    // make sure new values doesn't overflow
+    let newRed: CGFloat = max(min(self.getRed() + red, 1.0), 0)
+    let newGreen: CGFloat = max(min(self.getGreen() + green, 1.0), 0)
+    let newBlue: CGFloat = max(min(self.getBlue() + blue, 1.0), 0)
+    let newAlpha: CGFloat = max(min(self.getAlpha() + alpha, 1.0), 0)
+    return NSColor(red: newRed, green: newGreen, blue: newBlue, alpha: newAlpha)
   }
 
   public func add(hsb color: NSColor) -> NSColor {
