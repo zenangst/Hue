@@ -179,11 +179,16 @@ public extension UIColor {
   public func add(hue: CGFloat, saturation: CGFloat, brightness: CGFloat, alpha: CGFloat) -> UIColor {
     var (oldHue, oldSat, oldBright, oldAlpha) : (CGFloat, CGFloat, CGFloat, CGFloat) = (0,0,0,0)
     getHue(&oldHue, saturation: &oldSat, brightness: &oldBright, alpha: &oldAlpha)
+    
     // make sure new values doesn't overflow
-    let newHue: CGFloat = max(min(oldHue + hue, 1.0), 0)
+    var newHue = oldHue + hue
+    while newHue < 0.0 { newHue += 1.0 }
+    while newHue > 1.0 { newHue -= 1.0 }
+    
     let newBright: CGFloat = max(min(oldBright + brightness, 1.0), 0)
     let newSat: CGFloat = max(min(oldSat + saturation, 1.0), 0)
     let newAlpha: CGFloat = max(min(oldAlpha + alpha, 1.0), 0)
+    
     return UIColor(hue: newHue, saturation: newSat, brightness: newBright, alpha: newAlpha)
   }
   
