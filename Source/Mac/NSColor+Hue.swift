@@ -32,7 +32,7 @@ public extension NSColor {
     return NSColor(hex: string)
   }
 
-  public func colorWithMinimumSaturation(_ minSaturation: CGFloat) -> NSColor {
+  public func color(minSaturation: CGFloat) -> NSColor {
     var (hue, saturation, brightness, alpha): (CGFloat, CGFloat, CGFloat, CGFloat) = (0.0, 0.0, 0.0, 0.0)
     getHue(&hue, saturation: &saturation, brightness: &brightness, alpha: &alpha)
 
@@ -50,11 +50,11 @@ public extension NSColor {
 
 public extension NSColor {
 
-  public func hex(withPrefix: Bool = true) -> String {
+  public func hex(hashPrefix: Bool = true) -> String {
     var (r, g, b, a): (CGFloat, CGFloat, CGFloat, CGFloat) = (0.0, 0.0, 0.0, 0.0)
     usingColorSpace(NSColorSpace.genericRGB)!.getRed(&r, green: &g, blue: &b, alpha: &a)
 
-    let prefix = withPrefix ? "#" : ""
+    let prefix = hashPrefix ? "#" : ""
 
     return String(format: "\(prefix)%02X%02X%02X", Int(r * 255), Int(g * 255), Int(b * 255))
   }
@@ -86,7 +86,7 @@ public extension NSColor {
     return (RGB[0] > 0.91 && RGB[1] > 0.91 && RGB[2] > 0.91)
   }
 
-  public func isDistinctFrom(_ color: NSColor) -> Bool {
+  public func isDistinct(from color: NSColor) -> Bool {
     let bg = rgbComponents()
     let fg = color.rgbComponents()
     let threshold: CGFloat = 0.25
@@ -106,7 +106,7 @@ public extension NSColor {
 
   
   
-  public func isContrastingWith(_ color: NSColor) -> Bool {
+  public func isContrasting(with color: NSColor) -> Bool {
     
     func colorLum(rgb: [CGFloat]) -> CGFloat {
       let r = 0.2126 * rgb[0]
@@ -205,35 +205,50 @@ public extension NSColor {
 public extension NSColor {
 
   /**adds hue, saturation, and brightness to the HSB components of this color (self)*/
-  public func addHue(_ hue: CGFloat, saturation: CGFloat, brightness: CGFloat, alpha: CGFloat) -> NSColor {
+  public func add(hue: CGFloat, saturation: CGFloat, brightness: CGFloat, alpha: CGFloat) -> NSColor {
     var (oldHue, oldSat, oldBright, oldAlpha) : (CGFloat, CGFloat, CGFloat, CGFloat) = (0,0,0,0)
     self.getHue(&oldHue, saturation: &oldSat, brightness: &oldBright, alpha: &oldAlpha)
-    return NSColor(hue: oldHue + hue, saturation: oldSat + saturation, brightness: oldBright + brightness, alpha: oldAlpha + alpha)
+    
+    // make sure new values doesn't overflow
+    var newHue = oldHue + hue
+    while newHue < 0.0 { newHue += 1.0 }
+    while newHue > 1.0 { newHue -= 1.0 }
+
+    let newBright: CGFloat = max(min(oldBright + brightness, 1.0), 0)
+    let newSat: CGFloat = max(min(oldSat + saturation, 1.0), 0)
+    let newAlpha: CGFloat = max(min(oldAlpha + alpha, 1.0), 0)
+    
+    return NSColor(hue: newHue, saturation: newBright, brightness: newSat, alpha: newAlpha)
   }
 
   /**adds red, green, and blue to the RGB components of this color (self)*/
-  public func addRed(_ red: CGFloat, green: CGFloat, blue: CGFloat, alpha: CGFloat) -> NSColor {
-    return NSColor(red: self.getRed() + red, green: self.getGreen() + green, blue: self.getBlue() + blue, alpha: self.getAlpha() + alpha)
+  public func add(red: CGFloat, green: CGFloat, blue: CGFloat, alpha: CGFloat) -> NSColor {
+    // make sure new values doesn't overflow
+    let newRed: CGFloat = max(min(self.getRed() + red, 1.0), 0)
+    let newGreen: CGFloat = max(min(self.getGreen() + green, 1.0), 0)
+    let newBlue: CGFloat = max(min(self.getBlue() + blue, 1.0), 0)
+    let newAlpha: CGFloat = max(min(self.getAlpha() + alpha, 1.0), 0)
+    return NSColor(red: newRed, green: newGreen, blue: newBlue, alpha: newAlpha)
   }
 
-  public func addHSB(_ color: NSColor) -> NSColor {
+  public func add(hsb color: NSColor) -> NSColor {
     var (h,s,b,a) : (CGFloat, CGFloat, CGFloat, CGFloat) = (0,0,0,0)
     color.getHue(&h, saturation: &s, brightness: &b, alpha: &a)
-    return self.addHue(h, saturation: s, brightness: b, alpha: 0)
+    return self.add(hue: h, saturation: s, brightness: b, alpha: 0)
   }
 
-  public func addRGB(_ color: NSColor) -> NSColor {
-    return self.addRed(color.getRed(), green: color.getGreen(), blue: color.getBlue(), alpha: 0)
+  public func add(rgb color: NSColor) -> NSColor {
+    return self.add(red: color.getRed(), green: color.getGreen(), blue: color.getBlue(), alpha: 0)
   }
 
-  public func addHSBA(_ color: NSColor) -> NSColor {
+  public func add(hsba color: NSColor) -> NSColor {
     var (h,s,b,a) : (CGFloat, CGFloat, CGFloat, CGFloat) = (0,0,0,0)
     color.getHue(&h, saturation: &s, brightness: &b, alpha: &a)
-    return self.addHue(h, saturation: s, brightness: b, alpha: a)
+    return self.add(hue: h, saturation: s, brightness: b, alpha: a)
   }
 
   /**adds the rgb components of two colors*/
-  public func addRGBA(_ color: NSColor) -> NSColor {
-    return self.addRed(color.getRed(), green: color.getGreen(), blue: color.getBlue(), alpha: color.getAlpha())
+  public func add(rgba color: NSColor) -> NSColor {
+    return self.add(red: color.getRed(), green: color.getGreen(), blue: color.getBlue(), alpha: color.getAlpha())
   }
 }

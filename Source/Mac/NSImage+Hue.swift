@@ -12,7 +12,7 @@ class CountedColor {
 
 extension NSImage {
 
-  fileprivate func resize(_ newSize: CGSize) -> NSImage {
+  fileprivate func resize(to newSize: CGSize) -> NSImage {
     guard newSize.width > 0.0 && newSize.height > 0.0 else { return NSImage() }
 
     let scaledImage = NSImage(size: newSize)
@@ -25,17 +25,17 @@ extension NSImage {
     return scaledImage
   }
 
-  public func colors(_ scaleDownSize: CGSize? = nil) -> (background: NSColor, primary: NSColor, secondary: NSColor, detail: NSColor) {
+  public func colors(scaleDownSize: CGSize? = nil) -> (background: NSColor, primary: NSColor, secondary: NSColor, detail: NSColor) {
     let cgImage: CGImage?
 
     if let scaleDownSize = scaleDownSize {
       let context = NSGraphicsContext.current()
-      cgImage = resize(scaleDownSize).cgImage(forProposedRect: nil, context: context, hints: nil)
+      cgImage = resize(to: scaleDownSize).cgImage(forProposedRect: nil, context: context, hints: nil)
     } else {
       let context = NSGraphicsContext.current()
       let ratio = size.width / size.height
       let r_width: CGFloat = 250
-      cgImage = resize(CGSize(width: r_width, height: r_width / ratio)).cgImage(forProposedRect: nil, context: context, hints: nil)
+      cgImage = resize(to: CGSize(width: r_width, height: r_width / ratio)).cgImage(forProposedRect: nil, context: context, hints: nil)
     }
 
     guard let resolvedImage = cgImage else { return (background: NSColor.clear,
@@ -123,7 +123,7 @@ extension NSImage {
     for imageColor in imageColors {
       guard let imageColor = imageColor as? NSColor else { continue }
 
-      let color = imageColor.colorWithMinimumSaturation(0.15)
+      let color = imageColor.color(minSaturation: 0.15)
 
       if color.isDark == !isDarkBackgound {
         let colorCount = imageColors.count(for: color)
@@ -139,17 +139,17 @@ extension NSImage {
       let color = countedColor.color
 
       if primaryColor == nil &&
-        color.isContrastingWith(imageBackgroundColor) {
+        color.isContrasting(with: imageBackgroundColor) {
         primaryColor = color
       } else if secondaryColor == nil &&
         primaryColor != nil &&
-        primaryColor!.isDistinctFrom(color) &&
-        color.isContrastingWith(imageBackgroundColor) {
+        primaryColor!.isDistinct(from: color) &&
+        color.isContrasting(with: imageBackgroundColor) {
         secondaryColor = color
       } else if secondaryColor != nil &&
-        (secondaryColor!.isDistinctFrom(color) &&
-          primaryColor!.isDistinctFrom(color) &&
-          color.isContrastingWith(imageBackgroundColor)) {
+            (secondaryColor!.isDistinct(from: color) &&
+            primaryColor!.isDistinct(from: color) &&
+            color.isContrasting(with: imageBackgroundColor)) {
         detailColor = color
         break
       }
