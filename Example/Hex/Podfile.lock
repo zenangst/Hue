@@ -1,75 +1,61 @@
 PODS:
-  - Brick (1.0.0):
-    - Tailor
-  - Cache (1.5.1):
-    - CryptoSwift
-  - CryptoSwift (0.6.0)
-  - Hue (2.0.0)
-  - Imaginary (0.1.0):
-    - Cache
-  - Spots (5.0.0):
-    - Brick (= 1.0.0)
-    - Cache (= 1.5.1)
-    - CryptoSwift (= 0.6.0)
-    - Tailor (= 2.0.0)
-  - Sugar (1.2.0)
-  - Tailor (2.0.0)
+  - Cache (3.3.0):
+    - SwiftHash (~> 1.4.0)
+  - Hue (2.0.1)
+  - Imaginary (2.0.0):
+    - Cache (~> 3.0)
+  - Spots (6.0.3):
+    - Spots/Core (= 6.0.3)
+  - Spots/Core (6.0.3):
+    - Cache (~> 3.0)
+    - Tailor (~> 2.0)
+  - Sugar (3.1.2)
+  - SwiftHash (1.4.0)
+  - Tailor (2.2.1)
 
 DEPENDENCIES:
-  - Brick (from `https://github.com/hyperoslo/Brick`, branch `swift-3`)
-  - Cache (from `https://github.com/hyperoslo/Cache`, branch `swift-3`)
+  - Cache (from `https://github.com/hyperoslo/Cache`)
   - Hue (from `../../`)
-  - Imaginary (from `https://github.com/hyperoslo/Imaginary`, branch `swift-3`)
-  - Spots (from `https://github.com/hyperoslo/Spots`, branch `swift-3`)
-  - Sugar (from `https://github.com/hyperoslo/Sugar`, branch `swift-3`)
-  - Tailor (= 2.0.0)
+  - Imaginary (from `https://github.com/hyperoslo/Imaginary`)
+  - Spots (from `https://github.com/hyperoslo/Spots`)
+  - Sugar (from `https://github.com/hyperoslo/Sugar`)
+  - Tailor
 
 EXTERNAL SOURCES:
-  Brick:
-    :branch: swift-3
-    :git: https://github.com/hyperoslo/Brick
   Cache:
-    :branch: swift-3
     :git: https://github.com/hyperoslo/Cache
   Hue:
     :path: "../../"
   Imaginary:
-    :branch: swift-3
     :git: https://github.com/hyperoslo/Imaginary
   Spots:
-    :branch: swift-3
     :git: https://github.com/hyperoslo/Spots
   Sugar:
-    :branch: swift-3
     :git: https://github.com/hyperoslo/Sugar
 
 CHECKOUT OPTIONS:
-  Brick:
-    :commit: 8c3040e96b8e8d62b534d40def925de30b7f8853
-    :git: https://github.com/hyperoslo/Brick
   Cache:
-    :commit: 0246e9e9e8faae93f2c83d15824789577f4720bf
+    :commit: 4699caf4a994996840826a504270fb1ea6ac0a4f
     :git: https://github.com/hyperoslo/Cache
   Imaginary:
-    :commit: 6fadb337e2fa8ebf90d7c1b28f1fd4cac77a6fc9
+    :commit: 3176aad7a2834a966074f859fd133497532dd4d9
     :git: https://github.com/hyperoslo/Imaginary
   Spots:
-    :commit: a17522ffa64882d80aac071fcb9c5896e5621628
+    :commit: b99fce2737a2380fb516f1355c70ac5d4e85b356
     :git: https://github.com/hyperoslo/Spots
   Sugar:
-    :commit: d62ec6bf2a0b85012b0b1dfe25dcbf4d224f0f64
+    :commit: 60dfbe15325ef31cce29db4b59db7e7590c095fa
     :git: https://github.com/hyperoslo/Sugar
 
 SPEC CHECKSUMS:
-  Brick: 2de240889550c54ea20b146c72f31e9b256c71ad
-  Cache: db4c6908069c442e5de02c7271fb38b38fb60a67
-  CryptoSwift: 4a599b7241b8d3b857d6e2c28867d0bd5d1aae24
-  Hue: 2b317616a04cc5d7cccdb024c88e6d143e2b9cf1
-  Imaginary: 62a9ce1e6d7831ede429c8221a183f03ec2a90bc
-  Spots: 1abd118c590ae159f91ca95057537f14095e1d13
-  Sugar: 80c69044df1b48d4c9e3f66196afac827f076134
-  Tailor: d5ee9756f4698e0b0d3f3eaa650ffc995714b3b3
+  Cache: adbacf2672fbc9d48f552e03bbd4916510c39ac0
+  Hue: ab7efb15270e0bc764f2f468aa6f3f2728d52f2b
+  Imaginary: 642c6eb34ff2bd52404a70044599a8e2693e1e44
+  Spots: ed7d2d6a47de7a7a0a0ed83a9b9f4484f76dc418
+  Sugar: 41f2efa0244806f524ff2d77c951a6a43e81a0f3
+  SwiftHash: acf0f29032309a5c7a7f625595eade1aca97aca2
+  Tailor: caabfebed676fab6e00c0c173e05294ccf89861e
 
-PODFILE CHECKSUM: f454fce1f80bb0c04480eb923c08ba5adb402556
+PODFILE CHECKSUM: 3c397b0fa0d19e538ffbf5f81c252404517a4007
 
-COCOAPODS: 1.1.0.rc.2
+COCOAPODS: 1.2.1
