@@ -3,6 +3,9 @@ import UIKit
 // MARK: - Color Builders
 
 public extension UIColor {
+  /// Constructing color from hex string
+  ///
+  /// - Parameter hex: A hex string, can either contain # or not
   convenience init(hex string: String) {
     var hex = string.hasPrefix("#")
       ? String(string.characters.dropFirst())
@@ -28,7 +31,11 @@ public extension UIColor {
   public static func hex(string: String) -> UIColor {
     return UIColor(hex: string)
   }
-  
+
+  /// Adjust color based on saturation
+  ///
+  /// - Parameter minSaturation: The minimun saturation value
+  /// - Returns: The adjusted color
   public func color(minSaturation: CGFloat) -> UIColor {
     var (hue, saturation, brightness, alpha): (CGFloat, CGFloat, CGFloat, CGFloat) = (0.0, 0.0, 0.0, 0.0)
     getHue(&hue, saturation: &saturation, brightness: &brightness, alpha: &alpha)
@@ -37,7 +44,11 @@ public extension UIColor {
       ? UIColor(hue: hue, saturation: minSaturation, brightness: brightness, alpha: alpha)
       : self
   }
-  
+
+  /// Convenient method to change alpha value
+  ///
+  /// - Parameter value: The alpha value
+  /// - Returns: The alpha adjusted color
   public func alpha(_ value: CGFloat) -> UIColor {
     return withAlphaComponent(value)
   }

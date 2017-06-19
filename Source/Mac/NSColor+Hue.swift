@@ -3,6 +3,9 @@ import AppKit
 // MARK: - Color Builders
 
 public extension NSColor {
+  /// Constructing color from hex string
+  ///
+  /// - Parameter hex: A hex string, can either contain # or not
   convenience init(hex: String) {
     var hex = hex.hasPrefix("#")
       ? String(hex.characters.dropFirst())
@@ -30,6 +33,11 @@ public extension NSColor {
     return NSColor(hex: string)
   }
 
+
+  /// Adjust color based on saturation
+  ///
+  /// - Parameter minSaturation: The minimun saturation value
+  /// - Returns: The adjusted color
   public func color(minSaturation: CGFloat) -> NSColor {
     var (hue, saturation, brightness, alpha): (CGFloat, CGFloat, CGFloat, CGFloat) = (0.0, 0.0, 0.0, 0.0)
     getHue(&hue, saturation: &saturation, brightness: &brightness, alpha: &alpha)
@@ -39,6 +47,11 @@ public extension NSColor {
       : self
   }
 
+
+  /// Convenient method to change alpha value
+  ///
+  /// - Parameter value: The alpha value
+  /// - Returns: The alpha adjusted color
   public func alpha(_ value: CGFloat) -> NSColor {
     return withAlphaComponent(value)
   }
@@ -102,8 +115,6 @@ public extension NSColor {
     return result
   }
 
-  
-  
   public func isContrasting(with color: NSColor) -> Bool {
     
     func colorLum(rgb: [CGFloat]) -> CGFloat {
