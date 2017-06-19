@@ -3,8 +3,6 @@ import AppKit
 // MARK: - Color Builders
 
 public extension NSColor {
-
-
   convenience init(hex: String) {
     var hex = hex.hasPrefix("#")
       ? String(hex.characters.dropFirst())

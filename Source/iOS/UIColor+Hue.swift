@@ -3,7 +3,6 @@ import UIKit
 // MARK: - Color Builders
 
 public extension UIColor {
-  
   convenience init(hex string: String) {
     var hex = string.hasPrefix("#")
       ? String(string.characters.dropFirst())
