@@ -2,7 +2,6 @@ import Spots
 import Hue
 import Fakery
 import Sugar
-import Brick
 
 class GradientsController: SpotsController {
 
@@ -27,7 +26,9 @@ class GradientsController: SpotsController {
     }()
 
   convenience init(title: String) {
-    self.init(spot: ListSpot())
+    let model = ComponentModel(kind: .list)
+    let component = Component(model: model)
+    self.init(component: component)
     self.title = title
 
     animation.fromValue = gradient.colors
@@ -40,11 +41,13 @@ class GradientsController: SpotsController {
   override func viewDidLoad() {
     super.viewDidLoad()
 
-    spotsScrollView.backgroundColor = UIColor.clear
-    spotsScrollView.contentInset.bottom = 64
+    scrollView.backgroundColor = UIColor.clear
+    scrollView.contentInset.bottom = 64
 
     dispatch(queue: .interactive) { [weak self] in
-      self?.update { $0.component.items = GradientsController.generateItems(0, to: 50) }
+      self?.update {
+        $0.model.items = GradientsController.generateItems(0, to: 50)
+      }
     }
   }
 
@@ -65,7 +68,7 @@ class GradientsController: SpotsController {
   }
 
   fileprivate func updateGradient() {
-    let offset = spotsScrollView.contentOffset.y / spotsScrollView.contentSize.height
+    let offset = scrollView.contentOffset.y / scrollView.contentSize.height
 
     if offset >= 0 && offset <= CGFloat(animation.duration) {
       gradient.timeOffset = CFTimeInterval(offset)

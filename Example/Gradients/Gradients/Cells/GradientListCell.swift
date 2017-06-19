@@ -1,9 +1,8 @@
 import UIKit
 import Spots
 import Hue
-import Brick
 
-class GradientListCell: ListSpotCell {
+class GradientListCell: UITableViewCell, ItemConfigurable {
 
   lazy var selectedView: UIView = {
     let view = UIView()
@@ -12,13 +11,15 @@ class GradientListCell: ListSpotCell {
     return view
   }()
 
-  override func configure(_ item: inout Item) {
+  func configure(with item: Item) {
     textLabel?.textColor = UIColor(hex:"#fff").alpha(0.8)
     textLabel?.text = item.title
     textLabel?.font = Font.cell
     selectedBackgroundView = selectedView
     backgroundColor = UIColor.clear
+  }
 
-    item.size = CGSize(width: 64, height: 64)
+  func computeSize(for item: Item) -> CGSize {
+    return CGSize(width: 64, height: 64)
   }
 }
