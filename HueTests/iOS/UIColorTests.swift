@@ -44,12 +44,12 @@ class UIColorTests: XCTestCase {
     let green = UIColor.green
     let yellow = UIColor.yellow
 
-    XCTAssertEqual(white.hex(false), "FFFFFF")
-    XCTAssertEqual(black.hex(false), "000000")
-    XCTAssertEqual(red.hex(false), "FF0000")
-    XCTAssertEqual(blue.hex(false), "0000FF")
-    XCTAssertEqual(green.hex(false), "00FF00")
-    XCTAssertEqual(yellow.hex(false), "FFFF00")
+    XCTAssertEqual(white.hex(hashPrefix: false), "FFFFFF")
+    XCTAssertEqual(black.hex(hashPrefix: false), "000000")
+    XCTAssertEqual(red.hex(hashPrefix: false), "FF0000")
+    XCTAssertEqual(blue.hex(hashPrefix: false), "0000FF")
+    XCTAssertEqual(green.hex(hashPrefix: false), "00FF00")
+    XCTAssertEqual(yellow.hex(hashPrefix: false), "FFFF00")
   }
 
   func testAlpha() {
@@ -131,17 +131,18 @@ class UIColorTests: XCTestCase {
                                   brightness: 1.0,
                                   alpha: 1.0)
 
-    let testWhite = black.addRGB(color: white)
+    let testWhite = black.add(rgba: white)
     XCTAssertEqual(testWhite.redComponent, white.redComponent)
     XCTAssertEqual(testWhite.greenComponent, white.greenComponent)
     XCTAssertEqual(testWhite.blueComponent, white.blueComponent)
 
-    let testYellow = green.addRGB(color: red)
+    let testYellow = green.add(rgba: red)
     XCTAssertEqual(testYellow.redComponent, yellow.redComponent)
     XCTAssertEqual(testYellow.greenComponent, yellow.greenComponent)
     XCTAssertEqual(testYellow.blueComponent, yellow.blueComponent)
 
-    let testBlue = deSaturatedBlue.addHue(0.0, saturation: 1.0, brightness: 0.0, alpha: 0.0);
+    let testBlue = deSaturatedBlue.add(hue: 0.0, saturation: 1.0,
+                                       brightness: 0.0, alpha: 0.0)
     XCTAssertEqual(testBlue.redComponent, blue.redComponent)
     XCTAssertEqual(testBlue.greenComponent, blue.greenComponent)
     XCTAssertEqual(testBlue.blueComponent, blue.blueComponent)
@@ -159,7 +160,6 @@ class UIColorTests: XCTestCase {
     let black = UIColor(hex: "000")
     let white = UIColor(hex: "fff")
     let darkGray = UIColor(hex: "555")
-    let gray = UIColor(hex: "7f7f7f")
     let lightGray = UIColor(hex: "aaa")
     let yellow = UIColor.yellow
     let green = UIColor.green
@@ -190,10 +190,6 @@ class UIColorTests: XCTestCase {
     
     let isDarkGrayDark = darkGray.isDark
     XCTAssertEqual(isDarkGrayDark, true)
-    
-//  edge case! Should be false, but `rgbComponents()` returns 0.498039215686275 instead of 0.5 for each component
-//    let isGrayDark = gray.isDark
-//    XCTAssertEqual(isGrayDark, false)
     
     let isLightGrayDark = lightGray.isDark
     XCTAssertEqual(isLightGrayDark, false)
