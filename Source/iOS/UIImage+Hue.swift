@@ -11,7 +11,6 @@ class CountedColor {
 }
 
 extension UIImage {
-    
     fileprivate func resize(to newSize: CGSize) -> UIImage {
         UIGraphicsBeginImageContextWithOptions(newSize, false, 2)
         draw(in: CGRect(x: 0, y: 0, width: newSize.width, height: newSize.height))

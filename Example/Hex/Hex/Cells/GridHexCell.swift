@@ -1,12 +1,9 @@
 import UIKit
 import Sugar
 import Spots
-import Brick
 import Hue
 
-class GridHexCell: UICollectionViewCell, SpotConfigurable {
-
-  var preferredViewSize: CGSize = CGSize(width: 125, height: 160)
+class GridHexCell: UICollectionViewCell, ItemConfigurable {
 
   lazy var label: UILabel = { [unowned self] in
     let label = UILabel(frame: CGRect.zero)
@@ -26,7 +23,7 @@ class GridHexCell: UICollectionViewCell, SpotConfigurable {
     fatalError("init(coder:) has not been implemented")
   }
 
-  func configure(_ item: inout Item) {
+  func configure(with item: Item) {
     let color = UIColor(hex:item.title)
     backgroundColor = color
 
@@ -35,7 +32,9 @@ class GridHexCell: UICollectionViewCell, SpotConfigurable {
       attributes: nil)
     label.frame.size.height = 44
     label.frame.size.width = contentView.frame.size.width - 7.5
+  }
 
-    item.size.height = 155
+  func computeSize(for item: Item) -> CGSize {
+    return CGSize(width: 125, height: 160)
   }
 }

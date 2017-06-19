@@ -11,7 +11,6 @@ class CountedColor {
 }
 
 extension NSImage {
-
   fileprivate func resize(to newSize: CGSize) -> NSImage {
     guard newSize.width > 0.0 && newSize.height > 0.0 else { return NSImage() }
 
