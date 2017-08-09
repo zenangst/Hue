@@ -146,22 +146,29 @@ extension UIImage {
             detailColor    ?? (isDarkBackgound ? whiteColor : blackColor))
     }
     
-    public func color(at point: CGPoint) -> UIColor? {
-        let rect = CGRect(x: 0, y: 0, width: size.width, height: size.height)
-        guard let imgRef = cgImage,
-            let dataProvider = imgRef.dataProvider,
-            let dataCopy = dataProvider.data,
-            let data = CFDataGetBytePtr(dataCopy),
-            rect.contains(point) else {
-                return nil
-        }
-        
-        let pixelInfo = (Int(size.width) * Int(point.y) + Int(point.x)) * 4
-        let red = CGFloat(data[pixelInfo]) / 255.0
-        let green = CGFloat(data[pixelInfo + 1]) / 255.0
-        let blue = CGFloat(data[pixelInfo + 2]) / 255.0
-        let alpha = CGFloat(data[pixelInfo + 3]) / 255.0
-        
-        return UIColor(red: red, green: green, blue: blue, alpha: alpha)
+  public func color(at point: CGPoint, completion: @escaping (UIColor?) -> Void) {
+    let size = self.size
+    let cgImage = self.cgImage
+
+    DispatchQueue.global(qos: .userInteractive).async {
+      let rect = CGRect(x: 0, y: 0, width: size.width, height: size.height)
+      guard let imgRef = cgImage,
+        let dataProvider = imgRef.dataProvider,
+        let dataCopy = dataProvider.data,
+        let data = CFDataGetBytePtr(dataCopy),
+        rect.contains(point) else {
+          return
+      }
+
+      let pixelInfo = (Int(size.width) * Int(point.y) + Int(point.x)) * 4
+      let red = CGFloat(data[pixelInfo]) / 255.0
+      let green = CGFloat(data[pixelInfo + 1]) / 255.0
+      let blue = CGFloat(data[pixelInfo + 2]) / 255.0
+      let alpha = CGFloat(data[pixelInfo + 3]) / 255.0
+
+      DispatchQueue.main.async {
+        completion(UIColor(red: red, green: green, blue: blue, alpha: alpha))
+      }
     }
+  }
 }
