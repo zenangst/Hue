@@ -52,8 +52,29 @@ class UIImageTests: XCTestCase {
 
   func testPixelColorSubscript() {
     XCTAssertNotNil(image)
-    XCTAssertNil(image.color(at: CGPoint(x: 1300, y: -1)))
-    XCTAssertEqual(image.color(at: CGPoint(x: 0, y: 0))?.hex(), "#090D0E")
-    XCTAssertEqual(image.color(at: CGPoint(x: 535, y: 513))?.hex(), "#C8DDF0")
+
+    let nilExpectation = self.expectation(description: "Expect nil")
+    let secondExpectation = self.expectation(description: "Expect #090D0E")
+    let thirdExpectation = self.expectation(description: "Expect #C8DDF0")
+
+    // Expect the color to be `nil` because the y coordinate is outside.
+    image.color(at: .init(x: 1300, y: -1)) { color in
+      XCTAssertNil(color)
+      nilExpectation.fulfill()
+    }
+
+    // Expect a color to be resolved, more specifically #090D0E
+    image.color(at: .init(x: 0, y: 0)) { color in
+      XCTAssertEqual(color?.hex(), "#090D0E")
+      secondExpectation.fulfill()
+    }
+
+    // Expect a color to be resolved, more specifically #C8DDF0
+    image.color(at: .init(x: 535, y: 513)) { color in
+      XCTAssertEqual(color?.hex(), "#C8DDF0")
+      thirdExpectation.fulfill()
+    }
+
+    waitForExpectations(timeout: 10.0, handler: nil)
   }
 }
