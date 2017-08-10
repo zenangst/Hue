@@ -157,6 +157,7 @@ extension UIImage {
         let dataCopy = dataProvider.data,
         let data = CFDataGetBytePtr(dataCopy),
         rect.contains(point) else {
+          completion(nil)
           return
       }
       
