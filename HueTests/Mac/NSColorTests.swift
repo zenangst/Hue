@@ -159,7 +159,6 @@ class NSColorTests: XCTestCase {
     let black = NSColor(hex: "000")
     let white = NSColor(hex: "fff")
     let darkGray = NSColor(hex: "555")
-    let gray = NSColor(hex: "7f7f7f")
     let lightGray = NSColor(hex: "aaa")
     let yellow = NSColor.yellow
     let green = NSColor.green
