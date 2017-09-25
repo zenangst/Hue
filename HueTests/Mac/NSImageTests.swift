@@ -5,7 +5,7 @@ import XCTest
 class NSImageTests: XCTestCase {
 
   func testImageColors() {
-    let accuracy: CGFloat = 0.001
+    let accuracy: CGFloat = 0.3
     let bundle = Bundle(for: self.classForCoder)
     let path = bundle.path(forResource: "Random Access Memories", ofType: "png")!
     let image = NSImage(contentsOfFile: path)!

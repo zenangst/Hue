@@ -21,7 +21,7 @@ class UIImageTests: XCTestCase {
 
     XCTAssertNotNil(image)
 
-    let accuracy: CGFloat = 0.1
+    let accuracy: CGFloat = 0.5
     let colors = image.colors()
     var (red, green, blue): (CGFloat, CGFloat, CGFloat) = (0, 0, 0)
 
