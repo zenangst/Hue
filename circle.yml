@@ -2,12 +2,6 @@ machine:
   xcode:
     version: "9.0"
 
-dependencies:
-  override:
-    - bin/bootstrap-if-needed
-  Hue_directories:
-    - "Carthage"
-
 test:
   override:
     - set -o pipefail && xcodebuild -project Hue.xcodeproj -scheme "Hue-Mac" -sdk macosx clean build
