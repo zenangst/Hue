@@ -44,12 +44,12 @@ class NSColorTests: XCTestCase {
     let green = NSColor.green
     let yellow = NSColor.yellow
 
-    XCTAssertEqual(white.hex(withPrefix: false), "FFFFFF")
-    XCTAssertEqual(black.hex(withPrefix: false), "000000")
-    XCTAssertEqual(red.hex(withPrefix: false), "FF0000")
-    XCTAssertEqual(blue.hex(withPrefix: false), "0000FF")
-    XCTAssertEqual(green.hex(withPrefix: false), "00FF00")
-    XCTAssertEqual(yellow.hex(withPrefix: false), "FFFF00")
+    XCTAssertEqual(white.hex(hashPrefix: false), "FFFFFF")
+    XCTAssertEqual(black.hex(hashPrefix: false), "000000")
+    XCTAssertEqual(red.hex(hashPrefix: false), "FF0000")
+    XCTAssertEqual(blue.hex(hashPrefix: false), "0000FF")
+    XCTAssertEqual(green.hex(hashPrefix: false), "00FF00")
+    XCTAssertEqual(yellow.hex(hashPrefix: false), "FFFF00")
   }
 
   func testAlpha() {
@@ -130,18 +130,18 @@ class NSColorTests: XCTestCase {
                                   saturation: 0.1,
                                   brightness: 1.0,
                                   alpha: 1.0)
-    
-    let testWhite = black.addRGB(white)
+
+    let testWhite = black.add(rgb: white)
     XCTAssertEqual(testWhite.getRed(), white.getRed())
     XCTAssertEqual(testWhite.getGreen(), white.getGreen())
     XCTAssertEqual(testWhite.getBlue(), white.getBlue())
     
-    let testYellow = green.addRGB(red)
+    let testYellow = green.add(rgb: red)
     XCTAssertEqual(testYellow.getRed(), yellow.getRed())
     XCTAssertEqual(testYellow.getGreen(), yellow.getGreen())
     XCTAssertEqual(testYellow.getBlue(), yellow.getBlue())
     
-    let testBlue = deSaturatedBlue.addHue(0.0, saturation: 1.0, brightness: 0.0, alpha: 0.0);
+    let testBlue = deSaturatedBlue.add(hue: 0.0, saturation: 1.0, brightness: 0.0, alpha: 0.0);
     XCTAssertEqual(testBlue.getRed(), blue.getRed())
     XCTAssertEqual(testBlue.getGreen(), blue.getGreen())
     XCTAssertEqual(testBlue.getBlue(), blue.getBlue())
