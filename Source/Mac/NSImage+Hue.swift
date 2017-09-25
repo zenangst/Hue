@@ -16,7 +16,7 @@ extension NSImage {
 
     let scaledImage = NSImage(size: newSize)
     scaledImage.lockFocus()
-    let ctx = NSGraphicsContext.current()
+    let ctx = NSGraphicsContext.current
     ctx?.imageInterpolation = .high
     draw(in: NSMakeRect(0, 0, newSize.width, newSize.height), from: NSRect.zero, operation: .copy, fraction: 1)
     scaledImage.unlockFocus()
@@ -28,10 +28,10 @@ extension NSImage {
     let cgImage: CGImage?
 
     if let scaleDownSize = scaleDownSize {
-      let context = NSGraphicsContext.current()
+      let context = NSGraphicsContext.current
       cgImage = resize(to: scaleDownSize).cgImage(forProposedRect: nil, context: context, hints: nil)
     } else {
-      let context = NSGraphicsContext.current()
+      let context = NSGraphicsContext.current
       let ratio = size.width / size.height
       let r_width: CGFloat = 250
       cgImage = resize(to: CGSize(width: r_width, height: r_width / ratio)).cgImage(forProposedRect: nil, context: context, hints: nil)
