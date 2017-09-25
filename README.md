@@ -2,12 +2,11 @@
 
 Hue is the all-in-one coloring utility that you'll ever need.
 
-[![CI Status](http://img.shields.io/travis/hyperoslo/Hue.svg?style=flat)](https://travis-ci.org/hyperoslo/Hue)
 [![Version](https://img.shields.io/cocoapods/v/Hue.svg?style=flat)](http://cocoadocs.org/docsets/Hue)
 [![Carthage Compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
 [![License](https://img.shields.io/cocoapods/l/Hue.svg?style=flat)](http://cocoadocs.org/docsets/Hue)
 [![Platform](https://img.shields.io/cocoapods/p/Hue.svg?style=flat)](http://cocoadocs.org/docsets/Hue)
-![Swift](https://img.shields.io/badge/%20in-swift%203.0-orange.svg)
+![Swift](https://img.shields.io/badge/%20in-swift%204.0-orange.svg)
 
 ## Usage
 
@@ -139,7 +138,7 @@ github "hyperoslo/Hue"
 
 ## Author
 
-[Hyper](http://hyper.no) made this with ❤️. If you’re using this library we probably want to [hire you](https://github.com/hyperoslo/iOS-playbook/blob/master/HYPER_RECIPES.md)! Send us an email at ios@hyper.no.
+[Hyper](http://hyper.no) made this with ❤️
 
 ## Contribute
 

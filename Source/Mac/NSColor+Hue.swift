@@ -28,12 +28,6 @@ public extension NSColor {
       blue:  CGFloat((Int(hex, radix: 16)!) & 0xFF) / 255.0, alpha: 1.0)
   }
 
-  @available(*, deprecated: 1.1.2)
-  public static func hex(_ string: String) -> NSColor {
-    return NSColor(hex: string)
-  }
-
-
   /// Adjust color based on saturation
   ///
   /// - Parameter minSaturation: The minimun saturation value
