@@ -11,6 +11,7 @@ dependencies:
 test:
   override:
     - set -o pipefail && xcodebuild -project Hue.xcodeproj -scheme "Hue-Mac" -sdk macosx clean build
+    - set -o pipefail && xcodebuild -project Hue.xcodeproj -scheme "Hue-Mac" -sdk macosx -enableCodeCoverage YES test
     - set -o pipefail && xcodebuild -project Hue.xcodeproj -scheme "Hue-iOS" -sdk iphonesimulator clean build
     - set -o pipefail && xcodebuild -project Hue.xcodeproj -scheme "Hue-iOS" -sdk iphonesimulator -destination 'platform=iOS Simulator,name=iPhone 8,OS=11.0' -enableCodeCoverage YES test
     - set -o pipefail && xcodebuild -project Hue.xcodeproj -scheme "Hue-tvOS" -destination 'platform=tvOS Simulator,name=Apple TV,OS=11.0' clean build
