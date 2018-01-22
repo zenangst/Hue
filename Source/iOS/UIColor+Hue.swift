@@ -173,6 +173,30 @@ public extension UIColor {
       return a
     }
   }
+
+	var hueComponent : CGFloat {
+		get {
+			var hue : CGFloat = 0
+			getHue(&hue, saturation: nil, brightness: nil, alpha: nil)
+			return hue
+		}
+	}
+
+	var saturationComponent : CGFloat {
+		get {
+			var saturation : CGFloat = 0
+			getHue(nil, saturation: &saturation, brightness: nil, alpha: nil)
+			return saturation
+		}
+	}
+
+	var brightnessComponent : CGFloat {
+		get {
+			var brightness : CGFloat = 0
+			getHue(nil, saturation: nil, brightness: &brightness, alpha: nil)
+			return brightness
+		}
+	}
 }
 
 
