@@ -141,62 +141,48 @@ public extension Array where Element : UIColor {
 // MARK: - Components
 
 public extension UIColor {
-  
-  var redComponent : CGFloat {
-    get {
-      var r : CGFloat = 0
-      self.getRed(&r, green: nil , blue: nil, alpha: nil)
-      return r
-    }
-  }
-  
-  var greenComponent : CGFloat {
-    get {
-      var g : CGFloat = 0
-      self.getRed(nil, green: &g , blue: nil, alpha: nil)
-      return g
-    }
-  }
-  
-  var blueComponent : CGFloat {
-    get {
-      var b : CGFloat = 0
-      self.getRed(nil, green: nil , blue: &b, alpha: nil)
-      return b
-    }
-  }
-  
-  var alphaComponent : CGFloat {
-    get {
-      var a : CGFloat = 0
-      self.getRed(nil, green: nil , blue: nil, alpha: &a)
-      return a
-    }
+
+  var redComponent: CGFloat {
+    var r: CGFloat = 0
+    self.getRed(&r, green: nil , blue: nil, alpha: nil)
+    return r
   }
 
-	var hueComponent : CGFloat {
-		get {
-			var hue : CGFloat = 0
-			getHue(&hue, saturation: nil, brightness: nil, alpha: nil)
-			return hue
-		}
-	}
+  var greenComponent: CGFloat {
+    var g: CGFloat = 0
+    self.getRed(nil, green: &g , blue: nil, alpha: nil)
+    return g
+  }
 
-	var saturationComponent : CGFloat {
-		get {
-			var saturation : CGFloat = 0
-			getHue(nil, saturation: &saturation, brightness: nil, alpha: nil)
-			return saturation
-		}
-	}
+  var blueComponent: CGFloat {
+    var b: CGFloat = 0
+    self.getRed(nil, green: nil , blue: &b, alpha: nil)
+    return b
+  }
 
-	var brightnessComponent : CGFloat {
-		get {
-			var brightness : CGFloat = 0
-			getHue(nil, saturation: nil, brightness: &brightness, alpha: nil)
-			return brightness
-		}
-	}
+  var alphaComponent: CGFloat {
+    var a: CGFloat = 0
+    self.getRed(nil, green: nil , blue: nil, alpha: &a)
+    return a
+  }
+
+  var hueComponent: CGFloat {
+    var hue: CGFloat = 0
+    getHue(&hue, saturation: nil, brightness: nil, alpha: nil)
+    return hue
+  }
+
+  var saturationComponent: CGFloat {
+    var saturation: CGFloat = 0
+    getHue(nil, saturation: &saturation, brightness: nil, alpha: nil)
+    return saturation
+  }
+
+  var brightnessComponent: CGFloat {
+    var brightness: CGFloat = 0
+    getHue(nil, saturation: nil, brightness: &brightness, alpha: nil)
+    return brightness
+  }
 }
 
 
