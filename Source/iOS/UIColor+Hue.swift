@@ -168,19 +168,19 @@ public extension UIColor {
 
   var hueComponent: CGFloat {
     var hue: CGFloat = 0
-    getHue(&hue, saturation: nil, brightness: nil, alpha: nil)
+    self.getHue(&hue, saturation: nil, brightness: nil, alpha: nil)
     return hue
   }
 
   var saturationComponent: CGFloat {
     var saturation: CGFloat = 0
-    getHue(nil, saturation: &saturation, brightness: nil, alpha: nil)
+    self.getHue(nil, saturation: &saturation, brightness: nil, alpha: nil)
     return saturation
   }
 
   var brightnessComponent: CGFloat {
     var brightness: CGFloat = 0
-    getHue(nil, saturation: nil, brightness: &brightness, alpha: nil)
+    self.getHue(nil, saturation: nil, brightness: &brightness, alpha: nil)
     return brightness
   }
 }
