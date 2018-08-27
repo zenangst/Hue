@@ -143,44 +143,44 @@ public extension Array where Element : UIColor {
 public extension UIColor {
 
   var redComponent: CGFloat {
-    var r: CGFloat = 0
-    self.getRed(&r, green: nil , blue: nil, alpha: nil)
-    return r
+    var red: CGFloat = 0
+    getRed(&red, green: nil , blue: nil, alpha: nil)
+    return red
   }
 
   var greenComponent: CGFloat {
-    var g: CGFloat = 0
-    self.getRed(nil, green: &g , blue: nil, alpha: nil)
-    return g
+    var green: CGFloat = 0
+    getRed(nil, green: &green , blue: nil, alpha: nil)
+    return green
   }
 
   var blueComponent: CGFloat {
-    var b: CGFloat = 0
-    self.getRed(nil, green: nil , blue: &b, alpha: nil)
-    return b
+    var blue: CGFloat = 0
+    getRed(nil, green: nil , blue: &blue, alpha: nil)
+    return blue
   }
 
   var alphaComponent: CGFloat {
-    var a: CGFloat = 0
-    self.getRed(nil, green: nil , blue: nil, alpha: &a)
-    return a
+    var alpha: CGFloat = 0
+    getRed(nil, green: nil , blue: nil, alpha: &alpha)
+    return alpha
   }
 
   var hueComponent: CGFloat {
     var hue: CGFloat = 0
-    self.getHue(&hue, saturation: nil, brightness: nil, alpha: nil)
+    getHue(&hue, saturation: nil, brightness: nil, alpha: nil)
     return hue
   }
 
   var saturationComponent: CGFloat {
     var saturation: CGFloat = 0
-    self.getHue(nil, saturation: &saturation, brightness: nil, alpha: nil)
+    getHue(nil, saturation: &saturation, brightness: nil, alpha: nil)
     return saturation
   }
 
   var brightnessComponent: CGFloat {
     var brightness: CGFloat = 0
-    self.getHue(nil, saturation: nil, brightness: &brightness, alpha: nil)
+    getHue(nil, saturation: nil, brightness: &brightness, alpha: nil)
     return brightness
   }
 }
