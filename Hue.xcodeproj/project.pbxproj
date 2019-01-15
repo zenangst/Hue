@@ -53,7 +53,7 @@
 
 /* Begin PBXFileReference section */
 		386887911C8343CF005A8868 /* Hue.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Hue.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		3868879A1C8343D0005A8868 /* Hue-MacTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Hue-MacTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		3868879A1C8343D0005A8868 /* Hue-macOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Hue-macOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		386887AA1C83442A005A8868 /* NSColor+Hue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSColor+Hue.swift"; sourceTree = "<group>"; };
 		386887AB1C83442A005A8868 /* NSImage+Hue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSImage+Hue.swift"; sourceTree = "<group>"; };
 		386887B21C834567005A8868 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -61,13 +61,15 @@
 		386887B81C834591005A8868 /* NSImageTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSImageTests.swift; sourceTree = "<group>"; };
 		B53E399E1CA177C900EB1EEE /* Hue.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Hue.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B53E39A71CA177C900EB1EEE /* Hue-tvOS-Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Hue-tvOS-Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		BD2D8C5E21EDF05500656C65 /* Hue.podspec */ = {isa = PBXFileReference; lastKnownFileType = text; path = Hue.podspec; sourceTree = "<group>"; };
+		BD2D8C6021EDF18100656C65 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BD2D8C6221EDF19200656C65 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D2007E7F1F792D3D00205EF5 /* Info-iOS.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Info-iOS.plist"; sourceTree = "<group>"; };
 		D2007E801F792D3D00205EF5 /* Info-macOS.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Info-macOS.plist"; sourceTree = "<group>"; };
 		D2007E811F792D3D00205EF5 /* Info-tvOS.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Info-tvOS.plist"; sourceTree = "<group>"; };
 		D2007E851F792D7E00205EF5 /* Random Access Memories.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Random Access Memories.png"; sourceTree = "<group>"; };
 		D52862121C3EAC1D00AD11AD /* Hue.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Hue.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D528621C1C3EAC1D00AD11AD /* Hue-iOS-Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Hue-iOS-Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		D5EEA2141C3EAE01000F8F1B /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D5EEA2151C3EAE01000F8F1B /* UIColorTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; indentWidth = 2; lastKnownFileType = sourcecode.swift; path = UIColorTests.swift; sourceTree = "<group>"; tabWidth = 2; };
 		D5EEA2161C3EAE01000F8F1B /* UIImageTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIImageTests.swift; sourceTree = "<group>"; };
 		D5EEA2261C3EB008000F8F1B /* UIColor+Hue.swift */ = {isa = PBXFileReference; fileEncoding = 4; indentWidth = 2; lastKnownFileType = sourcecode.swift; path = "UIColor+Hue.swift"; sourceTree = "<group>"; tabWidth = 2; };
@@ -123,23 +125,39 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		386887A91C83442A005A8868 /* Mac */ = {
+		386887A91C83442A005A8868 /* macOS */ = {
 			isa = PBXGroup;
 			children = (
 				386887AA1C83442A005A8868 /* NSColor+Hue.swift */,
 				386887AB1C83442A005A8868 /* NSImage+Hue.swift */,
 			);
-			path = Mac;
+			path = macOS;
 			sourceTree = "<group>";
 		};
-		386887B01C834567005A8868 /* Mac */ = {
+		386887B01C834567005A8868 /* macOS */ = {
 			isa = PBXGroup;
 			children = (
 				386887B71C834591005A8868 /* NSColorTests.swift */,
 				386887B81C834591005A8868 /* NSImageTests.swift */,
 				386887B21C834567005A8868 /* Info.plist */,
 			);
-			path = Mac;
+			path = macOS;
+			sourceTree = "<group>";
+		};
+		BD2D8C5F21EDF18100656C65 /* iOS */ = {
+			isa = PBXGroup;
+			children = (
+				BD2D8C6021EDF18100656C65 /* Info.plist */,
+			);
+			path = iOS;
+			sourceTree = "<group>";
+		};
+		BD2D8C6121EDF19200656C65 /* tvOS */ = {
+			isa = PBXGroup;
+			children = (
+				BD2D8C6221EDF19200656C65 /* Info.plist */,
+			);
+			path = tvOS;
 			sourceTree = "<group>";
 		};
 		D2007E7E1F792D3D00205EF5 /* Info */ = {
@@ -163,8 +181,9 @@
 		D52862081C3EAC1D00AD11AD = {
 			isa = PBXGroup;
 			children = (
+				BD2D8C5E21EDF05500656C65 /* Hue.podspec */,
 				D2007E7E1F792D3D00205EF5 /* Info */,
-				D5EEA2121C3EAE01000F8F1B /* HueTests */,
+				D5EEA2121C3EAE01000F8F1B /* Tests */,
 				D5EEA2241C3EB008000F8F1B /* Source */,
 				D52862131C3EAC1D00AD11AD /* Products */,
 			);
@@ -176,49 +195,50 @@
 				D52862121C3EAC1D00AD11AD /* Hue.framework */,
 				D528621C1C3EAC1D00AD11AD /* Hue-iOS-Tests.xctest */,
 				386887911C8343CF005A8868 /* Hue.framework */,
-				3868879A1C8343D0005A8868 /* Hue-MacTests.xctest */,
+				3868879A1C8343D0005A8868 /* Hue-macOSTests.xctest */,
 				B53E399E1CA177C900EB1EEE /* Hue.framework */,
 				B53E39A71CA177C900EB1EEE /* Hue-tvOS-Tests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		D5EEA2121C3EAE01000F8F1B /* HueTests */ = {
+		D5EEA2121C3EAE01000F8F1B /* Tests */ = {
 			isa = PBXGroup;
 			children = (
 				D2007E841F792D7E00205EF5 /* Assets */,
-				D5EEA2131C3EAE01000F8F1B /* iOS */,
-				386887B01C834567005A8868 /* Mac */,
+				BD2D8C5F21EDF18100656C65 /* iOS */,
+				D5EEA2131C3EAE01000F8F1B /* iOS+tvOS */,
+				386887B01C834567005A8868 /* macOS */,
+				BD2D8C6121EDF19200656C65 /* tvOS */,
 			);
-			path = HueTests;
+			path = Tests;
 			sourceTree = "<group>";
 		};
-		D5EEA2131C3EAE01000F8F1B /* iOS */ = {
+		D5EEA2131C3EAE01000F8F1B /* iOS+tvOS */ = {
 			isa = PBXGroup;
 			children = (
-				D5EEA2141C3EAE01000F8F1B /* Info.plist */,
 				D5EEA2151C3EAE01000F8F1B /* UIColorTests.swift */,
 				D5EEA2161C3EAE01000F8F1B /* UIImageTests.swift */,
 			);
-			path = iOS;
+			path = "iOS+tvOS";
 			sourceTree = "<group>";
 		};
 		D5EEA2241C3EB008000F8F1B /* Source */ = {
 			isa = PBXGroup;
 			children = (
-				386887A91C83442A005A8868 /* Mac */,
-				D5EEA2251C3EB008000F8F1B /* iOS */,
+				386887A91C83442A005A8868 /* macOS */,
+				D5EEA2251C3EB008000F8F1B /* iOS+tvOS */,
 			);
 			path = Source;
 			sourceTree = "<group>";
 		};
-		D5EEA2251C3EB008000F8F1B /* iOS */ = {
+		D5EEA2251C3EB008000F8F1B /* iOS+tvOS */ = {
 			isa = PBXGroup;
 			children = (
 				D5EEA2261C3EB008000F8F1B /* UIColor+Hue.swift */,
 				D5EEA2271C3EB008000F8F1B /* UIImage+Hue.swift */,
 			);
-			path = iOS;
+			path = "iOS+tvOS";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -248,9 +268,9 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		386887901C8343CF005A8868 /* Hue-Mac */ = {
+		386887901C8343CF005A8868 /* Hue-macOS */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 386887A61C8343D0005A8868 /* Build configuration list for PBXNativeTarget "Hue-Mac" */;
+			buildConfigurationList = 386887A61C8343D0005A8868 /* Build configuration list for PBXNativeTarget "Hue-macOS" */;
 			buildPhases = (
 				3868878C1C8343CF005A8868 /* Sources */,
 				3868878D1C8343CF005A8868 /* Frameworks */,
@@ -261,14 +281,14 @@
 			);
 			dependencies = (
 			);
-			name = "Hue-Mac";
+			name = "Hue-macOS";
 			productName = "Hue-Mac";
 			productReference = 386887911C8343CF005A8868 /* Hue.framework */;
 			productType = "com.apple.product-type.framework";
 		};
-		386887991C8343D0005A8868 /* Hue-MacTests */ = {
+		386887991C8343D0005A8868 /* Hue-macOSTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 386887A71C8343D0005A8868 /* Build configuration list for PBXNativeTarget "Hue-MacTests" */;
+			buildConfigurationList = 386887A71C8343D0005A8868 /* Build configuration list for PBXNativeTarget "Hue-macOSTests" */;
 			buildPhases = (
 				386887961C8343D0005A8868 /* Sources */,
 				386887971C8343D0005A8868 /* Frameworks */,
@@ -279,9 +299,9 @@
 			dependencies = (
 				3868879D1C8343D0005A8868 /* PBXTargetDependency */,
 			);
-			name = "Hue-MacTests";
+			name = "Hue-macOSTests";
 			productName = "Hue-MacTests";
-			productReference = 3868879A1C8343D0005A8868 /* Hue-MacTests.xctest */;
+			productReference = 3868879A1C8343D0005A8868 /* Hue-macOSTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 		B53E399D1CA177C900EB1EEE /* Hue-tvOS */ = {
@@ -407,8 +427,8 @@
 			targets = (
 				D52862111C3EAC1D00AD11AD /* Hue-iOS */,
 				D528621B1C3EAC1D00AD11AD /* Hue-iOS-Tests */,
-				386887901C8343CF005A8868 /* Hue-Mac */,
-				386887991C8343D0005A8868 /* Hue-MacTests */,
+				386887901C8343CF005A8868 /* Hue-macOS */,
+				386887991C8343D0005A8868 /* Hue-macOSTests */,
 				B53E399D1CA177C900EB1EEE /* Hue-tvOS */,
 				B53E39A61CA177C900EB1EEE /* Hue-tvOS-Tests */,
 			);
@@ -523,7 +543,7 @@
 /* Begin PBXTargetDependency section */
 		3868879D1C8343D0005A8868 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 386887901C8343CF005A8868 /* Hue-Mac */;
+			target = 386887901C8343CF005A8868 /* Hue-macOS */;
 			targetProxy = 3868879C1C8343D0005A8868 /* PBXContainerItemProxy */;
 		};
 		B53E39AA1CA177C900EB1EEE /* PBXTargetDependency */ = {
@@ -558,6 +578,7 @@
 				PRODUCT_NAME = Hue;
 				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 4.2;
 			};
 			name = Debug;
 		};
@@ -581,6 +602,7 @@
 				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_VERSION = 4.2;
 			};
 			name = Release;
 		};
@@ -590,13 +612,14 @@
 				CODE_SIGN_IDENTITY = "-";
 				COMBINE_HIDPI_IMAGES = YES;
 				FRAMEWORK_SEARCH_PATHS = "$(SRCROOT)/**";
-				INFOPLIST_FILE = "$(SRCROOT)/HueTests/Mac/Info.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/Tests/macOS/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.11;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.OHF.Hue-MacTests";
+				PRODUCT_BUNDLE_IDENTIFIER = com.zenangst.HueTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
 				SWIFT_OBJC_INTERFACE_HEADER_NAME = "";
+				SWIFT_VERSION = 4.2;
 			};
 			name = Debug;
 		};
@@ -606,14 +629,15 @@
 				CODE_SIGN_IDENTITY = "-";
 				COMBINE_HIDPI_IMAGES = YES;
 				FRAMEWORK_SEARCH_PATHS = "$(SRCROOT)/**";
-				INFOPLIST_FILE = "$(SRCROOT)/HueTests/Mac/Info.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/Tests/macOS/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.11;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.OHF.Hue-MacTests";
+				PRODUCT_BUNDLE_IDENTIFIER = com.zenangst.HueTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
 				SWIFT_OBJC_INTERFACE_HEADER_NAME = "";
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_VERSION = 4.2;
 			};
 			name = Release;
 		};
@@ -632,6 +656,7 @@
 				PRODUCT_NAME = Hue;
 				SDKROOT = appletvos;
 				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = 3;
 				TVOS_DEPLOYMENT_TARGET = 9.0;
 			};
@@ -653,6 +678,7 @@
 				SDKROOT = appletvos;
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = 3;
 				TVOS_DEPLOYMENT_TARGET = 9.0;
 			};
@@ -661,11 +687,12 @@
 		B53E39B31CA177C900EB1EEE /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				INFOPLIST_FILE = "$(SRCROOT)/HueTests/tvOS/Info.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/Tests/tvOS/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = no.hyper.HueTests;
+				PRODUCT_BUNDLE_IDENTIFIER = com.zenangst.HueTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = appletvos;
+				SWIFT_VERSION = 4.2;
 				TVOS_DEPLOYMENT_TARGET = 9.1;
 			};
 			name = Debug;
@@ -673,12 +700,13 @@
 		B53E39B41CA177C900EB1EEE /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				INFOPLIST_FILE = "$(SRCROOT)/HueTests/tvOS/Info.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/Tests/tvOS/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = no.hyper.HueTests;
+				PRODUCT_BUNDLE_IDENTIFIER = com.zenangst.HueTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = appletvos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_VERSION = 4.2;
 				TVOS_DEPLOYMENT_TARGET = 9.1;
 			};
 			name = Release;
@@ -733,7 +761,7 @@
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
@@ -783,7 +811,7 @@
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 				VERSIONING_SYSTEM = "apple-generic";
@@ -835,9 +863,9 @@
 		D528622A1C3EAC1D00AD11AD /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				INFOPLIST_FILE = "$(SRCROOT)/HueTests/iOS/Info.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/Tests/iOS/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = no.hyper.HueTests;
+				PRODUCT_BUNDLE_IDENTIFIER = com.zenangst.HueTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
 			};
@@ -846,9 +874,9 @@
 		D528622B1C3EAC1D00AD11AD /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				INFOPLIST_FILE = "$(SRCROOT)/HueTests/iOS/Info.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/Tests/iOS/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = no.hyper.HueTests;
+				PRODUCT_BUNDLE_IDENTIFIER = com.zenangst.HueTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				SWIFT_VERSION = 4.2;
@@ -858,7 +886,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		386887A61C8343D0005A8868 /* Build configuration list for PBXNativeTarget "Hue-Mac" */ = {
+		386887A61C8343D0005A8868 /* Build configuration list for PBXNativeTarget "Hue-macOS" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				386887A21C8343D0005A8868 /* Debug */,
@@ -867,7 +895,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		386887A71C8343D0005A8868 /* Build configuration list for PBXNativeTarget "Hue-MacTests" */ = {
+		386887A71C8343D0005A8868 /* Build configuration list for PBXNativeTarget "Hue-macOSTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				386887A41C8343D0005A8868 /* Debug */,
