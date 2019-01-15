@@ -1,0 +1,16 @@
+osx_image: xcode10
+language: objective-c
+
+script:
+- set -o pipefail && xcodebuild -project Hue.xcodeproj -scheme "Hue-macOS" -sdk macosx clean build | xcpretty
+# - set -o pipefail && xcodebuild -project Hue.xcodeproj -scheme "Hue-macOS" -sdk macosx -enableCodeCoverage YES test | xcpretty
+- set -o pipefail && xcodebuild -project Hue.xcodeproj -scheme "Hue-iOS" -sdk iphonesimulator -destination name="iPhone 8" clean build | xcpretty
+- set -o pipefail && xcodebuild -project Hue.xcodeproj -scheme "Hue-iOS" -sdk iphonesimulator -destination name="iPhone 8" -enableCodeCoverage YES test | xcpretty
+- set -o pipefail && xcodebuild -project Hue.xcodeproj -scheme "Hue-tvOS" -destination 'platform=tvOS Simulator,name=Apple TV,OS=11.4' clean build | xcpretty
+- set -o pipefail && xcodebuild -project Hue.xcodeproj -scheme "Hue-tvOS" -destination 'platform=tvOS Simulator,name=Apple TV,OS=11.4' -enableCodeCoverage YES test | xcpretty
+
+after_success:
+- bash <(curl -s https://codecov.io/bash)
+
+notifications:
+email: false
