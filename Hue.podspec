@@ -1,7 +1,7 @@
 Pod::Spec.new do |s|
   s.name             = "Hue"
   s.summary          = "The all-in-one coloring utility that you'll ever need."
-  s.version          = "3.0.1"
+  s.version          = "3.1.0"
   s.homepage         = "https://github.com/zenangst/Hue"
   s.license          = 'MIT'
   s.author           = { "Christoffer Winterkvist" => "christoffer@winterkvist.com" }
