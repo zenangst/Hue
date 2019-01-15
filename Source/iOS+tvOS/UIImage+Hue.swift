@@ -155,9 +155,10 @@ extension UIImage {
       guard let imgRef = cgImage,
         let dataProvider = imgRef.dataProvider,
         let dataCopy = dataProvider.data,
-        let data = CFDataGetBytePtr(dataCopy),
-        rect.contains(point) else {
-          completion(nil)
+        let data = CFDataGetBytePtr(dataCopy), rect.contains(point) else {
+          DispatchQueue.main.async {
+            completion(nil)
+          }
           return
       }
       
