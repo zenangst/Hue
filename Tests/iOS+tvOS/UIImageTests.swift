@@ -46,8 +46,8 @@ class UIImageTests: XCTestCase {
     colors.detail.getRed(&red, green: &green, blue: &blue, alpha: nil)
 
     XCTAssertEqual(red, 1.000, accuracy: accuracy)
-    XCTAssertEqual(green, 1.000, accuracy: accuracy)
-    XCTAssertEqual(blue, 0.85, accuracy: accuracy)
+    XCTAssertEqual(green, 0.9, accuracy: accuracy)
+    XCTAssertEqual(blue, 0.7, accuracy: accuracy)
   }
 
   func testPixelColorSubscript() {
