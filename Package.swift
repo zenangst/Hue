@@ -10,19 +10,13 @@ let package = Package(
     ],
     products: [
         .library(
-            name: "HueAppKit",
-            targets: ["HueAppKit"]),
-        .library(
-            name: "HueUIKit",
-            targets: ["HueUIKit"]),
+            name: "Hue",
+            targets: ["Hue"]),
     ],
     targets: [
         .target(
-            name: "HueAppKit",
-            path: "Source/macOS"),
-        .target(
-            name: "HueUIKit",
-            path: "Source/iOS+tvOS"),
+            name: "Hue",
+            path: "Source"),
     ],
     swiftLanguageVersions: [.v5]
 )

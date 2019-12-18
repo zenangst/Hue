@@ -1,3 +1,4 @@
+#if canImport(AppKit)
 import AppKit
 
 // MARK: - Color Builders
@@ -258,3 +259,4 @@ public extension NSColor {
     return self.add(red: color.getRed(), green: color.getGreen(), blue: color.getBlue(), alpha: color.getAlpha())
   }
 }
+#endif

@@ -1,3 +1,4 @@
+#if canImport(UIKit)
 import UIKit
 
 class CountedColor {
@@ -174,3 +175,4 @@ extension UIImage {
     }
   }
 }
+#endif

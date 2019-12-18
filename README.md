@@ -139,7 +139,7 @@ github "hyperoslo/Hue"
 To install **Hue** using [Swift Package Manager](https://swift.org/package-manager) with Xcode 11, just follow the instructions at <https://developer.apple.com/documentation/swift_packages> and import the platform specific library to the project:
 
 ```swift
-import HueAppKit // or HueUIKit
+import Hue
 ```
 
 ## Author
