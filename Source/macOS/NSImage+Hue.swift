@@ -1,3 +1,4 @@
+#if canImport(AppKit)
 import AppKit
 
 class CountedColor {
@@ -163,3 +164,4 @@ extension NSImage {
       detailColor    ?? (isDarkBackgound ? whiteColor : blackColor))
   }
 }
+#endif

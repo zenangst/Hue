@@ -1,3 +1,4 @@
+#if canImport(UIKit)
 import UIKit
 
 // MARK: - Color Builders
@@ -245,3 +246,4 @@ public extension UIColor {
     return self.add(red: color.redComponent, green: color.greenComponent, blue: color.blueComponent, alpha: color.alphaComponent)
   }
 }
+#endif
