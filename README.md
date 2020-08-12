@@ -77,6 +77,14 @@ let desaturatedBlue = UIColor(hex: "#aaaacc")
 let saturatedBlue = desaturatedBlue.addHue(0.0, saturation: 1.0, brightness: 0.0, alpha: 0.0)
 ```
 
+## Supporting the project
+You can support the project by checking out our sponsor page. It takes only one click:
+
+<a href="https://tracking.gitads.io/?repo=Hue">
+  <img alt="Sponsor banner" src="https://images.gitads.io/Hue" />
+</a>
+<br><i>This advert was placed by <a href="https://tracking.gitads.io/?repo=Hue">GitAds</a> </i>
+
 ## Examples
 <img src="https://raw.githubusercontent.com/hyperoslo/Hue/master/Images/hex-screenshot.png" alt="Hex Example screenshot" align="right" />
 
