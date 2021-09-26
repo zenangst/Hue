@@ -52,7 +52,7 @@ extension NSImage {
     let blackColor = NSColor(red: 0, green: 0, blue: 0, alpha: 1)
     let whiteColor = NSColor(red: 1, green: 1, blue: 1, alpha: 1)
     let colorSpace = CGColorSpaceCreateDeviceRGB()
-    let raw = malloc(bytesPerRow * height)
+    let raw = malloc(bytesPerRow * height)!
     let bitmapInfo = CGImageAlphaInfo.premultipliedFirst.rawValue
     let context = CGContext(data: raw, width: width, height: height, bitsPerComponent: bitsPerComponent, bytesPerRow: bytesPerRow, space: colorSpace, bitmapInfo: bitmapInfo)
     context?.draw(resolvedImage, in: CGRect(x: 0, y: 0, width: CGFloat(width), height: CGFloat(height)))
