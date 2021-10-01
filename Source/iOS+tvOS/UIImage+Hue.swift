@@ -138,7 +138,9 @@ extension UIImage {
       }
     }
     
-    free(raw)
+      if let raw = raw {
+          free(raw)
+      }
     
     return (
       imageBackgroundColor,
