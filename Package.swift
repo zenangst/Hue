@@ -4,7 +4,7 @@ import PackageDescription
 let package = Package(
     name: "Hue",
     platforms: [
-        .iOS(.v8),
+        .iOS(.v9),
         .macOS(.v10_11),
         .tvOS(.v9),
     ],
